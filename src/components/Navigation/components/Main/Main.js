@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../../Button';
 import NavItem from '../NavItem';
+import {THEME_COLOR} from '../../../../constants';
 
 const BORDER_GAP = '20px'; 
 const Layout = styled.div`
@@ -25,8 +26,8 @@ const Link = styled(NavItem)`
     border-bottom: 2px solid transparent;
 
     &:hover {
-        color: #008fb4;
-        border-top-color: #008fb4;
+        color: ${THEME_COLOR};
+        border-top-color: ${THEME_COLOR};
 `;
 
 const LINKS = [{
