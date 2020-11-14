@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../../Button';
 import NavItem from '../NavItem';
-import {THEME_COLOR} from '../../../../constants';
+import Icon from '../../../Icon';
 
 const BORDER_GAP = '20px'; 
 const Layout = styled.div`
@@ -20,24 +20,20 @@ const AppointmentButton = styled(Button)`
  
 const Link = styled(NavItem)`
     display: block;
-    text-decoration: none;
-    color: #545a77;
-    border-top: 2px solid transparent;
-    border-bottom: 2px solid transparent;
-
-    &:hover {
-        color: ${THEME_COLOR};
-        border-top-color: ${THEME_COLOR};
+    text-decoration: none;  
+    color: gray; 
 `;
 
 const LINKS = [{
     key: 'doctor',
     href: '/',
-    children: 'Doctor'
+    children: 'Doctor',
+    icon: 'user-md'
 },{
     key: 'sepcialization',
     href: '/',
-    children: 'Sepcialization'
+    children: 'Sepcialization',
+    icon: 'stethoscope'
 }];
 
 const MakeAppointment = styled(NavItem)`
@@ -58,7 +54,12 @@ const Main = () => {
                     key={link.key} 
                     as='a'
                     href={link.href}
+                    variant= 'indictable'
                 >
+                    <Icon
+                        name={link.icon}
+                        style={{ fontSize: "30px" }}
+                    />
                     {link.children}
                 </Link>
             ))}

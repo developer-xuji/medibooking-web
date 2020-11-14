@@ -3,15 +3,15 @@ import Navigation from './components/Navigation';
 
 import styled from 'styled-components';
 
-const Debug = styled.div`
-    background-color: black;
+const Layout = styled.div`
+    line-height: 1.25;
 `;
 
 const App = () => {
     return (
-        <Debug>
+        <Layout>
             <Navigation />
-        </Debug>
+        </Layout>
     )
 }
 export default App;
