@@ -1,17 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import DividingLine from "./components/DividingLine";
-import InputField from "./components/InputField";
-import SubmitButton from "./components/SubmitButton";
-import Footer from "./components/Footer";
+import DividingLine from "../../../SignUpPage/components/Form/components/DividingLine";
+import InputField from "../../../SignUpPage/components/Form/components/InputField";
+import SubmitButton from "../../../SignUpPage/components/Form/components/SubmitButton";
+import Footer from "../../../SignUpPage/components/Form/components/Footer";
 
-const PasswordHint = styled.div`
-  color: #5c7783;
-  font-size: 14px;
-  margin-bottom: 20px;
-  margin-top: 0;
-  line-height: 21px;
-  text-align: center;
+const PracticeLoginLink = styled.div`
+  border-top: 1px solid #e3e8ed;
+  padding-top: 18px;
+  margin-top: 18px;
 `;
 
 const Form = () => {
@@ -29,24 +26,6 @@ const Form = () => {
           data-parsley-required-message="Please enter your username"
         />
         <InputField
-          type="text"
-          id="firstname"
-          name="firstname"
-          placeholder="First name"
-          required=""
-          data-parsley-required-message="Please enter your first name"
-          autocomplete="off"
-        />
-        <InputField
-          type="text"
-          id="lastname"
-          name="lastname"
-          placeholder="Last name"
-          required=""
-          data-parsley-required-message="Please enter your last name"
-          autocomplete="off"
-        />
-        <InputField
           type="password"
           id="password"
           name="password"
@@ -58,10 +37,6 @@ const Form = () => {
           autocomplete="off"
         />
       </form>
-      <PasswordHint>
-        Please use at least 10 characters, avoid dictionary words and common
-        passwords.
-      </PasswordHint>
       <SubmitButton
         class="submit"
         id="signup-submit"
@@ -69,9 +44,14 @@ const Form = () => {
         dataEvent="patient-signup"
         dataSignupType="email"
       >
-        Sign up
+        Log in
       </SubmitButton>
-      <Footer>Already have an account? Log in</Footer>
+      <Footer>
+        Don't have an account? Sign up
+        <PracticeLoginLink>
+          Are you a practice? Log in as a practice
+        </PracticeLoginLink>
+      </Footer>
     </>
   );
 };

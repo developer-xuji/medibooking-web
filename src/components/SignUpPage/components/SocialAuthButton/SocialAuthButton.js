@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Button = styled.div`
+const AuthButton = styled.div`
   border: 2px solid #e3e8ed;
   box-sizing: border-box;
   border-radius: 100px;
@@ -45,9 +45,9 @@ const SocialAuthButton = (props) => {
   const { children } = props;
   return (
     <>
-      <Button as="a" logo={children}>
+      <AuthButton as="a" logo={children}>
         Continue with {children}
-      </Button>
+      </AuthButton>
     </>
   );
 };

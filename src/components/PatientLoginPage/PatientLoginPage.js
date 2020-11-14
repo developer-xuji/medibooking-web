@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import Form from "./components/Form";
-import SocialAuthButton from "./components/SocialAuthButton";
 import Title from "./components/Title";
+import SocialAuthButton from "../SignUpPage/components/SocialAuthButton";
+import Form from "./components/Form";
 
 const Container = styled.div`
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
@@ -15,7 +15,7 @@ const Container = styled.div`
   text-align: center;
 `;
 
-const SignUpPage = () => {
+const PatientLoginPage = () => {
   return (
     <Container>
       <Title />
@@ -25,4 +25,4 @@ const SignUpPage = () => {
     </Container>
   );
 };
-export default SignUpPage;
+export default PatientLoginPage;
