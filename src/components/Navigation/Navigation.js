@@ -28,7 +28,9 @@ const Logo = styled(NavItem)`
 
 const Left = styled.div`
     display: flex;
-    display: -webkit-flex;`;
+    display: -webkit-flex;
+`;
+
 const Right = styled.div`
 `;
 
