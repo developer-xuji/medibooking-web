@@ -1,0 +1,9 @@
+.DoctorsContainer{
+    width: calc(100%-400px);
+    display: flex;
+    background-color: #fff;
+    flex-wrap: wrap;
+    padding-left: 200px;
+    padding-right: 200px;
+    justify-content: space-between;
+}

@@ -1,54 +1,51 @@
 import React from 'react';
 import DoctorOfEach from './components/DoctorOfEach'
-import '../scss/DoctorsContainer.css'
+import MoreButton from './components/MoreButton'
+import './scss/DoctorsContainer.scss'
 
-const MaximumNumOfDoctors = 6;
+const MaximumNumOfDoctors = 8;
 
 class DoctorsContainer extends React.Component {
 
     constructor(props){
 
         super(props);
-        if (this.props.CurrentDoctorsList > MaximumNumOfDoctors) {
+        if (this.props.CurrentDoctorsList.length > MaximumNumOfDoctors) {
             this.state = {
                 CurrentDoctorsShowed : this.props.CurrentDoctorsList.slice(0, MaximumNumOfDoctors),
                 CurrentNumOfDoctorsShowed : MaximumNumOfDoctors,
-                ifMore : ((this.state.CurrentNumOfDoctorsShowed === this.props.CurrentDoctorsList.length)? false : true),
+                ifMore : true,
             };
         } else {
             this.state = {
                 CurrentDoctorsShowed : this.props.CurrentDoctorsList,
                 CurrentNumOfDoctorsShowed : this.props.CurrentDoctorsList.length,
-                ifMore : ((this.state.CurrentNumOfDoctorsShowed === this.props.CurrentDoctorsList.length)? false : true),
+                ifMore : false,
             };
         };
+        console.log(this.state.CurrentDoctorsShowed);
+        console.log(this.state.CurrentNumOfDoctorsShowed);
+        console.log(this.props.AllDoctors);
     };
 
-    renderCentainDoctor(index, value) {
-    
-        return (
-            <DoctorOfEach DoctorId={this.props.AllDoctors.keys()[index]} Doctor={this.props.AllDoctors[value]}></DoctorOfEach>
-          )
-       
-    }
 
     handleMoreClick() {
-
-    }
+        let a = 1;
+    };
 
 
     render() {
-
+        let moreButton;
         if (this.state.ifMore){
-            MoreButton = <MoreButton onClick={this.handleMoreClick} />
+            moreButton = <MoreButton onClick={this.handleMoreClick} />;
         } else {
-            MoreButton = NaN;
         }
+        const renderdoctor = this.state.CurrentDoctorsShowed.map((value, index) => <DoctorOfEach DoctorId={Object.keys(this.props.AllDoctors)[index]} Doctor={this.props.AllDoctors[value]}></DoctorOfEach>)
         return(
             
             <div className="DoctorsContainer">
-                {this.state.CurrentDoctorsShowed.map((index, value) => {this.RenderCentainDoctor(index, value)})}
-                {MoreButton}
+                {renderdoctor}
+                {moreButton}
             </div>
             
         )

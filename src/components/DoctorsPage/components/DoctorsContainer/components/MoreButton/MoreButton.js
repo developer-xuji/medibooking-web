@@ -1,5 +1,5 @@
 import React from 'react';
-import '../scss/MoreButton.css'
+import './scss/MoreButton.scss'
 
 function MoreButton(props) {
     return (
