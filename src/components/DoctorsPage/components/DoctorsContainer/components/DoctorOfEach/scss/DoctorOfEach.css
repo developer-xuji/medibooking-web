@@ -1,0 +1,36 @@
+.DoctorContainer{
+    width: calc(50% - 1.875rem);
+    height: calc(width);
+    margin-bottom: 1.5625rem;
+    position: relative;
+    align-content: center;
+    margin-right: 0.9375rem;
+    margin-left: 0.9375rem;
+}
+
+.DoctorImage{
+    width: 100%;
+    height: calc(width);
+    position: relative;
+    overflow: hidden;
+}
+
+.DoctorNameLanguageSpecializationWrapper{
+    width: 100%;
+    font-size: medium;
+}
+
+.DoctorName{
+    width: 100%;
+    align-content: center;
+}
+
+.DoctorLanguage{
+    width: 100%;
+    align-content: center;
+}
+
+.DoctorSpecialization{
+    width: 100%;
+    align-content: center;
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './components/Navigation';
+import DoctorsPage from './components/DoctorsPage'
 
 import styled from 'styled-components';
 
@@ -10,7 +11,7 @@ const Debug = styled.div`
 const App = () => {
     return (
         <Debug>
-            <Navigation />
+            <DoctorsPage />
         </Debug>
     )
 }
