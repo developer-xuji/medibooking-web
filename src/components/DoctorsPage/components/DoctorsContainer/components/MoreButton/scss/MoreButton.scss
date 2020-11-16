@@ -3,12 +3,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    :hover{
+        background-color: #97000a;
+    }
+    cursor: pointer;
 }
 
 .MoreButton{
     width: 10%;
-    border-radius: 100px;
     height: 50px;
-    font-size: medium;
     background-color: #DE0311;
+    border: 1px solid #dce0e0;
+    border-radius: 100px;
+    box-shadow: 0;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #ffffff;
+    transition: box-shadow 0.5s, border-color 0.25s ease-in-out;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }

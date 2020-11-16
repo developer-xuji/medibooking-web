@@ -2,28 +2,31 @@ import React from 'react';
 import Navigation from '../Navigation';
 import styled from 'styled-components';
 import DoctorsContainer from './components/DoctorsContainer'
+import DoctorsSearchBar from './components/DoctorsSearchBar'
 import './index.css'
 
 const Debug = styled.div`
     background-color: black;
 `;
 
+const MaximumNumOfDoctorsToShow = 8;
+
 const allDoctors = {
     "0" : {
-        FirstName: "abc",
-        SecondName: "def",
+        FirstName: "123",
+        SecondName: "ggg",
         Specialization: "dental",
         Language: "English",
     },
     "1" : {
-        FirstName: "abc",
-        SecondName: "def",
+        FirstName: "456",
+        SecondName: "hhh",
         Specialization: "dental",
         Language: "English",
     },
     "2" : {
-        FirstName: "abc",
-        SecondName: "def",
+        FirstName: "789",
+        SecondName: "ggg",
         Specialization: "dental",
         Language: "English",
     },
@@ -153,7 +156,20 @@ const allDoctors = {
         Specialization: "dental",
         Language: "English",
     },
+    "24" : {
+        FirstName: "abc",
+        SecondName: "def",
+        Specialization: "dental",
+        Language: "English",
+    },
+    "25" : {
+        FirstName: "abc",
+        SecondName: "def",
+        Specialization: "dental",
+        Language: "English",
+    },
 };
+const allDoctorsList = Object.keys(allDoctors);
 
 
 class DoctorsPage extends React.Component {
@@ -164,17 +180,77 @@ class DoctorsPage extends React.Component {
         this.state = {
             AllDoctors : allDoctors,
             CurrentDoctorsList : Object.keys(allDoctors),
+            CurrentNumOfDoctorsShowed : MaximumNumOfDoctorsToShow,
+            SearchText : NaN,
+            IfMore : true,
         };
-        // this.OnCityListClick = this.OnCityListClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleMoreClick = this.handleMoreClick.bind(this);
+    }
+
+    handleMoreClick() {
+        // console.log(this.state.CurrentNumOfDoctorsShowed);
+        if ((this.state.CurrentDoctorsList.length - this.state.CurrentNumOfDoctorsShowed) > 4){
+            this.setState({
+                CurrentNumOfDoctorsShowed : this.state.CurrentNumOfDoctorsShowed + 4,
+                IfMore : true,
+            })
+        } else {
+            this.setState({
+                CurrentNumOfDoctorsShowed : this.state.CurrentDoctorsList.length,
+                IfMore : false,
+            })
+        }
+    };
+
+    handleSubmit(event){
+        event.preventDefault();
+        let TempList = [];
+        for (let i = 0; i < allDoctorsList.length; i++){
+            if (allDoctors[allDoctorsList[i]].FirstName.includes(this.state.SearchText) || allDoctors[allDoctorsList[i]].SecondName.includes(this.state.SearchText)) {
+                TempList.push(allDoctorsList[i]);
+            }
+        }
+        console.log(TempList);
+        if (TempList.length > MaximumNumOfDoctorsToShow) {
+            this.setState({
+                CurrentDoctorsList : TempList,
+                IfMore : true,
+            })
+        }
+        else {
+            this.setState({
+                CurrentDoctorsList : TempList,
+                IfMore : false,
+            })
+        }
+        
+    }
+
+    handleChange(event){
+        // let TempList = [];
+        // for (let i = 0; i < allDoctorsList.length; i++){
+        //     if (allDoctors[allDoctorsList[i]].FirstName.includes(event.target.value) || allDoctors[allDoctorsList[i]].SecondName.includes(event.target.value)) {
+        //         TempList.push(allDoctorsList[i]);
+        //     }
+        // }
+        // console.log(TempList);
+        this.setState({
+            // CurrentDoctorsList : TempList,
+            SearchText : event.target.value,
+        });
+        // console.log(this.state.CurrentDoctorsList);
     }
 
     render() {
+        console.log(this.state.CurrentDoctorsList);
         return (
             <React.Fragment>
 
                 <Navigation />
-
-                <DoctorsContainer AllDoctors={this.state.AllDoctors} CurrentDoctorsList={this.state.CurrentDoctorsList}/>
+                <DoctorsSearchBar handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                <DoctorsContainer AllDoctors={this.state.AllDoctors} CurrentDoctorsList={this.state.CurrentDoctorsList} CurrentNumOfDoctorsShowed={this.state.CurrentNumOfDoctorsShowed} handleMoreClick={this.handleMoreClick} IfMore={this.state.IfMore}/>
 
             </React.Fragment>
         )
