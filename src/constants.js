@@ -1,1 +1,24 @@
+import background from './asserts/images/background.png';
+import footBackground from './asserts/images/footer-background.jpg';
+import logo from './asserts/images/logo.png';
+import hospital_icon from './asserts/images/hospital.png';
+import doctor_icon from './asserts/images/doctor.png';
+import flu_shuts_icon from './asserts/images/flu_shuts.png';
+import general_practice_icon from './asserts/images/general_practice.png';
+import travel_shuts_icon from './asserts/images/travel_shuts.png';
+import mental_health_icon from './asserts/images/mental_health.png';
+import pharmacy_icon from './asserts/images/pharmacy.png';
+import optometry_icon from './asserts/images/optometry.png';
+
 export const THEME_COLOR = '#008fb4';
+export const HOME_BACKGROUND = background;
+export const FOOT_BACKGROUND = footBackground;
+export const LOGO = logo;
+export const HOSPITAL_ICON = hospital_icon;
+export const DOCTOR_ICON = doctor_icon;
+export const FLU_SHUTS_ICON = flu_shuts_icon;
+export const GENERAL_PRACTICE_ICON = general_practice_icon;
+export const TRAVEL_SHUTS_ICON = travel_shuts_icon;
+export const MENTAL_HEALTH_ICON = mental_health_icon;
+export const PHARMACY_ICON = pharmacy_icon;
+export const OPTOMETRY_ICON = optometry_icon;

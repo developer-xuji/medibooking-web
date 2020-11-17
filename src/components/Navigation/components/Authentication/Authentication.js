@@ -20,11 +20,11 @@ const NakedButton = styled.button`
 
 const LOGIN_MENU = [{
     key: 'log in as a patient',
-    href: 'http://www.taobao.com/',
+    href: '/',
     contains: 'Log in as a patient'
 },{
     key: 'log in as a doctor',
-    href: 'http://www.taobao.com/',
+    href: '/',
     contains: 'Log in as a patient'
 }];
 

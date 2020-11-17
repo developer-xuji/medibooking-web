@@ -5,7 +5,7 @@ import Container from '../Container';
 import Main from './components/Main';
 import Authentication from './components/Authentication';
 import NavItem from './components/NavItem';
-import LogoImage from '../../asserts/images/logo.png';
+import {LOGO} from '../../constants';
 
 const Layout = styled.div`
     display: flex;
@@ -15,6 +15,8 @@ const Layout = styled.div`
 `;
 
 const Wapper = styled.div`
+    position: fixed;
+    width: 100%;
     background: white;
     border-bottom: 1px solid #ccc;
 `;
@@ -35,7 +37,7 @@ const Right = styled.div`
 `;
 
 const LogoDiv = styled.div`
-    background: url(${LogoImage});
+    background: url(${LOGO});
     background-size: cover;
     width: 60px;
     height: 60px;

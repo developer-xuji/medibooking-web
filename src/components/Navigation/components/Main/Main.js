@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../../../Button';
 import NavItem from '../NavItem';
 import Icon from '../../../Icon';
+import {THEME_COLOR} from '../../../../constants';
 
 const BORDER_GAP = '20px'; 
 const Layout = styled.div`
@@ -16,6 +17,7 @@ const Layout = styled.div`
 const HORIZONTAL_GAP = '12px';
 const AppointmentButton = styled(Button)`
     margin-right: ${HORIZONTAL_GAP};
+    background: ${THEME_COLOR};
 `;
  
 const Link = styled(NavItem)`
