@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DividingLine from "./components/DividingLine";
-import InputField from "./components/InputField";
+import InputField from "./components/Input";
 import SubmitButton from "./components/SubmitButton";
 import Footer from "./components/Footer";
 
@@ -52,25 +52,25 @@ const Form = () => {
           name="password"
           placeholder="Password"
           required="required"
-          dataParsleyRequiredMessage="Please enter a password"
+          data-parsley-required-message="Please enter a password"
           minlength="10"
-          dataParsleyMinlenthMessage="Passwords must be 10 characters or more, and not a common well known password"
+          data-parsley-minlenth-message="Passwords must be 10 characters or more, and not a common well known password"
           autocomplete="off"
         />
+        <PasswordHint>
+          Please use at least 10 characters, avoid dictionary words and common
+          passwords.
+        </PasswordHint>
+        <SubmitButton
+          class="submit"
+          id="signup-submit"
+          name="signup-submit"
+          dataEvent="patient-signup"
+          dataSignupType="email"
+        >
+          Sign up
+        </SubmitButton>
       </form>
-      <PasswordHint>
-        Please use at least 10 characters, avoid dictionary words and common
-        passwords.
-      </PasswordHint>
-      <SubmitButton
-        class="submit"
-        id="signup-submit"
-        name="signup-submit"
-        dataEvent="patient-signup"
-        dataSignupType="email"
-      >
-        Sign up
-      </SubmitButton>
       <Footer>Already have an account? Log in</Footer>
     </>
   );

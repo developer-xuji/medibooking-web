@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DividingLine from "../../../SignUpPage/components/Form/components/DividingLine";
-import InputField from "../../../SignUpPage/components/Form/components/InputField";
+import Input from "../../../SignUpPage/components/Form/components/Input";
 import SubmitButton from "../../../SignUpPage/components/Form/components/SubmitButton";
 import Footer from "../../../SignUpPage/components/Form/components/Footer";
 
@@ -16,7 +16,7 @@ const Form = () => {
     <>
       <DividingLine />
       <form>
-        <InputField
+        <Input
           type="text"
           id="username"
           name="username"
@@ -25,7 +25,7 @@ const Form = () => {
           required=""
           data-parsley-required-message="Please enter your username"
         />
-        <InputField
+        <Input
           type="password"
           id="password"
           name="password"
@@ -33,19 +33,19 @@ const Form = () => {
           required="required"
           dataParsleyRequiredMessage="Please enter a password"
           minlength="10"
-          dataParsleyMinlenthMessage="Passwords must be 10 characters or more, and not a common well known password"
+          data-parsley-minlenth-message="Passwords must be 10 characters or more, and not a common well known password"
           autocomplete="off"
         />
+        <SubmitButton
+          class="submit"
+          id="signup-submit"
+          name="signup-submit"
+          data-event="patient-signup"
+          data-signup-type="email"
+        >
+          Log in
+        </SubmitButton>
       </form>
-      <SubmitButton
-        class="submit"
-        id="signup-submit"
-        name="signup-submit"
-        dataEvent="patient-signup"
-        dataSignupType="email"
-      >
-        Log in
-      </SubmitButton>
       <Footer>
         Don't have an account? Sign up
         <PracticeLoginLink>
