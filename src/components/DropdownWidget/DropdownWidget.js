@@ -23,17 +23,12 @@ const Item = styled.div`
 
 const DropdownWidget = ({
     items,
-    children,
-    visable
+    children
 }) => (
     <Box>
-        {children}
-        {visable && (
-            <Layout>
-                {items.map( (i) => (<Item key={i.key}>{i.contains}</Item>) )}
-            </Layout>   
-        )}
-        
+        <Layout>
+            {items.map( (i) => (<Item key={i.key}>{i.contains}</Item>) )}
+        </Layout>   
     </Box>
 );
 

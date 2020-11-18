@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import NavItem from '../NavItem';
 import DropdownWidget from '../../../DropdownWidget';
 import FontAwesome from 'react-fontawesome';
+import SignUpModel from './components/SignUpModel';
 
 const Layout = styled.div`
     display: flex;
@@ -38,7 +39,8 @@ class Authentication extends React.Component {
         super(props);
 
         this.state = {
-            ShowLoginMenu: false
+            ShowLoginMenu: false,
+            ShowSignUpModel: false
         };
     }
 
@@ -48,14 +50,22 @@ class Authentication extends React.Component {
         });
     }
 
+    setShowSignUpModel(value) {
+        this.setState({
+            ShowSignUpModel: value
+        });
+    }
+
     render() {
         const {ShowLoginMenu} = this.state;
+        const {ShowSignUpModel} = this.state;
         console.log(ShowLoginMenu);
         return (
             <Layout>
                 <NavItem 
                     variant = 'highlight'
                     as = {NakedButton}
+                    onClick = {() => this.setShowSignUpModel(!ShowSignUpModel)}
                 >
                     <Icon 
                         name='user-plus'
@@ -63,19 +73,21 @@ class Authentication extends React.Component {
                     />
                     Sign Up
                 </NavItem>
-                <DropdownWidget items={LOGIN_MENU} visable={ShowLoginMenu}>
+                <div>
                     <NavItem
                         as = {NakedButton}
                         variant = 'highlight' 
                         onClick = {() => this.setShowLoginMenu(!ShowLoginMenu) }
                     >
-                    <Icon 
-                        name='sign-in'
-                        style={{ fontSize: "30px" }}
-                    />
+                        <Icon 
+                            name='sign-in'
+                            style={{ fontSize: "30px" }}
+                        />
                         Log in
                     </NavItem>
-                </DropdownWidget>
+                    {ShowLoginMenu && (<DropdownWidget items={LOGIN_MENU} />)}
+                </div>
+                {ShowSignUpModel && (<SignUpModel />)}  
             </Layout>
         )
     }
