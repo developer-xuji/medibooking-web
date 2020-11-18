@@ -44,7 +44,7 @@ const Specialists = () => {
                 <UntitleList>
                     {
                         LIST.map((l) => (
-                            <Item>{l}</Item>
+                            <Item key={l}>{l}</Item>
                         ))
                     }
                 </UntitleList>

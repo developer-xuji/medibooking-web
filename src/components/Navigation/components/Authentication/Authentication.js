@@ -59,7 +59,7 @@ class Authentication extends React.Component {
     render() {
         const {ShowLoginMenu} = this.state;
         const {ShowSignUpModel} = this.state;
-        console.log(ShowLoginMenu);
+       
         return (
             <Layout>
                 <NavItem 
@@ -87,7 +87,7 @@ class Authentication extends React.Component {
                     </NavItem>
                     {ShowLoginMenu && (<DropdownWidget items={LOGIN_MENU} />)}
                 </div>
-                {ShowSignUpModel && (<SignUpModel />)}  
+                {ShowSignUpModel && (<SignUpModel onClose={() => this.setShowSignUpModel(false)}/>)}  
             </Layout>
         )
     }

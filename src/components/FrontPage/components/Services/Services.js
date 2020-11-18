@@ -54,14 +54,14 @@ const Services = () => {
             <Top>
                 {
                     TOP_LIST.map((l) => (
-                        <ServiceCard icon = {l.key} text = {l.contains}/>
+                        <ServiceCard key={l.key} icon={l.key} text={l.contains}/>
                     ))
                 }
             </Top>
             <Bottom>
                 {
                     BOTTOM_LIST.map((l) => (
-                        <ServiceCard icon = {l.key} text = {l.contains}/>
+                        <ServiceCard key={l.key} icon={l.key} text={l.contains}/>
                     ))
                 }
             </Bottom>
