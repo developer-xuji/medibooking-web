@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import NavItem from '../NavItem';
 import DropdownWidget from '../../../DropdownWidget';
 import FontAwesome from 'react-fontawesome';
-import SignUpModel from './components/SignUpModel';
+import SignUpModal from './components/SignUpModal';
 
 const Layout = styled.div`
     display: flex;
@@ -40,7 +40,7 @@ class Authentication extends React.Component {
 
         this.state = {
             ShowLoginMenu: false,
-            ShowSignUpModel: false
+            ShowSignUpModal: false
         };
     }
 
@@ -50,22 +50,22 @@ class Authentication extends React.Component {
         });
     }
 
-    setShowSignUpModel(value) {
+    setShowSignUpModal(value) {
         this.setState({
-            ShowSignUpModel: value
+            ShowSignUpModal: value
         });
     }
 
     render() {
         const {ShowLoginMenu} = this.state;
-        const {ShowSignUpModel} = this.state;
+        const {ShowSignUpModal} = this.state;
        
         return (
             <Layout>
                 <NavItem 
                     variant = 'highlight'
                     as = {NakedButton}
-                    onClick = {() => this.setShowSignUpModel(!ShowSignUpModel)}
+                    onClick = {() => this.setShowSignUpModal(!ShowSignUpModal)}
                 >
                     <Icon 
                         name='user-plus'
@@ -87,7 +87,7 @@ class Authentication extends React.Component {
                     </NavItem>
                     {ShowLoginMenu && (<DropdownWidget items={LOGIN_MENU} />)}
                 </div>
-                {ShowSignUpModel && (<SignUpModel onClose={() => this.setShowSignUpModel(false)}/>)}  
+                {ShowSignUpModal && (<SignUpModal onClose={() => this.setShowSignUpModal(false)}/>)}  
             </Layout>
         )
     }
