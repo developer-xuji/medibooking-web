@@ -7,6 +7,7 @@ import PatientLoginPage from "./components/PatientLoginPage";
 import SignUpPage from "./components/SignUpPage";
 import DoctorLogin from "./components/DoctorLogin/DoctorLogin";
 import UserCentre from "./components/UserCentre";
+import Keke from "./components/Keke/Keke";
 const Layout = styled.div`
   line-height: 1.25;
 `;
@@ -19,6 +20,7 @@ const App = () => {
     //   <Footer />
     // </Layout>
     <UserCentre />
+    // <Keke />
   );
 };
 export default App;

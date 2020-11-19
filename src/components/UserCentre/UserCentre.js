@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Button, DatePicker, version } from "antd";
-import "antd/dist/antd.css";
+import { Row, Col } from "antd";
+import UserCentreMenu from "./components/UserCentreMenu";
 import PersonalInfo from "./components/PersonalInfo";
 import logo from "../../assets/images/logo.png";
 const Layout = styled.div`
@@ -29,7 +29,7 @@ const Banner = styled.div`
 const Logo = styled.img`
   position: relative;
   top: 50px;
-  width: 200px;
+  /* width: 200px; */
   height: 200px;
   padding-right: 10vw;
 `;
@@ -47,31 +47,64 @@ const Info = styled.div`
   border: #e1e1e1 1px solid;
   border-radius: 0 0 10px 10px;
   padding: 20px;
-  min-height: 70vh;
+  min-height: 80vh;
   margin: 0 12.5%;
 `;
 
-const UserCentre = () => (
-  <Layout>
-    {/* <NavBar>NavBar Bar Bar</NavBar>
-    <Banner>
-      <Title>User Centre</Title>
-      <Logo src={logo} alt="logo" />
-    </Banner>
-    <Body>
-      <Info>
-        <PersonalInfo />
-      </Info>
-    </Body> */}
-    <div className="App">
-      <h1>antd version: {version}</h1>
-      <DatePicker />
-      <Button type="primary" style={{ marginLeft: 8 }}>
-        Primary Button
-      </Button>
-    </div>
-    ,
-  </Layout>
-);
+class UserCentre extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     collapsed: false,
+  //     // selectKey: props.match.params.subpath,
+  //     // openKey: props.match.params.path,
+  //   };
+  // }
+
+  // toggleCollapsed = () => {
+  //   this.setState({
+  //     collapsed: !this.state.collapsed,
+  //   });
+  // };
+
+  showContent = () => {
+    switch (window.location.pathname) {
+      case "/userCentre/personalInfo":
+        return <PersonalInfo />;
+
+      default:
+        return <div>Page does not exist.</div>;
+    }
+  };
+
+  render() {
+    // if (sessionStorage.getItem('authorised')) {
+    // const { selectKey, openKey } = this.state;
+    return (
+      <Layout>
+        <NavBar>NavBar Bar Bar</NavBar>
+        <Banner>
+          <Title>User Centre</Title>
+          <Logo src={logo} alt="logo" />
+        </Banner>
+        <Body>
+          <Info>
+            {/* <PersonalInfo /> */}
+
+            <Row className="userCentre__menuAndContent">
+              <Col className="userCentre__menu" span={6}>
+                <UserCentreMenu />
+              </Col>
+              <Col className="userCentre__content" span={18}>
+                <PersonalInfo />
+                {this.showContent()}
+              </Col>
+            </Row>
+          </Info>
+        </Body>
+      </Layout>
+    );
+  }
+}
 
 export default UserCentre;

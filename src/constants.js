@@ -1,16 +1,16 @@
-import background from './asserts/images/background.png';
-import footBackground from './asserts/images/footer-background.jpg';
-import logo from './asserts/images/logo.png';
-import hospital_icon from './asserts/images/hospital.png';
-import doctor_icon from './asserts/images/doctor.png';
-import flu_shuts_icon from './asserts/images/flu_shuts.png';
-import general_practice_icon from './asserts/images/general_practice.png';
-import travel_shuts_icon from './asserts/images/travel_shuts.png';
-import mental_health_icon from './asserts/images/mental_health.png';
-import pharmacy_icon from './asserts/images/pharmacy.png';
-import optometry_icon from './asserts/images/optometry.png';
+import background from "./assets/images/background.png";
+import footBackground from "./assets/images/footer-background.jpg";
+import logo from "./assets/images/logo.png";
+import hospital_icon from "./assets/images/hospital.png";
+import doctor_icon from "./assets/images/doctor.png";
+import flu_shuts_icon from "./assets/images/flu_shuts.png";
+import general_practice_icon from "./assets/images/general_practice.png";
+import travel_shuts_icon from "./assets/images/travel_shuts.png";
+import mental_health_icon from "./assets/images/mental_health.png";
+import pharmacy_icon from "./assets/images/pharmacy.png";
+import optometry_icon from "./assets/images/optometry.png";
 
-export const THEME_COLOR = '#008fb4';
+export const THEME_COLOR = "#008fb4";
 export const HOME_BACKGROUND = background;
 export const FOOT_BACKGROUND = footBackground;
 export const LOGO = logo;
