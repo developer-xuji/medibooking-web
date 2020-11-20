@@ -25,6 +25,8 @@ const Slogan = styled.div`
 
 const CardArea = styled.div `
     display: flex;
+    margin-top: 30px;
+    margin-bottom: 80px;
 `;
 
 const CARDS = [{
@@ -32,28 +34,30 @@ const CARDS = [{
     icon: 'hospital',
     title: 'Make Appointment Now',
     text: 'If you feel not good. Please...',
-    button: 'Booking Now'
+    button: 'Booking Now',
+    href: '/'
 },{
     key: 'find_right_doctor',
     icon: 'doctor',
     title: 'Find the right doctor',
     text: 'We understand that finding the right doctor is important. With over 170 Doctors, we’ll help find the right one for you and your family.',
-    button: 'Search Our Doctors'
+    button: 'Search Our Doctors',
+    href: '#/doctors'
 }]
 
 const FrontPage = () => {
     return (
         <Layout>
             <Slogan>The very best general practitioners for you and your family</Slogan>
-            <br /><br /><br />
             <CardArea>
                 {CARDS.map((card) => (
                     <ControlCard
-                        key = {card.key}
-                        icon = {card.icon}
-                        title = {card.title}
-                        text = {card.text}
-                        button = {card.button}
+                        key={card.key}
+                        icon={card.icon}
+                        title={card.title}
+                        text={card.text}
+                        button={card.button}
+                        href={card.href}
                     />
                 ))}
             </CardArea>

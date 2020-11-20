@@ -20,16 +20,16 @@ const AppointmentButton = styled(Button)`
     background: ${THEME_COLOR};
 `;
  
-const Link = styled(NavItem)`
+const NavItemButton = styled(NavItem)`
     display: block;
     text-decoration: none;  
     color: gray; 
 `;
 
-const LINKS = [{
+const ITEMS = [{
     key: 'doctor',
-    href: '/',
-    children: 'Doctor',
+    href: '#/doctors',
+    children: 'Doctors',
     icon: 'user-md'
 },{
     key: 'sepcialization',
@@ -46,26 +46,27 @@ const MakeAppointment = styled(NavItem)`
 
 const Main = () => {
     return(
-        <Layout>
-            <MakeAppointment>
-                <AppointmentButton>Make an Appointment</AppointmentButton>
-            </MakeAppointment>
-            
-            {LINKS.map((link) => (
-                <Link 
-                    key={link.key} 
-                    as='a'
-                    href={link.href}
-                    variant= 'indictable'
-                >
-                    <Icon
-                        name={link.icon}
-                        style={{ fontSize: "30px" }}
-                    />
-                    {link.children}
-                </Link>
-            ))}
-        </Layout>
+            <Layout>
+                <MakeAppointment>
+                    <AppointmentButton>Make an Appointment</AppointmentButton>
+                </MakeAppointment>
+                
+                {ITEMS.map((item) => (
+                    <NavItemButton 
+                        key={item.key} 
+                        as='a'
+                        href={item.href}
+                        variant= 'indictable'
+                    >
+                        <Icon
+                            name={item.icon}
+                            style={{ fontSize: "30px" }}
+                        />
+                        {item.children}
+                    </NavItemButton>
+                ))}
+                
+            </Layout>
     )
 }
 export default Main;

@@ -19,6 +19,8 @@ const Wapper = styled.div`
     width: 100%;
     background: white;
     border-bottom: 1px solid #ccc;
+    z-index: 1000;
+    top: 0;
 `;
 
 const Logo = styled(NavItem)`
@@ -50,7 +52,7 @@ const Navigation = () =>{
                 <Layout>
                     <Left>
                         <LogoDiv />
-                        <Logo as='a'>MediBooking</Logo>
+                        <Logo as='a' href='/'>MediBooking</Logo>
                         <Main />
                     </Left>
                     <Right>

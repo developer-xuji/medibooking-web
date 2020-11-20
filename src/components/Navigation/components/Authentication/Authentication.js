@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import NavItem from '../NavItem';
 import DropdownWidget from '../../../DropdownWidget';
 import FontAwesome from 'react-fontawesome';
-import SignUpModal from './components/SignUpModal';
+import Modal from '../../../Modal';
+import Avatar from './components/Avatar';
 
 const Layout = styled.div`
     display: flex;
@@ -21,11 +22,11 @@ const NakedButton = styled.button`
 
 const LOGIN_MENU = [{
     key: 'log in as a patient',
-    href: '/',
+    page: 'patient_login',
     contains: 'Log in as a patient'
 },{
     key: 'log in as a doctor',
-    href: '/',
+    page: '/',
     contains: 'Log in as a patient'
 }];
 
@@ -59,6 +60,8 @@ class Authentication extends React.Component {
     render() {
         const {ShowLoginMenu} = this.state;
         const {ShowSignUpModal} = this.state;
+
+        const PatientLoginModal = props => (<Modal page='sign_up' onClose={() => this.setShowSignUpModal(false)}/>);
        
         return (
             <Layout>
@@ -85,12 +88,15 @@ class Authentication extends React.Component {
                         />
                         Log in
                     </NavItem>
-                    {ShowLoginMenu && (<DropdownWidget items={LOGIN_MENU} />)}
+                    {ShowLoginMenu && (<DropdownWidget 
+                                            items={LOGIN_MENU} 
+                                            page={PatientLoginModal}
+                                    />)}
                 </div>
-                {ShowSignUpModal && (<SignUpModal onClose={() => this.setShowSignUpModal(false)}/>)}  
+                <Avatar as='a' href='#/user_center'/>
+                {ShowSignUpModal && (<Modal page='sign_up' onClose={() => this.setShowSignUpModal(false)}/>)}  
             </Layout>
         )
     }
 }
-
 export default Authentication;

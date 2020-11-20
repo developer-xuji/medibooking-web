@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Title from '../Title';
 
 const Layout = styled.div`
-    
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 const UntitleList = styled.ul`
@@ -24,6 +26,7 @@ const Item = styled.li`
     width: 70%;
     color: white;
     display: block;
+    margin: 10px;
 `;
 
 const LIST = [

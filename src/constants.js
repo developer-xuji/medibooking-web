@@ -9,6 +9,7 @@ import travel_shuts_icon from './assets/images/travel_shuts.png';
 import mental_health_icon from './assets/images/mental_health.png';
 import pharmacy_icon from './assets/images/pharmacy.png';
 import optometry_icon from './assets/images/optometry.png';
+import avatar_icon from './assets/images/avatar.png';
 
 export const THEME_COLOR = '#008fb4';
 export const HOME_BACKGROUND = background;
@@ -22,3 +23,4 @@ export const TRAVEL_SHUTS_ICON = travel_shuts_icon;
 export const MENTAL_HEALTH_ICON = mental_health_icon;
 export const PHARMACY_ICON = pharmacy_icon;
 export const OPTOMETRY_ICON = optometry_icon;
+export const AVATAR_ICON = avatar_icon;

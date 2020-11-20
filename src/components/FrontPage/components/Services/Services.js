@@ -24,26 +24,32 @@ const Bottom = styled.div`
 const TOP_LIST = [
     {
         key: 'flu_shuts',
-        contains: 'Flu Shuts'
+        contains: 'Flu Shuts',
+        href: '/'
     },{
         key: 'general_practice',
-        contains: 'General Practice'
+        contains: 'General Practice',
+        href: '#/doctors'
     },{
         key: 'travel_shuts',
-        contains: 'Travel Shuts'
+        contains: 'Travel Shuts',
+        href: '/'
     }
 ];
 
 const BOTTOM_LIST = [
     {
         key: 'mental_health',
-        contains: 'Mental Health'
+        contains: 'Mental Health',
+        href: '/'
     },{
         key: 'pharmacy',
-        contains: 'Pharmacy'
+        contains: 'Pharmacy',
+        href: '/'
     },{
         key: 'optometry',
-        contains: 'Optometry'
+        contains: 'Optometry',
+        href: '/'
     }
 ];
 
@@ -54,14 +60,24 @@ const Services = () => {
             <Top>
                 {
                     TOP_LIST.map((l) => (
-                        <ServiceCard key={l.key} icon={l.key} text={l.contains}/>
+                        <ServiceCard 
+                            key={l.key} 
+                            icon={l.key} 
+                            text={l.contains}
+                            href={l.href}
+                        />
                     ))
                 }
             </Top>
             <Bottom>
                 {
                     BOTTOM_LIST.map((l) => (
-                        <ServiceCard key={l.key} icon={l.key} text={l.contains}/>
+                        <ServiceCard 
+                            key={l.key} 
+                            icon={l.key} 
+                            text={l.contains}
+                            href={l.href}
+                        />
                     ))
                 }
             </Bottom>

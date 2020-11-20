@@ -44,7 +44,8 @@ const ControlCard = ({
     icon,
     title,
     text,
-    button
+    button,
+    href
 }) => {
     return(
         <Layout>
@@ -52,7 +53,8 @@ const ControlCard = ({
             <Cell>
                 <Title>{title}</Title>
                 <Contain>{text}</Contain>
-                <Button>{button}</Button>
+                <a href={href}><Button>{button}</Button></a>
+                
             </Cell>
         </Layout>
     )
