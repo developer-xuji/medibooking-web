@@ -26,10 +26,10 @@ const Banner = styled.div`
 `;
 
 const Logo = styled.img`
-  position: relative;
-  top: 50px;
+  /* position: relative; */
+  /* top: 50px; */
   /* width: 200px; */
-  height: 200px;
+  height: 100px;
   padding-right: 10vw;
 `;
 const Title = styled.div`

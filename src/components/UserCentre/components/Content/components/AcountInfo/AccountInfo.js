@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Upload, Avatar, Col, Row } from "antd";
-import { UploadOutlined, UserOutlined } from "@ant-design/icons";
+// import { Button, Upload, Avatar, Col, Row } from "antd";
+// import { UploadOutlined, UserOutlined } from "@ant-design/icons";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 
