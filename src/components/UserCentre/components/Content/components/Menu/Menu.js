@@ -21,6 +21,7 @@ const MenuItem = styled.li`
   font-size: large;
   height: 10vh;
   border-bottom: #e1e1e1 1px solid;
+  background-color: ${(props) => (props.active ? "#5fb3ce" : {})};
   &:hover {
     background-color: #5fb3ce;
   }
@@ -31,15 +32,27 @@ class Menu extends React.Component {
     return (
       <Layout>
         <Link to={"/personalInfo"} className="nav-link">
-          <MenuItem>Personal Information</MenuItem>
+          {window.location.pathname === "/personalInfo" ? (
+            <MenuItem active>Personal Information</MenuItem>
+          ) : (
+            <MenuItem>Personal Information</MenuItem>
+          )}
         </Link>
 
         <Link to={"/accountInfo"} className="nav-link">
-          <MenuItem>Account Information</MenuItem>
+          {window.location.pathname === "/accountInfo" ? (
+            <MenuItem active>Account Information</MenuItem>
+          ) : (
+            <MenuItem>Account Information</MenuItem>
+          )}
         </Link>
 
         <Link to={"/manageBookings"} className="nav-link">
-          <MenuItem>Manage Bookings</MenuItem>
+          {window.location.pathname === "/manageBookings" ? (
+            <MenuItem active>Manage Bookings</MenuItem>
+          ) : (
+            <MenuItem>Manage Bookings</MenuItem>
+          )}
         </Link>
       </Layout>
     );

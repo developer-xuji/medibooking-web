@@ -62,7 +62,7 @@ class PersonalInfo extends React.Component {
             onChange={this.handleChange}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Save" />
       </Layout>
     );
   }
