@@ -47,9 +47,10 @@ class SearchAndSortBar extends React.Component {
         />
 
         <SortBar className="sortBar" onChange={this.handleSortChange}>
-          <option value="byDefault">Sort By Default</option>
-          <option value="byName">Sort By Name</option>
-          <option value="byDate">Sort By Date</option>
+          {/* <option value="byDefault">Sort By Default</option> */}
+          <option value="byDateNew">Sort By Date (New)</option>
+          <option value="byDateOld">Sort By Date (Old)</option>
+          <option value="byName">Sort By Doctor's Name</option>
         </SortBar>
       </Layout>
     );

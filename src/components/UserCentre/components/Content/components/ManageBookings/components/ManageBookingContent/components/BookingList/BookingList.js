@@ -15,8 +15,11 @@ class BookingList extends React.Component {
     if (sortMethod === "byName") {
       listAfterSearch.sort((a, b) => a.doctorName.localeCompare(b.doctorName));
     }
-    if (sortMethod === "byDate") {
+    if (sortMethod === "byDateNew") {
       listAfterSearch.sort((a, b) => b.date.localeCompare(a.date));
+    }
+    if (sortMethod === "byDateOld") {
+      listAfterSearch.sort((a, b) => a.date.localeCompare(b.date));
     }
 
     listAfterSearch.forEach(

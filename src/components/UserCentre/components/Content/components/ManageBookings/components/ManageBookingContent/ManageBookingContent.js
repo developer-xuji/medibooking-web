@@ -7,7 +7,7 @@ class ManageBookingContent extends React.Component {
     super(props);
     this.state = {
       filterText: "",
-      sortMethod: "byDefault",
+      sortMethod: "byDateNew",
     };
   }
 

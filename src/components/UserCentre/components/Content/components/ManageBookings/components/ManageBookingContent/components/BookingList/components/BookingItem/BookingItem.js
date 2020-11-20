@@ -79,9 +79,7 @@ const BookingItem = ({
 
         <Info>
           <Name>{doctorName}</Name>
-
-          <Time>{`${startingTime} to ${endingTime}, ${date}`}</Time>
-
+          <Time>{`${date}    ${startingTime} to ${endingTime}`}</Time>
           <Specialisation>{`Specialisation: ${specialisation}`}</Specialisation>
         </Info>
       </IconAndInfo>
