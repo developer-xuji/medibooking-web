@@ -7,6 +7,7 @@ import DoctorsPage from './components/DoctorsPage';
 import PatientLoginPage from './components/PatientLoginPage';
 import UserCenter from './components/UserCentre';
 import DoctorInfo from './components/DoctorInfo';
+import DoctorLogin from './components/DoctorLogin';
 
 import { HashRouter as Router, Route } from 'react-router-dom';
 
@@ -19,9 +20,11 @@ const App = () => {
         <Router>
             <Layout>
                 <Navigation />
-                <Route path="/doctors" exact component={DoctorsPage}></Route>
-                <Route path="/" exact component={FrontPage}></Route>
-                <Route path="/user_center" exact component={UserCenter}></Route>
+                <Route path='/doctors' exact component={DoctorsPage}></Route>
+                <Route path='/' exact component={FrontPage}></Route>
+                <Route path='/user_center' exact component={UserCenter}></Route>
+                <Route path='/patient_login' exact component={PatientLoginPage}></Route>
+                <Route path='/doctor_login' exact component={DoctorLogin}></Route>
                 <DoctorInfo />
                 <Footer />
             </Layout>

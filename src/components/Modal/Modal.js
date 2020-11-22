@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import SignUpPage from '../SignUpPage';
-import PatientLoginPage from '../PatientLoginPage';
 
 const HORIZONTAL_GAP = '20px';
 const VERTICAL_GAP = '20px';
@@ -38,10 +36,10 @@ const Model = ({
     onClose,
     page
 }) => {
+    const Page = page;
     return(
         <Overlay>
-            {page==='sign_up' && (<SignUpPage />)}
-            {page==='patient_login' && (<PatientLoginPage />)}
+            <Page />
             <CloseButton onClick = {onClose}>X</CloseButton>
         </Overlay>
     )

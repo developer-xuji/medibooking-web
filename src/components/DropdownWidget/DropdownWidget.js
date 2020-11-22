@@ -18,6 +18,7 @@ const Layout = styled.div`
 const Item = styled.div`
     padding: 10px 20px;
     cursor:pointer;
+    text-decoration: none;
 
     &~& {
         margin-top: 1px solid rgba(41,43,50,0.1);
@@ -30,28 +31,23 @@ class DropdownWidget extends React.Component {
         
         const {items} = props;
         this.ITEMS = items;
-        this.state = {
-            ShowPatientLoginModal: false
-        }
-    }
-
-    setShowPatientLoginModal(value) {
-
     }
 
     render() {
-        const ITEMS = this.ITEMS
+        const ITEMS = this.ITEMS;
+
         return (
             <Box>
                 <Layout>
                     {ITEMS.map( (i) => (<Item 
                                             key={i.key}
-                                            
+                                            as='a'
+                                            href={i.href}
                                         >
                                             {i.contains}
                                         </Item>) )}
                 </Layout>
-                {this.props.PatientLoginModal}  
+                
             </Box>
         );
     }
