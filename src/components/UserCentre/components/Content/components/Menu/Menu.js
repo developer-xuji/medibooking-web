@@ -21,10 +21,13 @@ const MenuItem = styled.li`
   font-size: large;
   height: 10vh;
   border-bottom: #e1e1e1 1px solid;
-  background-color: ${(props) => (props.active ? "#5fb3ce" : {})};
+  background-color: ${(props) => (props.active ? "#01a4b7" : {})};
   &:hover {
-    background-color: #5fb3ce;
+    background-color: #01a4b7;
+    color: white;
   }
+  color: ${(props) => (props.active ? "white" : {})};
+  font-weight: ${(props) => (props.active ? "700" : {})};
 `;
 
 class Menu extends React.Component {

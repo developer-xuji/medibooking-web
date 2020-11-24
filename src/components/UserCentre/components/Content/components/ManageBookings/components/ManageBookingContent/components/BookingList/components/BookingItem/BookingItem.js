@@ -26,6 +26,7 @@ const IconAndInfo = styled.div`
 
 const Options = styled.div``;
 const Button = styled.button`
+  cursor: pointer;
   font-size: 18px;
   color: black;
   width: 80%;
@@ -43,25 +44,45 @@ const Button = styled.button`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 10px;
+  /* justify-content: space-between; */
 `;
 
 const Name = styled.div`
   font-size: 24px;
-  font-weight: 900;
+  font-weight: 700;
   max-width: 25vw;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  padding-bottom: 5px;
 `;
 
-const Time = styled.div`
+const DateAndTime = styled.div`
   font-size: 18px;
+  font-weight: 400;
+  padding-top: 5px;
+`;
+
+const Date = styled.span`
+  font-weight: 600;
+  color: #000080;
+`;
+const Time = styled.span`
+  padding-left: 10px;
   font-weight: 500;
+  color: #ffa07a;
 `;
 
 const Specialisation = styled.div`
   padding-top: 3px;
   font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  color: #01a4b7;
+  span {
+    color: black;
+  }
 `;
 const BookingItem = ({
   doctorName,
@@ -79,8 +100,15 @@ const BookingItem = ({
 
         <Info>
           <Name>{doctorName}</Name>
-          <Time>{`${date}    ${startingTime} to ${endingTime}`}</Time>
-          <Specialisation>{`Specialisation: ${specialisation}`}</Specialisation>
+          <Specialisation>
+            <span>Specialisation: </span>
+            {`${specialisation}`}
+          </Specialisation>
+
+          <DateAndTime>
+            <Date>{`${date}`}</Date>
+            <Time>{`${startingTime} to ${endingTime}`}</Time>
+          </DateAndTime>
         </Info>
       </IconAndInfo>
 

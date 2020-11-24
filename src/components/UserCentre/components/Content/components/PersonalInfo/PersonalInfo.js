@@ -1,12 +1,14 @@
 import React from "react";
-import styled from "styled-components";
-import { Button, DatePicker, version } from "antd";
-// import "antd/dist/antd.css";
-const Layout = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const Title = styled.h1``;
+import {
+  Layout,
+  FormItem,
+  Label,
+  FormInput,
+  HealthCondition,
+  Title,
+  Submit,
+} from "../styling";
+
 class PersonalInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -35,34 +37,37 @@ class PersonalInfo extends React.Component {
     return (
       <Layout onSubmit={this.handleSubmit}>
         <Title>Personal Information</Title>
-        <label>
-          First Name:
-          <input type="text" value={this.state.firstName} />
-        </label>
-        <label>
-          Last Name:
-          <input type="text" value={this.state.lastName} />
-        </label>
-        <label>
-          Age:
-          <input type="int" value={this.state.age} />
-        </label>
-        <label>
-          Phone:
-          <input type="text" value={this.state.phone} />
-        </label>
-        <label>
-          Email:
-          <input type="text" value={this.state.email} />
-        </label>
-        <label>
-          Health Condition:<br></br>
-          <textarea
-            value={this.state.healthCondition}
+        <FormItem>
+          <Label>First Name:</Label>
+          <FormInput type="text" defaultValue={this.state.firstName} />
+        </FormItem>
+        <FormItem>
+          <Label>Last Name:</Label>
+          <FormInput type="text" defaultValue={this.state.lastName} />
+        </FormItem>
+        <FormItem>
+          <Label>Age:</Label>
+          <FormInput type="int" defaultValue={this.state.age} />
+        </FormItem>
+        <FormItem>
+          <Label>Phone:</Label>
+          <FormInput type="text" defaultValue={this.state.phone} />
+        </FormItem>
+        <FormItem>
+          <Label>Email:</Label>
+          <FormInput type="text" defaultValue={this.state.email} />
+        </FormItem>
+
+        <FormItem healthCondition>
+          <Label>Health Condition:</Label>
+
+          <HealthCondition
+            defaultValue={this.state.healthCondition}
             onChange={this.handleChange}
           />
-        </label>
-        <input type="submit" value="Save" />
+        </FormItem>
+
+        <Submit type="submit" value="Save" />
       </Layout>
     );
   }

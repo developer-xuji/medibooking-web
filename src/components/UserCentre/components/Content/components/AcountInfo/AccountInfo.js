@@ -1,14 +1,6 @@
 import React from "react";
-// import { Button, Upload, Avatar, Col, Row } from "antd";
-// import { UploadOutlined, UserOutlined } from "@ant-design/icons";
-import styled from "styled-components";
-import "antd/dist/antd.css";
+import { Layout, FormItem, Label, FormInput, Title, Submit } from "../styling";
 
-const Layout = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-const Title = styled.h1``;
 class AccountInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -33,16 +25,16 @@ class AccountInfo extends React.Component {
       <Layout onSubmit={this.handleSubmit}>
         <Title>Account Information</Title>
 
-        <label>
-          Username:
-          <input type="text" value={this.state.username} />
-        </label>
-        <label>
-          Password:
-          <input type="text" value={this.state.password} />
-        </label>
+        <FormItem>
+          <Label>Username:</Label>
+          <FormInput type="text" defaultValue={this.state.username} />
+        </FormItem>
+        <FormItem>
+          <Label>Password:</Label>
+          <FormInput type="text" defaultValue={this.state.password} />
+        </FormItem>
 
-        <input type="submit" value="Save" />
+        <Submit type="submit" value="Save" />
       </Layout>
     );
   }

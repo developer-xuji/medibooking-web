@@ -19,7 +19,7 @@ const PatientLoginEntry = styled.a`
   color: #01a4b7;
   text-decoration: none;
 `;
-const FormWrapper = styled.div`
+const FormWrapper = styled.form`
   width: 30vw;
   display: flex;
   flex-direction: column;
