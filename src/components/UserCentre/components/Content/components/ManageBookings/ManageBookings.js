@@ -1,6 +1,13 @@
 import React from "react";
 import ManageBookingContent from "./components/ManageBookingContent";
+import styled from "styled-components";
+import Layout from "antd/lib/layout/layout";
 
+const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 0;
+`;
 const bookingItemList = [
   {
     doctorName: "Dhanushka Algama",
@@ -36,7 +43,13 @@ const bookingItemList = [
 
 class ManageBookings extends React.Component {
   render() {
-    return <ManageBookingContent bookings={bookingItemList} />;
+    return (
+      <Layout>
+        <Title>Manage Bookings</Title>
+
+        <ManageBookingContent bookings={bookingItemList} />
+      </Layout>
+    );
   }
 }
 
