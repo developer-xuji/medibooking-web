@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ServiceCard from './Components/ServiceCard';
+import ServiceCard from './components/ServiceCard';
 
 const Layout = styled.div`
     display: flex;

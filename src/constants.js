@@ -12,6 +12,7 @@ import optometry_icon from './assets/images/optometry.png';
 import avatar_icon from './assets/images/avatar.png';
 
 export const THEME_COLOR = '#008fb4';
+export const NAVIGATION_GAP = '80px';
 export const HOME_BACKGROUND = background;
 export const FOOT_BACKGROUND = footBackground;
 export const LOGO = logo;

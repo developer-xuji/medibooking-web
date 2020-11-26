@@ -32,14 +32,15 @@ const CloseButton = styled.button`
     }
 `;
 
+const Body = styled.div``;
+
 const Model = ({
     onClose,
     page
 }) => {
-    const Page = page;
     return(
         <Overlay>
-            <Page />
+            <Body>{page}</Body>
             <CloseButton onClick = {onClose}>X</CloseButton>
         </Overlay>
     )
