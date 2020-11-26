@@ -10,6 +10,7 @@ const Layout = styled.div`
     background-size: cover;
     width: 100%;
     height: 300px;
+    margin-top: 50px;
 
     display: flex;
     justify-content: space-around;

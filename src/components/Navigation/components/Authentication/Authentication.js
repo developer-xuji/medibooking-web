@@ -5,6 +5,7 @@ import DropdownWidget from '../../../DropdownWidget';
 import FontAwesome from 'react-fontawesome';
 import Modal from '../../../Modal';
 import Avatar from './components/Avatar';
+import SignUpPage from '../../../SignUpPage';
 
 const Layout = styled.div`
     display: flex;
@@ -19,16 +20,6 @@ const NakedButton = styled.button`
     cursor: pointer;
     text-align: left;
 `;
-
-const LOGIN_MENU = [{
-    key: 'log in as a patient',
-    page: 'patient_login',
-    contains: 'Log in as a patient'
-},{
-    key: 'log in as a doctor',
-    page: '/',
-    contains: 'Log in as a patient'
-}];
 
 const Icon = styled(FontAwesome)`
     margin-right: 10px;
@@ -61,8 +52,17 @@ class Authentication extends React.Component {
         const {ShowLoginMenu} = this.state;
         const {ShowSignUpModal} = this.state;
 
-        const PatientLoginModal = props => (<Modal page='sign_up' onClose={() => this.setShowSignUpModal(false)}/>);
-       
+        const PatientSignUpPage = () => (<SignUpPage />);
+        const LOGIN_MENU = [{
+            key: 'log in as a patient',
+            href: '#/patient_login',
+            contains: 'Log in as a patient'
+        },{
+            key: 'log in as a doctor',
+            href: '#/doctor_login',
+            contains: 'Log in as a doctor'
+        }];
+        
         return (
             <Layout>
                 <NavItem 
@@ -76,6 +76,8 @@ class Authentication extends React.Component {
                     />
                     Sign Up
                 </NavItem>
+                {ShowSignUpModal && (<Modal page={PatientSignUpPage} onClose={() => this.setShowSignUpModal(false)}/>)}
+
                 <div>
                     <NavItem
                         as = {NakedButton}
@@ -90,11 +92,9 @@ class Authentication extends React.Component {
                     </NavItem>
                     {ShowLoginMenu && (<DropdownWidget 
                                             items={LOGIN_MENU} 
-                                            page={PatientLoginModal}
                                     />)}
                 </div>
-                <Avatar as='a' href='#/user_center'/>
-                {ShowSignUpModal && (<Modal page='sign_up' onClose={() => this.setShowSignUpModal(false)}/>)}  
+                <Avatar as='a' href='#/user_center'/>   
             </Layout>
         )
     }

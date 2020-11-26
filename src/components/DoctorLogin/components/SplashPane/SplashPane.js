@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../../../../assets/clinic-logo.png";
+import {LOGO} from "../../../../constants";
 // import Button from '../../../Button';
 // import NavItem from '../NavItem';
 
@@ -48,7 +48,7 @@ const Caption = styled.div`
 const SplashPane = () => (
   <Layout>
     <Logo>
-      <img src={logo} alt="logo" width="50" height="50" />
+      <img src={LOGO} alt="logo" width="50" height="50" />
       Universal
     </Logo>
     <Contents>

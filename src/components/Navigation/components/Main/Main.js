@@ -18,6 +18,7 @@ const HORIZONTAL_GAP = '12px';
 const AppointmentButton = styled(Button)`
     margin-right: ${HORIZONTAL_GAP};
     background: ${THEME_COLOR};
+    text-decoration: none;
 `;
  
 const NavItemButton = styled(NavItem)`
@@ -48,7 +49,12 @@ const Main = () => {
     return(
             <Layout>
                 <MakeAppointment>
-                    <AppointmentButton>Make an Appointment</AppointmentButton>
+                    <AppointmentButton
+                        as='a'
+                        href='#/booking'
+                    >
+                        Make an Appointment
+                    </AppointmentButton>
                 </MakeAppointment>
                 
                 {ITEMS.map((item) => (

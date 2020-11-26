@@ -7,6 +7,7 @@ import Authentication from './components/Authentication';
 import NavItem from './components/NavItem';
 import {LOGO} from '../../constants';
 
+
 const Layout = styled.div`
     display: flex;
     display: -webkit-flex;
