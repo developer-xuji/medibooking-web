@@ -5,7 +5,6 @@ import logo from "../../assets/images/logo.png";
 
 const Layout = styled.div`
   display: flex;
-  height: 100vh;
   flex-direction: column;
 `;
 const NavBar = styled.div`
