@@ -1,6 +1,6 @@
 import React from "react";
 import SignUpModal from "./components/SignUpModal";
-import LogInModal from "./components/LogInModal"
+import LogInModal from "./components/LogInModal";
 
 const withAuthenticationModals = (Component) => {
   class AuthenticationModals extends React.Component {
@@ -16,7 +16,7 @@ const withAuthenticationModals = (Component) => {
 
     setShowModal(name) {
       this.setState({
-        showModal: name
+        showModal: name,
       });
     }
 
@@ -25,10 +25,7 @@ const withAuthenticationModals = (Component) => {
 
       return (
         <React.Fragment>
-          <Component
-            {...this.props}
-            setShowModal = {this.setShowModal}
-          />
+          <Component {...this.props} setShowModal={this.setShowModal} />
           {showModal === "SIGN_UP" && (
             <SignUpModal
               onClose={() => this.setShowModal(null)}

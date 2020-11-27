@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import PersonalInfo from "./components/PersonalInfo";
+import Content from "./components/Content";
 import logo from "../../assets/images/logo.png";
+
 const Layout = styled.div`
   display: flex;
   height: 100vh;
@@ -25,10 +26,10 @@ const Banner = styled.div`
 `;
 
 const Logo = styled.img`
-  position: relative;
-  top: 50px;
-  width: 200px;
-  height: 200px;
+  /* position: relative; */
+  /* top: 50px; */
+  /* width: 200px; */
+  height: 100px;
   padding-right: 10vw;
 `;
 const Title = styled.div`
@@ -40,28 +41,29 @@ const Body = styled.div`
   background-color: #f5f5f5;
 `;
 
-const Info = styled.div`
+const Main = styled.div`
   background: white;
   border: #e1e1e1 1px solid;
-  border-radius: 0 0 10px 10px;
-  padding: 20px;
-  min-height: 70vh;
+  min-height: 80vh;
   margin: 0 12.5%;
 `;
 
-const UserCentre = () => (
-  <Layout>
-    <NavBar>NavBar Bar Bar</NavBar>
-    <Banner>
-      <Title>User Centre</Title>
-      <Logo src={logo} alt="logo" />
-    </Banner>
-    <Body>
-      <Info>
-        <PersonalInfo />
-      </Info>
-    </Body>
-  </Layout>
-);
+class UserCentre extends React.Component {
+  render() {
+    return (
+      <Layout>
+        <Banner>
+          <Title>User Centre</Title>
+          <Logo src={logo} alt="logo" />
+        </Banner>
+        <Body>
+          <Main>
+            <Content />
+          </Main>
+        </Body>
+      </Layout>
+    );
+  }
+}
 
 export default UserCentre;
