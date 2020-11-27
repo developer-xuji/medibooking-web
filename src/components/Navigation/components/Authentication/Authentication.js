@@ -3,9 +3,8 @@ import styled from 'styled-components';
 import NavItem from '../NavItem';
 import DropdownWidget from '../../../DropdownWidget';
 import FontAwesome from 'react-fontawesome';
-import Modal from '../../../Modal';
 import Avatar from './components/Avatar';
-import SignUpPage from '../../../SignUpPage';
+import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
 
 const Layout = styled.div`
     display: flex;
@@ -32,7 +31,6 @@ class Authentication extends React.Component {
 
         this.state = {
             ShowLoginMenu: false,
-            ShowSignUpModal: false
         };
     }
 
@@ -42,17 +40,15 @@ class Authentication extends React.Component {
         });
     }
 
-    setShowSignUpModal(value) {
-        this.setState({
-            ShowSignUpModal: value
-        });
-    }
 
     render() {
         const {ShowLoginMenu} = this.state;
-        const {ShowSignUpModal} = this.state;
+        const {
+            setShowSignUpModal,
+            setShowLogInModal,
+            setShowModal
+        } = this.props;
 
-        const PatientSignUpPage = () => (<SignUpPage />);
         const LOGIN_MENU = [{
             key: 'log in as a patient',
             href: '#/patient_login',
@@ -68,7 +64,7 @@ class Authentication extends React.Component {
                 <NavItem 
                     variant = 'highlight'
                     as = {NakedButton}
-                    onClick = {() => this.setShowSignUpModal(!ShowSignUpModal)}
+                    onClick = {() => setShowModal('SIGN_UP')}
                 >
                     <Icon 
                         name='user-plus'
@@ -76,7 +72,6 @@ class Authentication extends React.Component {
                     />
                     Sign Up
                 </NavItem>
-                {ShowSignUpModal && (<Modal page={PatientSignUpPage} onClose={() => this.setShowSignUpModal(false)}/>)}
 
                 <div>
                     <NavItem
@@ -99,4 +94,9 @@ class Authentication extends React.Component {
         )
     }
 }
-export default Authentication;
+
+const WithAuthenticationModalsAuthentication = withAuthenticationModals(
+    Authentication
+  );
+  
+export default WithAuthenticationModalsAuthentication;

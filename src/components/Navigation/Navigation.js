@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Container from '../Container';
 import Main from './components/Main';
-import Authentication from './components/Authentication';
+import WithAuthenticationModalsAuthentication from './components/Authentication';
 import NavItem from './components/NavItem';
 import {LOGO} from '../../constants';
 
@@ -57,7 +57,7 @@ const Navigation = () =>{
                         <Main />
                     </Left>
                     <Right>
-                        <Authentication>Authentication</Authentication>
+                        <WithAuthenticationModalsAuthentication>Authentication</WithAuthenticationModalsAuthentication>
                     </Right>  
                 </Layout>
             </Container>
