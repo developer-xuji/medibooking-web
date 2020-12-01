@@ -14,6 +14,7 @@ const Layout = styled.div`
 
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 const Logo = styled.div`

@@ -11,13 +11,12 @@ const Layout = styled.div`
   border-radius: 8px;
   margin: 1vw;
   text-decoration: none;
+  align-items: center;
+  padding: 10px;
 
   &:hover {
-    color: ${THEME_COLOR};
+    border: 2px solid ${THEME_COLOR};
     cursor: pointer;
-    & h4 {
-      font-size: 20px;
-    }
   }
 `;
 

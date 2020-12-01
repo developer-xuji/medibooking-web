@@ -43,7 +43,7 @@ const CARDS = [
     icon: "doctor",
     title: "Find the right doctor",
     text:
-      "We understand that finding the right doctor is important. With over 170 Doctors, we’ll help find the right one for you and your family.",
+      "With over 170 Doctors, we’ll help find the right one for you and your family.",
     button: "Search Our Doctors",
     href: "#/doctors",
   },

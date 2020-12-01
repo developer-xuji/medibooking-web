@@ -12,6 +12,7 @@ const Layout = styled.div`
   display: -webkit-flex;
   justify-content: space-around;
   align-items: center;
+  line-height: 40px;
 `;
 
 const Wapper = styled.div`
@@ -33,6 +34,7 @@ const Logo = styled(NavItem)`
 const Left = styled.div`
   display: flex;
   display: -webkit-flex;
+  align-items: center;
 `;
 
 const Right = styled.div``;
@@ -40,8 +42,8 @@ const Right = styled.div``;
 const LogoDiv = styled.div`
   background: url(${LOGO});
   background-size: cover;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 `;
 
 const Navigation = () => {

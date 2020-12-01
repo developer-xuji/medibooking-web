@@ -12,7 +12,7 @@ const Layout = styled.div`
   min-width: 350px;
   background: white;
   border-top: 3px solid red;
-  padding: 15px;
+  padding: 20px;
   item-align: center;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.2);
 `;

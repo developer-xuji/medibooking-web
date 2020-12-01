@@ -14,6 +14,9 @@ const Layout = styled.div`
   width: 100px;
   background-color: rgba(255, 0, 0, 0.06);
   border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ICONS = [
@@ -56,7 +59,15 @@ const CardIcon = ({ icon, icon_width }) => {
     <Layout>
       {ICONS.map((i) => {
         if (i.key === icon)
-          return <img key={i.key} src={i.icon} width={icon_width} alt="" />;
+          return (
+            <img
+              key={i.key}
+              src={i.icon}
+              width={icon_width}
+              height={icon_width}
+              alt=""
+            />
+          );
         return undefined;
       })}
     </Layout>

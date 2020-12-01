@@ -19,6 +19,7 @@ const Item = styled.div`
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
+  line-height: initial;
 
   & ~ & {
     margin-top: 1px solid rgba(41, 43, 50, 0.1);
