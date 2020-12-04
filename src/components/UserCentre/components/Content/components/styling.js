@@ -21,7 +21,7 @@ export const FormItem = styled.div`
 `;
 
 export const Label = styled.label`
-  padding-top: 5px;
+  padding-top: 10px;
   margin-right: 10px;
   font-weight: 700;
 `;
@@ -32,6 +32,7 @@ export const FormInput = styled.input`
   border: 1px solid gray;
   border-radius: 5px;
   margin-top: 10px;
+  padding-left: 10px;
 
   /* margin-left: 5px; */
   :hover {
@@ -44,7 +45,7 @@ export const HealthCondition = styled.textarea`
   height: 100px;
   border: 1px solid gray;
   border-radius: 5px;
-
+  padding-left: 10px;
   margin-top: 10px;
 
   :hover {
