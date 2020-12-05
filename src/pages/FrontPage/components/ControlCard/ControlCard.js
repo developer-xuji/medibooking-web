@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "../../../Button";
+import Button from "../../../../components/Button";
 import CardIcon from "../CardIcon";
 
 const Layout = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 1vw;
-  height: 180px;
   width: 30vw;
   min-width: 350px;
   background: white;

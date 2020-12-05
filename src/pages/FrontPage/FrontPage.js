@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { HOME_BACKGROUND } from "../../constants";
+import { MOBILE_WIDTH } from "../../constants";
 
 import ControlCard from "./components/ControlCard";
 import Services from "./components/Services";
@@ -27,6 +28,9 @@ const CardArea = styled.div`
   display: flex;
   margin-top: 30px;
   margin-bottom: 80px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    flex-direction: column;
+  }
 `;
 
 const CARDS = [

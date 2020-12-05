@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ServiceCard from "./components/ServiceCard";
+import { MOBILE_WIDTH } from "../../../../constants";
 
 const Layout = styled.div`
   display: flex;
@@ -15,10 +16,16 @@ const Layout = styled.div`
 
 const Top = styled.div`
   display: flex;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    flex-direction: column;
+  }
 `;
 
 const Bottom = styled.div`
   display: flex;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    flex-direction: column;
+  }
 `;
 
 const TOP_LIST = [

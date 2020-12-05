@@ -5,7 +5,10 @@ import Container from "../Container";
 import Main from "./components/Main";
 import WithAuthenticationModalsAuthentication from "./components/Authentication";
 import NavItem from "./components/NavItem";
+import MobileNav from "./components/MobileNav";
 import { LOGO } from "../../constants";
+import { MOBILE_WIDTH } from "../../constants";
+import { THEME_COLOR } from "../../constants";
 
 const Layout = styled.div`
   display: flex;
@@ -35,9 +38,18 @@ const Left = styled.div`
   display: flex;
   display: -webkit-flex;
   align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: none;
+  }
 `;
 
-const Right = styled.div``;
+const Right = styled.div`
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    background-color: ${THEME_COLOR};
+  }
+`;
 
 const LogoDiv = styled.div`
   background: url(${LOGO});
@@ -63,6 +75,7 @@ const Navigation = () => {
               Authentication
             </WithAuthenticationModalsAuthentication>
           </Right>
+          <MobileNav />
         </Layout>
       </Container>
     </Wapper>

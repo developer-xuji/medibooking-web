@@ -1,9 +1,9 @@
-import FrontPage from "./components/FrontPage";
-import DoctorsPage from "./components/DoctorsPage";
-import PatientLoginPage from "./components/PatientLoginPage";
-import UserCenter from "./components/UserCentre";
-import DoctorInfo from "./components/DoctorInfo";
-import DoctorLogin from "./components/DoctorLogin";
+import FrontPage from "./pages/FrontPage";
+import DoctorsPage from "./pages/DoctorsPage";
+import PatientLoginPage from "./pages/PatientLoginPage";
+import UserCenter from "./pages/UserCentre";
+import DoctorInfo from "./pages/DoctorInfo";
+import DoctorLogin from "./pages/DoctorLogin";
 import BookingPage from "./pages/BookingPage";
 
 export const ROUTES = [

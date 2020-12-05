@@ -1,5 +1,4 @@
 import React from "react";
-import Navigation from "../Navigation";
 import styled from "styled-components";
 import DoctorsContainer from "./components/DoctorsContainer";
 import DoctorsSearchBar from "./components/DoctorsSearchBar";
@@ -251,7 +250,6 @@ class DoctorsPage extends React.Component {
     console.log(this.state.CurrentDoctorsList);
     return (
       <React.Fragment>
-        <Navigation />
         <DoctorsSearchBar
           handleSubmit={this.handleSubmit}
           handleChange={this.handleChange}
