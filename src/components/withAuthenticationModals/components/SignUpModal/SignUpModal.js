@@ -6,6 +6,9 @@ import withForm from "../../../withForm";
 import Fields from "./components/Fields";
 import ErrorMessage from "../../../ErrorMessage";
 import FormItem from "../../../FormItem";
+import signUp from "../../../../apis/signUp";
+
+const ENCRYPTION_STRENGTH = 10;
 
 const PasswordSetGuide = styled.p`
   color: #5c7783;
@@ -72,13 +75,28 @@ class SignUpModal extends React.Component {
       getErrorMessage,
     } = this.props;
 
+    var bcrypt = require("bcryptjs");
+    var salt = bcrypt.genSaltSync(ENCRYPTION_STRENGTH);
+
     return (
       <Modal
         onClose={onClose}
         title="Sign up"
         description="Create a free account to book appointments faster and have a personalised health experience."
         body={
-          <form>
+          <form
+            onSubmit={submit(() => {
+              signUp({
+                username: data.username.value,
+                encodedPassword: bcrypt.hashSync(data.password.value, salt),
+              })
+                .then((data) => {
+                  console.log(data);
+                  onClose();
+                })
+                .catch((error) => console.log(error.response));
+            })}
+          >
             {errorMessage && (
               <FormItem>
                 <ErrorMessage>{errorMessage}</ErrorMessage>
@@ -97,7 +115,10 @@ class SignUpModal extends React.Component {
                 />
               </FormItem>
             ))}
-            <PasswordSetGuide>Use at least 10 characters, avoid dictionary words & common passwords.</PasswordSetGuide>
+            <PasswordSetGuide>
+              Use at least 10 characters, avoid dictionary words & common
+              passwords.
+            </PasswordSetGuide>
             <FormItem>
               <SubmitButton disabled={!valid} block size="lg" variant="success">
                 SIGN UP
@@ -108,7 +129,9 @@ class SignUpModal extends React.Component {
         footer={
           <Footer>
             <span>Already have an account?</span>
-            <LogInButton variant="link" onClick={onLogIn}>Log in</LogInButton>
+            <LogInButton variant="link" onClick={onLogIn}>
+              Log in
+            </LogInButton>
           </Footer>
         }
       />

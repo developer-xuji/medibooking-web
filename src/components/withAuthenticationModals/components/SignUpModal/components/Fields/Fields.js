@@ -1,17 +1,17 @@
 import validator from 'validator';
 
 const Fields = [{
-    key: 'email',
-    label: 'Email',
+    key: 'username',
+    label: 'Username',
     type: 'text',
-    placeholder: 'Email address',
+    placeholder: 'Username',
     validations: [{
-      message: 'Please enter you email address',
+      message: 'Please enter you username',
       validator: (value) => !validator.isEmpty(value),
-    }, {
-      message: 'Please enter a valid email address',
-      validator: (value) => validator.isEmail(value),
-    }],
+    }
+      // message: 'Please enter a valid username',
+      // validator: (value) => validator.isEmail(value),
+    ],
   }, {
     key: 'password',
     label: 'Password',
