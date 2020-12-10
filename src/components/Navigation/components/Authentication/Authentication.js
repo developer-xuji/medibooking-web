@@ -5,6 +5,7 @@ import DropdownWidget from "../../../DropdownWidget";
 import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
+import FormItem from "antd/lib/form/FormItem";
 
 const Layout = styled.div`
   display: flex;
@@ -24,6 +25,19 @@ const Icon = styled(FontAwesome)`
   margin-right: 10px;
   color: lightgray;
 `;
+
+const LOGIN_MENU = [
+  {
+    key: "log in as a patient",
+    href: "#/patient_login",
+    contains: "Log in as a patient",
+  },
+  {
+    key: "log in as a doctor",
+    href: "#/doctor_login",
+    contains: "Log in as a doctor",
+  },
+];
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -49,43 +63,36 @@ class Authentication extends React.Component {
 
   render() {
     const { ShowLoginMenu } = this.state;
-    const { setShowModal } = this.props;
-
-    const LOGIN_MENU = [
-      {
-        key: "log in as a patient",
-        href: "#/patient_login",
-        contains: "Log in as a patient",
-      },
-      {
-        key: "log in as a doctor",
-        href: "#/doctor_login",
-        contains: "Log in as a doctor",
-      },
-    ];
+    const { setShowModal, user } = this.props;
 
     return (
       <Layout>
-        <NavItem
-          variant="highlight"
-          as={NakedButton}
-          onClick={() => setShowModal("SIGN_UP")}
-        >
-          <Icon name="user-plus" style={{ fontSize: "30px" }} />
-          Sign Up
-        </NavItem>
+        {user ? (
+          <NavItem>Dashboard</NavItem>
+        ) : (
+          <React.Fragment>
+            <NavItem
+              variant="highlight"
+              as={NakedButton}
+              onClick={() => setShowModal("SIGN_UP")}
+            >
+              <Icon name="user-plus" style={{ fontSize: "30px" }} />
+              Sign Up
+            </NavItem>
 
-        <div>
-          <NavItem
-            as={NakedButton}
-            variant="highlight"
-            onClick={(e) => this.setShowLoginMenu(!ShowLoginMenu, e)}
-          >
-            <Icon name="sign-in" style={{ fontSize: "30px" }} />
-            Log in
-          </NavItem>
-          {ShowLoginMenu && <DropdownWidget items={LOGIN_MENU} />}
-        </div>
+            <div>
+              <NavItem
+                as={NakedButton}
+                variant="highlight"
+                onClick={(e) => this.setShowLoginMenu(!ShowLoginMenu, e)}
+              >
+                <Icon name="sign-in" style={{ fontSize: "30px" }} />
+                Log in
+              </NavItem>
+              {ShowLoginMenu && <DropdownWidget items={LOGIN_MENU} />}
+            </div>
+          </React.Fragment>
+        )}
         <Avatar as="a" href="#/user_center" />
       </Layout>
     );
