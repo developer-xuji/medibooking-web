@@ -40,9 +40,9 @@ class DropdownWidget extends React.Component {
     return (
       <Box>
         <Layout>
-          {ITEMS.map((i) => (
-            <Item key={i.key} as="a" href={i.href}>
-              {i.contains}
+          {ITEMS.map((item) => (
+            <Item key={item.key} as="a" href={item.href} onClick={item.onclick}>
+              {item.contains}
             </Item>
           ))}
         </Layout>

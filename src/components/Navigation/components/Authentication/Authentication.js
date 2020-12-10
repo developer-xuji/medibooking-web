@@ -5,7 +5,6 @@ import DropdownWidget from "../../../DropdownWidget";
 import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
-import FormItem from "antd/lib/form/FormItem";
 
 const Layout = styled.div`
   display: flex;
@@ -25,19 +24,6 @@ const Icon = styled(FontAwesome)`
   margin-right: 10px;
   color: lightgray;
 `;
-
-const LOGIN_MENU = [
-  {
-    key: "log in as a patient",
-    href: "#/patient_login",
-    contains: "Log in as a patient",
-  },
-  {
-    key: "log in as a doctor",
-    href: "#/doctor_login",
-    contains: "Log in as a doctor",
-  },
-];
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -64,6 +50,19 @@ class Authentication extends React.Component {
   render() {
     const { ShowLoginMenu } = this.state;
     const { setShowModal, user } = this.props;
+
+    const LOGIN_MENU = [
+      {
+        key: "log in as a patient",
+        contains: "Log in as a patient",
+        onclick: () => setShowModal("LOG_IN"),
+      },
+      {
+        key: "log in as a doctor",
+        href: "#/doctor_login",
+        contains: "Log in as a doctor",
+      },
+    ];
 
     return (
       <Layout>

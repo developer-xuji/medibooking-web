@@ -1,6 +1,5 @@
 import FrontPage from "./pages/FrontPage";
 import DoctorsPage from "./pages/DoctorsPage";
-import PatientLoginPage from "./pages/PatientLoginPage";
 import UserCenter from "./pages/UserCentre";
 import DoctorInfo from "./pages/DoctorInfo";
 import DoctorLogin from "./pages/DoctorLogin";
@@ -16,11 +15,6 @@ export const ROUTES = [
     key: "doctors",
     path: "/doctors",
     page: DoctorsPage,
-  },
-  {
-    key: "patient_login",
-    path: "/patient_login",
-    page: PatientLoginPage,
   },
   {
     key: "user_center",

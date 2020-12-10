@@ -109,7 +109,9 @@ const Container2 = styled.div`
   float:right;
 `;
 
-const Profile = () => {
+const Profile = (props) => {
+  let currentDoctor = props.Doctor;
+  
     return (
       <>
           <ParentContainer>
@@ -124,22 +126,22 @@ const Profile = () => {
           </Container3>
           <img src={image} alt="image" />
           <DoctorName>
-            Jane
+            {`${currentDoctor.FirstName} ${currentDoctor.SecondName}`}
           </DoctorName>
           <DividingLine />
           <center>
           <InfoTable>
             <tr>
-              <td>phone: 123124141</td>
+              <td>phone: {currentDoctor.PhoneNumber}</td>
               <td>buildibg: xxxxx</td>
             </tr>
             <tr>
-              <td>email: 123124141</td>
+              <td>email: {currentDoctor.Email}</td>
               <td>road: xxxxx</td>
             </tr>
             <tr>
-              <td>profile: 123124141</td>
-              <td>campus: xxxxx</td>
+              <td>Language: {currentDoctor.Language}</td>
+              <td>Specialization: {currentDoctor.Specialization}</td>
             </tr>
           </InfoTable>
           </center>
