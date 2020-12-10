@@ -9,6 +9,7 @@ const withAuthenticationModals = (Component) => {
 
       this.state = {
         showModal: null,
+        user: null,
       };
 
       this.setShowModal = this.setShowModal.bind(this);
@@ -20,12 +21,21 @@ const withAuthenticationModals = (Component) => {
       });
     }
 
+    setUser(data) {
+      this.setState({
+        user: data,
+      });
+    }
     render() {
-      const { showModal } = this.state;
+      const { showModal, user } = this.state;
 
       return (
         <React.Fragment>
-          <Component {...this.props} setShowModal={this.setShowModal} />
+          <Component
+            {...this.props}
+            user={user}
+            setShowModal={this.setShowModal}
+          />
           {showModal === "SIGN_UP" && (
             <SignUpModal
               onClose={() => this.setShowModal(null)}
@@ -36,6 +46,7 @@ const withAuthenticationModals = (Component) => {
             <LogInModal
               onClose={() => this.setShowModal(null)}
               onSignUp={() => this.setShowModal("SIGN_UP")}
+              onLogIn={(data) => this.setUser(data)}
             />
           )}
         </React.Fragment>

@@ -6,6 +6,7 @@ import withForm from "../../../withForm";
 import Fields from "./components/Fields";
 import ErrorMessage from "../../../ErrorMessage";
 import FormItem from "../../../FormItem";
+import logIn from "../../../../apis/logIn";
 
 const SubmitButton = styled.button`
   width: 100%;
@@ -54,6 +55,7 @@ class LoginModal extends React.Component {
 
     const {
       onClose,
+      onLogIn,
       onSignUp,
       data,
       formDirty,
@@ -69,7 +71,21 @@ class LoginModal extends React.Component {
         title="Patient log in"
         description="Log in to book appointments faster."
         body={
-          <form>
+          <form
+            onSubmit={submit(() => {
+              logIn({
+                username: data.username.value,
+                password: data.password.value,
+              })
+                .then(
+                  response=>{console.log("login modal",response);
+                  onClose();
+                  onLogIn(response);
+                  }
+                )
+                .catch((error) => console.log(error.response));
+            })}
+          >
             {errorMessage && (
               <FormItem>
                 <ErrorMessage>{errorMessage}</ErrorMessage>
