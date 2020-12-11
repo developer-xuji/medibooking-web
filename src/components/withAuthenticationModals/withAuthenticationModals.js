@@ -1,6 +1,7 @@
 import React from "react";
 import SignUpModal from "./components/SignUpModal";
 import LogInModal from "./components/LogInModal";
+import getAuth from "../../apis/getAuth";
 
 const withAuthenticationModals = (Component) => {
   class AuthenticationModals extends React.Component {
@@ -23,9 +24,17 @@ const withAuthenticationModals = (Component) => {
 
     setUser(data) {
       this.setState({
-        user: data,
+        user: data.username,
       });
     }
+
+    componentDidMount() {
+      const token = localStorage.getItem("JWT_TOKEN");
+      getAuth({ token: token })
+        .then((response) => this.setUser(response.data))
+        .catch(() => {});
+    }
+
     render() {
       const { showModal, user } = this.state;
 

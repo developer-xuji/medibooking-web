@@ -78,9 +78,9 @@ class LoginModal extends React.Component {
                 password: data.password.value,
               })
                 .then(
-                  response=>{console.log("login modal",response);
+                  response=>{
                   onClose();
-                  onLogIn(response);
+                  onLogIn(JSON.parse(response));
                   }
                 )
                 .catch((error) => console.log(error.response));

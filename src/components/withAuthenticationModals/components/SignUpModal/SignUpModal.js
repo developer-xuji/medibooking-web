@@ -91,7 +91,6 @@ class SignUpModal extends React.Component {
                 encodedPassword: bcrypt.hashSync(data.password.value, salt),
               })
                 .then((data) => {
-                  console.log(data);
                   onClose();
                 })
                 .catch((error) => console.log(error.response));

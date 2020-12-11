@@ -68,7 +68,7 @@ class Authentication extends React.Component {
     return (
       <Layout>
         {user ? (
-          <NavItem>Dashboard</NavItem>
+          <NavItem>{user}</NavItem>
         ) : (
           <React.Fragment>
             <NavItem
