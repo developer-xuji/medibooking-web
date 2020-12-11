@@ -6,6 +6,10 @@ import { THEME_COLOR } from "../../../../constants";
 
 const Layout = styled.div``;
 const ItemBox = styled.div`
+  display: flex;
+  & ~ & {
+    border-top: 1px solid gray;
+  }
   ${(props) =>
     ({
       true: css`
@@ -22,17 +26,16 @@ const DoctorSelector = ({ title, doctors, selected, onSelect }) => {
         itemLayout="horizontal"
         dataSource={doctors}
         renderItem={(item) => (
-          <ItemBox isSelected={selected === item.name}>
+          <ItemBox
+            isSelected={selected === item.name}
+            onClick={() => onSelect(item.name)}
+          >
             <List.Item>
               <List.Item.Meta
                 avatar={
                   <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
                 }
-                title={
-                  <button onClick={onSelect} value={item.name}>
-                    {item.name}
-                  </button>
-                }
+                title={<button>{item.name}</button>}
                 description="Specialization:"
               />
             </List.Item>

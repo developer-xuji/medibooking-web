@@ -20,7 +20,7 @@ const SelectArea = styled.div`
   overflow-y: auto;
   width: 100%;
   border-radius: 0 0 0 15px;
-  padding: 0 20px;
+  padding: 20px 30px;
 
   display: flex;
   flex-direction: column;
@@ -78,9 +78,10 @@ class BookingPage extends React.Component {
   }
 
   handleDoctorSelector(key) {
-    return (event) => {
+    return (value) => {
+      console.log(value);
       this.setState({
-        [key]: event.target.value,
+        [key]: value,
       });
     };
   }
@@ -136,7 +137,7 @@ class BookingPage extends React.Component {
         />
         <SelectArea>
           {SELECTORS.map((s) => (
-            <Section>{s.selector}</Section>
+            <Section key={s.key}>{s.selector}</Section>
           ))}
         </SelectArea>
       </Layout>
