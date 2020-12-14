@@ -4,6 +4,7 @@ import NavItem from "../NavItem";
 import DropdownWidget from "../../../DropdownWidget";
 import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
+import { THEME_COLOR } from "../../../../constants";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
 
 const Layout = styled.div`
@@ -23,6 +24,13 @@ const NakedButton = styled.button`
 const Icon = styled(FontAwesome)`
   margin-right: 10px;
   color: lightgray;
+`;
+
+const Logout = styled(NavItem)`
+  color: black;
+  &:hover {
+    color: ${THEME_COLOR};
+  }
 `;
 
 class Authentication extends React.Component {
@@ -67,7 +75,21 @@ class Authentication extends React.Component {
     return (
       <Layout>
         {user ? (
-          <NavItem>{user}</NavItem>
+          <React.Fragment>
+            <Avatar as="a" href="#/user_center" />
+            <NavItem>{user}</NavItem>
+            <Logout
+              as="a"
+              href="/"
+              onClick={() => {
+                localStorage.clear();
+                this.forceUpdate();
+                console.log("Log out");
+              }}
+            >
+              Log Out
+            </Logout>
+          </React.Fragment>
         ) : (
           <React.Fragment>
             <NavItem
@@ -92,7 +114,6 @@ class Authentication extends React.Component {
             </div>
           </React.Fragment>
         )}
-        <Avatar as="a" href="#/user_center" />
       </Layout>
     );
   }

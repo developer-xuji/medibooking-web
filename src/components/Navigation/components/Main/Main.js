@@ -4,6 +4,7 @@ import Button from "../../../Button";
 import NavItem from "../NavItem";
 import Icon from "../../../Icon";
 import { THEME_COLOR } from "../../../../constants";
+import { MOBILE_WIDTH } from "../../../../constants";
 
 const BORDER_GAP = "20px";
 const Layout = styled.div`
@@ -12,6 +13,9 @@ const Layout = styled.div`
   padding-left: ${BORDER_GAP};
   margin-left: ${BORDER_GAP};
   align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: none;
+  }
 `;
 
 const HORIZONTAL_GAP = "12px";
