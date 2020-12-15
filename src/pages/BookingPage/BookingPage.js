@@ -10,7 +10,7 @@ const Layout = styled.div`
   flex-direction: column;
   max-width: 1000px;
   align-items: center;
-  margin: 50px auto;
+  margin: 100px auto;
   border-radius: 15px;
   box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.3);
   height: 550px;

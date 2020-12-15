@@ -4,7 +4,7 @@ import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
 import { ROUTES } from "./routes";
 
-import { HashRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { HOME_BACKGROUND } from "./constants";
 import { NAVIGATION_GAP } from "./constants";
 
@@ -19,16 +19,11 @@ const Layout = styled.div`
 const App = () => {
   return (
     <Router>
+      {ROUTES.map((route) => (
+        <Route key={route.key} path={route.path} exact component={route.page} />
+      ))}
       <Layout>
         <Navigation />
-        {ROUTES.map((route) => (
-          <Route
-            key={route.key}
-            path={route.path}
-            exact
-            component={route.page}
-          />
-        ))}
         <Footer />
       </Layout>
     </Router>

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HOME_BACKGROUND } from "../../constants";
 import { MOBILE_WIDTH } from "../../constants";
+import { getRoutePath } from "../../utils/GetRoute";
 
 import ControlCard from "./components/ControlCard";
 import Services from "./components/Services";
@@ -40,7 +41,7 @@ const CARDS = [
     title: "Make Appointment Now",
     text: "If you feel not good. Please...",
     button: "Booking Now",
-    href: "/",
+    route: "booking",
   },
   {
     key: "find_right_doctor",
@@ -49,7 +50,7 @@ const CARDS = [
     text:
       "With over 170 Doctors, we’ll help find the right one for you and your family.",
     button: "Search Our Doctors",
-    href: "#/doctors",
+    route: "doctors",
   },
 ];
 
@@ -67,7 +68,7 @@ const FrontPage = () => {
             title={card.title}
             text={card.text}
             button={card.button}
-            href={card.href}
+            href={getRoutePath(card.route)}
           />
         ))}
       </CardArea>

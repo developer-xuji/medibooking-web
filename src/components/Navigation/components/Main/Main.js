@@ -5,6 +5,7 @@ import NavItem from "../NavItem";
 import Icon from "../../../Icon";
 import { THEME_COLOR } from "../../../../constants";
 import { MOBILE_WIDTH } from "../../../../constants";
+import { getRoutePath } from "../../../../utils/GetRoute";
 
 const BORDER_GAP = "20px";
 const Layout = styled.div`
@@ -34,7 +35,7 @@ const NavItemButton = styled(NavItem)`
 const ITEMS = [
   {
     key: "doctor",
-    href: "#/doctors",
+    href: getRoutePath("doctors"),
     children: "Doctors",
     icon: "user-md",
   },
@@ -56,7 +57,7 @@ const Main = () => {
   return (
     <Layout>
       <MakeAppointment>
-        <AppointmentButton as="a" href="#/booking">
+        <AppointmentButton as="a" href={getRoutePath("booking")}>
           Make an Appointment
         </AppointmentButton>
       </MakeAppointment>
