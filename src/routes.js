@@ -22,8 +22,8 @@ export const ROUTES = [
     page: UserCenter,
   },
   {
-    key: "doctor_info",
-    path: "/doctor_info",
+    key: "doctorInfo",
+    path: "/doctors/:DoctorsID",
     page: DoctorInfo,
   },
   {
