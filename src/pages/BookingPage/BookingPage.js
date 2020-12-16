@@ -4,6 +4,7 @@ import BookingDetails from "./components/BookingDetails";
 import TimeSelector from "./components/TimeSelector";
 import DoctorSelector from "./components/DoctorSelector";
 import DateSelector from "./components/DateSelector";
+import getPatientAppointments from "../../apis/getPatientAppointments";
 
 const Layout = styled.div`
   display: flex;
@@ -65,8 +66,17 @@ class BookingPage extends React.Component {
   }
 
   handleBookingClick() {
-    this.props.history.push("/doctors");
-    console.log(this.props.history);
+    //this.props.history.push("/doctors");
+    const appointment = {
+      date: "2017-01-01",
+      startTime: "17:10:00",
+      endTime: "17:25:00",
+      appointmentMessage: "headache",
+      isCancelled: "Yes",
+      patient: 4,
+      doctor: 2,
+    };
+    getPatientAppointments(1);
   }
 
   handleTimeSelector(key) {
