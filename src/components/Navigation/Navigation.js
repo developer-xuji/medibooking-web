@@ -7,7 +7,7 @@ import WithAuthenticationModalsAuthentication from "./components/Authentication"
 import NavItem from "./components/NavItem";
 import MobileNav from "./components/MobileNav";
 import { LOGO } from "../../constants";
-import { MOBILE_WIDTH } from "../../constants";
+import { getRoutePath } from "../../utils/GetRoute";
 
 const Layout = styled.div`
   display: flex;
@@ -57,7 +57,7 @@ const Navigation = () => {
         <Layout>
           <Left>
             <LogoDiv />
-            <Logo as="a" href="/">
+            <Logo as="a" href={getRoutePath("home")}>
               MediBooking
             </Logo>
             <Main />
