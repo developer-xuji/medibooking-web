@@ -4,7 +4,7 @@ import {
   FormItem,
   Label,
   FormInput,
-  HealthCondition,
+  GenderSelector,
   Title,
   Submit,
 } from "../../../styling";
@@ -25,6 +25,15 @@ const PatientInfoForm = ({ data, handleSubmit }) => (
       <FormInput type="int" defaultValue={data.age} />
     </FormItem>
     <FormItem>
+      <Label for="gender">Gender:</Label>
+      {/* <select id="gender" name="carlist" form="carform"> */}
+      <GenderSelector id="gender" defaultValue={data.gender}>
+        <option value="">----</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </GenderSelector>
+    </FormItem>
+    <FormItem>
       <Label>Phone:</Label>
       <FormInput type="text" defaultValue={data.phone} />
     </FormItem>
@@ -33,14 +42,14 @@ const PatientInfoForm = ({ data, handleSubmit }) => (
       <FormInput type="text" defaultValue={data.email} />
     </FormItem>
 
-    <FormItem healthCondition>
+    {/* <FormItem healthCondition>
       <Label>Health Condition:</Label>
 
       <HealthCondition
         defaultValue={data.healthCondition}
         // onChange={this.handleChange}
       />
-    </FormItem>
+    </FormItem> */}
 
     <Submit type="submit" value="Save" />
   </Layout>

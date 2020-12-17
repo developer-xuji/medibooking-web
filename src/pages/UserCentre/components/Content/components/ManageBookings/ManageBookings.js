@@ -2,12 +2,17 @@ import React from "react";
 import ManageBookingContent from "./components/ManageBookingContent";
 import styled from "styled-components";
 import Layout from "antd/lib/layout/layout";
+import getAuth from "../../../../../../apis/getAuth";
+import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
 
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin-top: 0;
 `;
+
+const TOKEN = localStorage.getItem("JWT_TOKEN");
+
 const bookingItemList = [
   {
     doctorName: "Dhanushka Algama",
@@ -42,6 +47,37 @@ const bookingItemList = [
 ];
 
 class ManageBookings extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+      bookingItemList: [],
+      role: undefined,
+    };
+  }
+
+  componentDidMount() {
+    getAuth({ token: TOKEN })
+      .then((response) => {
+        // console.log(response.data);
+        const { accountId, grantedAuthorities } = response.data;
+        const { authority } = grantedAuthorities[0];
+        const role = authority === "ROLE_DOCTOR" ? "doctor" : "patient";
+        const getIdUrl = `http://localhost:8080/${role}s/search?accountId=${accountId}`;
+        this.setState({
+          role,
+        });
+        sendRestfulApi(getIdUrl, "GET").then((response) => {
+          const { id } = response;
+          const getAppointmentsUrl = `http://localhost:8080/management/appointments/search?${role}Id=${id}`;
+          sendRestfulApi(getAppointmentsUrl, "GET").then((response) => {
+            console.log("appointments", response);
+          });
+        });
+      })
+      .catch(() => {});
+  }
+
   render() {
     return (
       <Layout>

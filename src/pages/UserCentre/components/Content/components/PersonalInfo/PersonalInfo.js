@@ -1,14 +1,6 @@
 import React from "react";
-// import {
-//   Layout,
-//   FormItem,
-//   Label,
-//   FormInput,
-//   HealthCondition,
-//   Title,
-//   Submit,
-// } from "../styling";
 import getAuth from "../../../../../../apis/getAuth";
+import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
 
@@ -20,12 +12,6 @@ class PersonalInfo extends React.Component {
       loading: true,
       data: undefined,
       role: undefined,
-      // firstName: "Yipeng",
-      // lastName: "Wang",
-      // age: 21,
-      // phone: "0479088345",
-      // email: "yipwang@unimelb.student.edu.au",
-      // healthCondition: "asndajsdnasdkalsdnaldn",
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -42,7 +28,7 @@ class PersonalInfo extends React.Component {
         this.setState({
           role,
         });
-        this.getPersonalInfo(url).then((data) => {
+        sendRestfulApi(url, "GET").then((data) => {
           this.setState({
             data,
             loading: false,
@@ -50,24 +36,6 @@ class PersonalInfo extends React.Component {
         });
       })
       .catch(() => {});
-  }
-
-  async getPersonalInfo(url) {
-    const request = {
-      mode: "cors",
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    };
-
-    return await fetch(url, request)
-      .then((response) => response.json())
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
   handleChange(event) {
