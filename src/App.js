@@ -19,11 +19,16 @@ const Layout = styled.div`
 const App = () => {
   return (
     <Router>
-      {ROUTES.map((route) => (
-        <Route key={route.key} path={route.path} exact component={route.page} />
-      ))}
       <Layout>
         <Navigation />
+        {ROUTES.map((route) => (
+          <Route
+            key={route.key}
+            path={route.path}
+            exact
+            component={route.page}
+          />
+        ))}
         <Footer />
       </Layout>
     </Router>

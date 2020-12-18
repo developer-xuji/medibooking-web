@@ -31,6 +31,7 @@ const Logo = styled(NavItem)`
   text-decoration: none;
   padding-left: 10px;
   padding-right: 0;
+  display: flex;
 `;
 
 const Left = styled.div`
@@ -56,8 +57,8 @@ const Navigation = () => {
       <Container>
         <Layout>
           <Left>
-            <LogoDiv />
             <Logo as="a" href={getRoutePath("home")}>
+              <LogoDiv />
               MediBooking
             </Logo>
             <Main />

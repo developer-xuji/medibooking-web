@@ -4,7 +4,8 @@ import BookingDetails from "./components/BookingDetails";
 import TimeSelector from "./components/TimeSelector";
 import DoctorSelector from "./components/DoctorSelector";
 import DateSelector from "./components/DateSelector";
-import getPatientAppointments from "../../apis/getPatientAppointments";
+import fetchData from "../../apis/fetchData/fetchData";
+import postData from "../../apis/postData";
 
 const Layout = styled.div`
   display: flex;
@@ -76,7 +77,13 @@ class BookingPage extends React.Component {
       patient: 4,
       doctor: 2,
     };
-    getPatientAppointments(1);
+
+    const parameter = {
+      name: "patientId",
+      value: 1,
+    };
+    fetchData("/management/appointments/search", parameter);
+    postData("/management/appointments", appointment);
   }
 
   handleTimeSelector(key) {
