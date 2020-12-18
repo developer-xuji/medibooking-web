@@ -469,9 +469,9 @@ class DoctorsPage extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    Loading = true;
-  }
+  // componentDidUpdate() {
+  //   Loading = true;
+  // }
 
   render() {
     console.log(this.state.CurrentDoctorsList);

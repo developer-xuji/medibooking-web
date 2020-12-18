@@ -33,8 +33,6 @@ function DoctorsFilter(props) {
                 <Option value="Palliative medicine">Palliative medicine</Option>
                 <Option value="Pathology">Pathology</Option>
                 <Option value="Physician">Physician</Option>
-                <Option value="Vietnamese">Vietnamese</Option>
-                <Option value="Italian">Italian</Option>
                 <Option value="Psychiatry">Psychiatry</Option>
                 <Option value="Public health medicine">Public health medicine</Option>
                 <Option value="Radiation oncology">Radiation oncology</Option>
