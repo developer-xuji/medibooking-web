@@ -28,6 +28,9 @@ const MainContent = styled.div`
   /* background: lightcyan; */
   flex: 1;
   padding: 40px;
+  .ant-layout {
+    background: white;
+  }
 `;
 
 const Content = () => {

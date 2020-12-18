@@ -28,7 +28,7 @@ const Logo = styled.img`
   /* position: relative; */
   /* top: 50px; */
   /* width: 200px; */
-  height: 100px;
+  height: 80px;
   padding-right: 10vw;
 `;
 const Title = styled.div`

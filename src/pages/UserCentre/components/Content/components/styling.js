@@ -1,7 +1,7 @@
 import React from "react";
 // import { Button, Upload, Avatar, Col, Row } from "antd";
 // import { UploadOutlined, UserOutlined } from "@ant-design/icons";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Layout = styled.form`
   display: flex;
@@ -14,42 +14,44 @@ export const FormItem = styled.div`
   display: flex;
   /* flex-direction: column; */
   justify-content: flex-end;
-  align-items: ${(props) => (props.healthCondition ? {} : "center")};
+  /* align-items: ${(props) => (props.doctorDescription ? {} : "center")}; */
+  align-items: center;
   font-size: 15px;
+  /* margin-top: 10px; */
   margin-bottom: 10px;
   margin-right: 30%;
 `;
 
 export const Label = styled.label`
-  padding-top: 5px;
+  /* padding-top: 5px; */
   margin-right: 10px;
   font-weight: 700;
 `;
 
-export const FormInput = styled.input`
+const FormItemStyle = css`
   width: 50%;
-  height: 40px;
+  /* height: 40px; */
   border: 1px solid gray;
   border-radius: 5px;
-  margin-top: 10px;
-
+  /* margin-top: 10px; */
+  padding: 10px;
   /* margin-left: 5px; */
   :hover {
     border: 1px solid #01a4b7;
   }
 `;
 
-export const HealthCondition = styled.textarea`
-  width: 50%;
+export const FormInput = styled.input`
+  ${FormItemStyle};
+`;
+
+export const GenderSelector = styled.select`
+  ${FormItemStyle};
+`;
+
+export const DoctorDescription = styled.textarea`
+  ${FormItemStyle};
   height: 100px;
-  border: 1px solid gray;
-  border-radius: 5px;
-
-  margin-top: 10px;
-
-  :hover {
-    border: 1px solid #01a4b7;
-  }
 `;
 
 export const Title = styled.h1`
