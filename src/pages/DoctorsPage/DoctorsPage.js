@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components";
 import DoctorsContainer from "./components/DoctorsContainer";
 import DoctorsSearchBar from "./components/DoctorsSearchBar";
 import DoctorsFilter from "./components/DoctorsFilter";
-import "./index.css";
 
 const Debug = styled.div`
   background-color: black;
