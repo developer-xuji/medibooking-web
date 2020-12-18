@@ -12,18 +12,35 @@ const ENCRYPTION_STRENGTH = 10;
 
 const PasswordSetGuide = styled.p`
   color: #5c7783;
-  font-size: 14px;
-  margin-bottom: 20px;
-  margin-top: 0;
+  font-size: 10px;
+  margin-bottom: 0px;
+  margin-top: 10px;
   line-height: 21px;
   text-align: center;
+`;
+
+const GenderSelector = styled.select`
+  box-sizing: border-box;
+  display: block;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px !important;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #2b4b5a;
+  transition: all 0.3s ease;
+  will-change: transform;
 `;
 
 const SubmitButton = styled.button`
   width: 100%;
   font-size: 18px;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   padding-top: 6px;
   padding-bottom: 6px;
   height: auto;
@@ -78,24 +95,28 @@ class SignUpModal extends React.Component {
     var bcrypt = require("bcryptjs");
     var salt = bcrypt.genSaltSync(ENCRYPTION_STRENGTH);
 
+    const onSignUp = submit(() => {
+      signUp({
+        username: data.username.value,
+        encodedPassword: bcrypt.hashSync(data.password.value, salt),
+        age: data.age.value,
+        gender: data.gender.value,
+        firstName: data.firstName.value,
+        lastName: data.lastName.value,
+      })
+        .then((data) => {
+          onClose();
+        })
+        .catch((error) => console.log(error.response));
+    });
+
     return (
       <Modal
         onClose={onClose}
         title="Sign up"
         description="Create a free account to book appointments faster and have a personalised health experience."
         body={
-          <form
-            onSubmit={submit(() => {
-              signUp({
-                username: data.username.value,
-                encodedPassword: bcrypt.hashSync(data.password.value, salt),
-              })
-                .then((data) => {
-                  onClose();
-                })
-                .catch((error) => console.log(error.response));
-            })}
-          >
+          <form id="signUpForm" onSubmit={onSignUp}>
             {errorMessage && (
               <FormItem>
                 <ErrorMessage>{errorMessage}</ErrorMessage>
@@ -114,8 +135,20 @@ class SignUpModal extends React.Component {
                 />
               </FormItem>
             ))}
+            <GenderSelector
+              required
+              id="gender"
+              form="signUpForm"
+              onChange={setData("gender")}
+            >
+              <option value="" disabled selected hidden>
+                Please Choose your gender...
+              </option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </GenderSelector>
             <PasswordSetGuide>
-              Use at least 10 characters, avoid dictionary words & common
+              Use at least 8 characters, avoid dictionary words & common
               passwords.
             </PasswordSetGuide>
             <FormItem>
