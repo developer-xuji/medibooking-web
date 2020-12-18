@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import image from './assets/img/background_doctor.jpg'
+import { THEME_COLOR } from "../../../../constants";
 
 const Banner = styled.div`
     background-image: url(${image});
@@ -85,7 +86,7 @@ const SearchBar = styled.input`
 
 const SubmitButton = styled.input`
     position: relative;
-    left: 15px;
+    left: 25px;
     top: 6px;
     // height: auto;
     // display: inline-block;
@@ -101,8 +102,12 @@ const SubmitButton = styled.input`
     line-height: 1;
     text-align: center;
     cursor: pointer;
-    background-color: #ed1c25;
+    background-color: ${THEME_COLOR};
+    transition: 0.25s;
     color: #ffffff;
+    :hover{
+        background-color: #00627a;
+    }
 `;
 
 

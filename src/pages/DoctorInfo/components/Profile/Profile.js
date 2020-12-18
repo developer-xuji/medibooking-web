@@ -132,7 +132,7 @@ const Profile = (props) => {
           <center>
           <InfoTable>
             <tr>
-              <td>phone: {currentDoctor.PhoneNumber}</td>
+              <td>age: {currentDoctor.Age}</td>
               <td>buildibg: xxxxx</td>
             </tr>
             <tr>
