@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import DoctorsContainer from "./components/DoctorsContainer";
 import DoctorsSearchBar from "./components/DoctorsSearchBar";
 import DoctorsFilter from "./components/DoctorsFilter";
@@ -9,9 +9,58 @@ const Debug = styled.div`
   background-color: black;
 `;
 
+const spinAnimation = keyframes`
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+`
+
+const DivLoader = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+`
+
+const SvgLoader = styled.svg`
+  animation-name: ${spinAnimation};
+  animation-timing-function: linear;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  margin: auto;
+`
+
+let Loading = true;
 const MaximumNumOfDoctorsToShow = 8;
 
-const allDoctors = {
+function B2F(doctorObject) {
+  console.log(doctorObject);
+  let returnedDoctorObject = {};
+  for (let i = 0; i < doctorObject.length; i++){
+    let SpecializationList = [];
+    let LanguageList = [];
+    doctorObject[i].specializations.map((specialization) => {
+      SpecializationList.push(specialization.specializationName);
+    });
+    doctorObject[i].languages.map((language) => {
+      LanguageList.push(language.languageName);
+    });
+    returnedDoctorObject[doctorObject[i].id] = {
+      FirstName: doctorObject[i].firstName,
+      SecondName: doctorObject[i].lastName,
+      Age: doctorObject[i].age,
+      Gender: doctorObject[i].gender,
+      Description: doctorObject[i].description,
+      Specialization: SpecializationList,
+      Language: LanguageList,
+    }
+  }
+  return returnedDoctorObject;
+}
+
+
+let allDoctors = {
   0: {
     FirstName: "123",
     SecondName: "ggg",
@@ -169,7 +218,7 @@ const allDoctors = {
     Language: "English",
   },
 };
-const allDoctorsList = Object.keys(allDoctors);
+let allDoctorsList = Object.keys(allDoctors);
 
 class DoctorsPage extends React.Component {
   constructor(props) {
@@ -256,6 +305,7 @@ class DoctorsPage extends React.Component {
   }
 
   handleSpecializationChange(event) {
+    console.log(allDoctors);
     if (event === "AllSpecialization") {
       this.setState({
         SpecializationSelected: undefined,
@@ -264,9 +314,9 @@ class DoctorsPage extends React.Component {
       if (this.state.LanguageSelected !== undefined) {
         for (let i = 0; i < allDoctorsList.length; i++) {
           if (
-            allDoctors[allDoctorsList[i]].Language.includes(
+            allDoctors[allDoctorsList[i]].Language.indexOf(
               this.state.LanguageSelected
-            )
+            ) !== -1
           ) {
             TempList.push(allDoctorsList[i]);
           }
@@ -295,17 +345,17 @@ class DoctorsPage extends React.Component {
       if (this.state.LanguageSelected !== undefined) {
         for (let i = 0; i < allDoctorsList.length; i++) {
           if (
-            allDoctors[allDoctorsList[i]].Specialization.includes(event) &&
-            allDoctors[allDoctorsList[i]].Language.includes(
+            allDoctors[allDoctorsList[i]].Specialization.indexOf(event) !== -1 &&
+            allDoctors[allDoctorsList[i]].Language.indexOf(
               this.state.LanguageSelected
-            )
+            ) !== -1
           ) {
             TempList.push(allDoctorsList[i]);
           }
         }
       } else {
         for (let i = 0; i < allDoctorsList.length; i++) {
-          if (allDoctors[allDoctorsList[i]].Specialization.includes(event)) {
+          if (allDoctors[allDoctorsList[i]].Specialization.indexOf(event) !== -1) {
             TempList.push(allDoctorsList[i]);
           }
         }
@@ -335,9 +385,9 @@ class DoctorsPage extends React.Component {
       if (this.state.SpecializationSelected !== undefined) {
         for (let i = 0; i < allDoctorsList.length; i++) {
           if (
-            allDoctors[allDoctorsList[i]].Specialization.includes(
+            allDoctors[allDoctorsList[i]].Specialization.indexOf(
               this.state.SpecializationSelected
-            )
+            ) !== -1
           ) {
             TempList.push(allDoctorsList[i]);
           }
@@ -366,17 +416,17 @@ class DoctorsPage extends React.Component {
       if (this.state.SpecializationSelected !== undefined) {
         for (let i = 0; i < allDoctorsList.length; i++) {
           if (
-            allDoctors[allDoctorsList[i]].Language.includes(event) &&
-            allDoctors[allDoctorsList[i]].Specialization.includes(
+            allDoctors[allDoctorsList[i]].Language.indexOf(event) !== -1 &&
+            allDoctors[allDoctorsList[i]].Specialization.indexOf(
               this.state.SpecializationSelected
-            )
+            ) !== -1
           ) {
             TempList.push(allDoctorsList[i]);
           }
         }
       } else {
         for (let i = 0; i < allDoctorsList.length; i++) {
-          if (allDoctors[allDoctorsList[i]].Language.includes(event)) {
+          if (allDoctors[allDoctorsList[i]].Language.indexOf(event) !== -1) {
             TempList.push(allDoctorsList[i]);
           }
         }
@@ -397,27 +447,65 @@ class DoctorsPage extends React.Component {
     }
   }
 
+  componentDidMount() {
+    Loading = false;
+    fetch('http://localhost:8080/doctors',{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json;charset=UTF-8'
+      },
+      mode:'cors',
+      cache:'default'
+    })
+     .then(res =>res.json())
+     .then((data) => {
+        console.log(data);
+        allDoctors = B2F(data);
+        allDoctorsList = Object.keys(allDoctors);
+        this.setState({
+          AllDoctors: allDoctors,
+          CurrentDoctorsList: allDoctorsList,
+        });
+    })
+  }
+
+  componentDidUpdate() {
+    Loading = true;
+  }
+
   render() {
     console.log(this.state.CurrentDoctorsList);
-    return (
-      <React.Fragment>
-        <DoctorsSearchBar
-          handleSubmit={this.handleSubmit}
-          handleChange={this.handleChange}
-        />
-        <DoctorsFilter
-          handleSpecializationChange={this.handleSpecializationChange}
-          handleLanguageChange={this.handleLanguageChange}
-        />
-        <DoctorsContainer
-          AllDoctors={this.state.AllDoctors}
-          CurrentDoctorsList={this.state.CurrentDoctorsList}
-          CurrentNumOfDoctorsShowed={this.state.CurrentNumOfDoctorsShowed}
-          handleMoreClick={this.handleMoreClick}
-          IfMore={this.state.IfMore}
-        />
-      </React.Fragment>
-    );
+    if (Loading === true) {
+      return (
+          <DivLoader>
+            <SvgLoader viewBox="0 0 100 100" width="10em" height="10em">
+              <path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#51CACC" transform="rotate(179.719 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path>
+            </SvgLoader>
+          </DivLoader>
+      );
+    }
+    else {
+      return (
+        <React.Fragment>
+          <DoctorsSearchBar
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+          />
+          <DoctorsFilter
+            handleSpecializationChange={this.handleSpecializationChange}
+            handleLanguageChange={this.handleLanguageChange}
+          />
+          <DoctorsContainer
+            AllDoctors={this.state.AllDoctors}
+            CurrentDoctorsList={this.state.CurrentDoctorsList}
+            CurrentNumOfDoctorsShowed={this.state.CurrentNumOfDoctorsShowed}
+            handleMoreClick={this.handleMoreClick}
+            IfMore={this.state.IfMore}
+          />
+        </React.Fragment>
+      );
+    }
+
   }
 }
 

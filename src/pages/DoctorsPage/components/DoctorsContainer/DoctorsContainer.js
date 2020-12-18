@@ -43,6 +43,8 @@ const DoctorsMainContainer = styled.div`
         display: flex;
         background-color: #fff;
         flex-wrap: wrap;
+        padding-top: 50px;
+
     }
 `
 
