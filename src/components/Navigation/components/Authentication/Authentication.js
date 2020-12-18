@@ -6,6 +6,7 @@ import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import { THEME_COLOR } from "../../../../constants";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
+import { getRoutePath } from "../../../../utils/GetRoute";
 
 const Layout = styled.div`
   display: flex;
@@ -76,7 +77,7 @@ class Authentication extends React.Component {
       <Layout>
         {user ? (
           <React.Fragment>
-            <Avatar as="a" href="#/user_center" />
+            <Avatar as="a" href={getRoutePath("user_center")} />
             <NavItem>{user}</NavItem>
             <Logout
               as="a"

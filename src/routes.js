@@ -18,7 +18,7 @@ export const ROUTES = [
   },
   {
     key: "user_center",
-    path: "/user_center",
+    path: "/personalInfo",
     page: UserCenter,
   },
   {
