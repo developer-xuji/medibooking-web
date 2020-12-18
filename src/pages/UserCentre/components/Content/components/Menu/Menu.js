@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
+import { getRoutePath } from "../../../../../../utils/GetRoute";
 
 const Layout = styled.ul`
   a {
@@ -34,7 +35,7 @@ class Menu extends React.Component {
   render() {
     return (
       <Layout>
-        <Link to={"/personalInfo"} className="nav-link">
+        <Link to={getRoutePath("user_center")} className="nav-link">
           {window.location.pathname === "/personalInfo" ? (
             <MenuItem active>Personal Information</MenuItem>
           ) : (
@@ -42,7 +43,7 @@ class Menu extends React.Component {
           )}
         </Link>
 
-        <Link to={"/accountInfo"} className="nav-link">
+        <Link to={getRoutePath("user_center/accountInfo")} className="nav-link">
           {window.location.pathname === "/accountInfo" ? (
             <MenuItem active>Account Information</MenuItem>
           ) : (
@@ -50,7 +51,10 @@ class Menu extends React.Component {
           )}
         </Link>
 
-        <Link to={"/manageBookings"} className="nav-link">
+        <Link
+          to={getRoutePath("user_center/manageBookings")}
+          className="nav-link"
+        >
           {window.location.pathname === "/manageBookings" ? (
             <MenuItem active>Manage Bookings</MenuItem>
           ) : (

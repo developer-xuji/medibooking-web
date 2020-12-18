@@ -18,7 +18,17 @@ export const ROUTES = [
   },
   {
     key: "user_center",
-    path: "/personalInfo",
+    path: "/user_center/personalInfo",
+    page: UserCenter,
+  },
+  {
+    key: "user_center/accountInfo",
+    path: "/user_center/accountInfo",
+    page: UserCenter,
+  },
+  {
+    key: "user_center/manageBookings",
+    path: "/user_center/manageBookings",
     page: UserCenter,
   },
   {
