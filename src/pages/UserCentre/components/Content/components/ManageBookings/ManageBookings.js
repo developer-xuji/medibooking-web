@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Layout from "antd/lib/layout/layout";
 import getAuth from "../../../../../../apis/getAuth";
 import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
+import fetchData from "../../../../../../apis/fetchData";
 
 const Title = styled.h1`
   font-size: 40px;
@@ -69,8 +70,10 @@ class ManageBookings extends React.Component {
         });
         sendRestfulApi(getIdUrl, "GET").then((response) => {
           const { id } = response;
-          const getAppointmentsUrl = `http://localhost:8080/management/appointments/search?${role}Id=${id}`;
-          sendRestfulApi(getAppointmentsUrl, "GET").then((response) => {
+          // const getAppointmentsUrl = `http://localhost:8080/management/appointments/search?${role}Id=${id}`;
+          const getAppointmentsUrl = `/management/appointments/search`;
+          const param = { name: `${role}Id`, value: `${id}` };
+          fetchData(getAppointmentsUrl, param).then((response) => {
             console.log("appointments", response);
           });
         });

@@ -3,6 +3,7 @@ import getAuth from "../../../../../../apis/getAuth";
 import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
+import fetchData from "../../../../../../apis/fetchData";
 
 const TOKEN = localStorage.getItem("JWT_TOKEN");
 class PersonalInfo extends React.Component {
@@ -21,14 +22,17 @@ class PersonalInfo extends React.Component {
   componentDidMount() {
     getAuth({ token: TOKEN })
       .then((response) => {
+        console.log(response.data);
         const { accountId, grantedAuthorities } = response.data;
         const { authority } = grantedAuthorities[0];
         const role = authority === "ROLE_DOCTOR" ? "doctors" : "patients";
-        const url = `http://localhost:8080/${role}/search?accountId=${accountId}`;
+        const url = `/${role}/search`;
+        const param = { name: "accountId", value: accountId };
         this.setState({
           role,
         });
-        sendRestfulApi(url, "GET").then((data) => {
+        fetchData(url, param).then((data) => {
+          console.log(data);
           this.setState({
             data,
             loading: false,
