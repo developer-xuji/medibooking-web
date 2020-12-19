@@ -1,5 +1,6 @@
 import { ROUTES } from "../routes";
 
+
 export const getRoutePath = (route_key) => {
   let path = "/";
   ROUTES.forEach((route) => {
