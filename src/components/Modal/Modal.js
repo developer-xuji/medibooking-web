@@ -20,7 +20,7 @@ const Box = styled.div`
   border-radius: 5px;
 `;
 
-const VERTICAL_GAP = "20px";
+const VERTICAL_GAP = "10px";
 const HORIZONTAL_GAP = "20px";
 
 const Header = styled.div`
@@ -47,6 +47,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
   text-align: center;
+  line-height:20px;
 `;
 
 const CloseButton = styled.button`

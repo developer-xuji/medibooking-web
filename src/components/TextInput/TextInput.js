@@ -9,9 +9,8 @@ const TextInput = styled.input`
   margin-bottom: 10px;
   border: 1px solid #ddd;
   border-radius: 5px !important;
-  padding: 18px 12px;
-  height: auto;
-  font-size: 18px;
+  padding: 6px 10px;
+  font-size: 14px;
   font-weight: 500;
   line-height: normal;
   color: #2b4b5a;

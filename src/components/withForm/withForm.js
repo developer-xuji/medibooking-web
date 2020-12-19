@@ -10,7 +10,7 @@ const withForm = (Fields) => (Component) => {
           dirty: false,
         },
       }),
-      {}
+      {gender:{value:"",dirty:false},}
     );
 
   class Form extends React.Component {
@@ -80,6 +80,8 @@ const withForm = (Fields) => (Component) => {
     render() {
       const { data, formDirty } = this.state;
       const valid = this.valid();
+
+      console.log(data);
 
       return (
         <Component
