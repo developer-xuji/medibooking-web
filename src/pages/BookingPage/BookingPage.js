@@ -12,14 +12,12 @@ const Layout = styled.div`
   flex-direction: column;
   max-width: 1000px;
   align-items: center;
-  margin: 100px auto;
+  margin: 50px auto;
   border-radius: 15px;
   box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.3);
-  height: 550px;
 `;
 
 const SelectArea = styled.div`
-  overflow-y: auto;
   width: 100%;
   border-radius: 0 0 0 15px;
   padding: 20px 30px;
@@ -86,7 +84,10 @@ class BookingPage extends React.Component {
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
         : addAppointment(appointment);
-    } else this.setErrorMessage("Only patients can make appointments");
+    } else
+      this.setErrorMessage(
+        "Only patients can make appointments after logged in"
+      );
   }
 
   handleTimeSelector(key) {
