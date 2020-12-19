@@ -77,12 +77,10 @@ class LoginModal extends React.Component {
                 username: data.username.value,
                 password: data.password.value,
               })
-                .then(
-                  response=>{
+                .then((response) => {
                   onClose();
                   onLogIn(JSON.parse(response));
-                  }
-                )
+                })
                 .catch((error) => console.log(error.response));
             })}
           >
