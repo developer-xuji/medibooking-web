@@ -6,7 +6,7 @@ import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import { THEME_COLOR } from "../../../../constants";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
-import { getRoutePath } from "../../../../utils/GetRoute";
+import { getRoutePath } from "../../../../utils/getRoute";
 
 const Layout = styled.div`
   display: flex;

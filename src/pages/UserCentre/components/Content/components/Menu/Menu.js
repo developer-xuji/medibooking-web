@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
-import { getRoutePath } from "../../../../../../utils/GetRoute";
+import { getRoutePath } from "../../../../../../utils/getRoute";
 
 const Layout = styled.ul`
   a {

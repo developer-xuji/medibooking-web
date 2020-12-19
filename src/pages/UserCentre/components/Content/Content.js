@@ -6,7 +6,7 @@ import PersonalInfo from "./components/PersonalInfo";
 import AccountInfo from "./components/AcountInfo";
 import ManageBookings from "./components/ManageBookings";
 import Menu from "./components/Menu";
-import { getRoutePath } from "../../../../utils/GetRoute";
+import { getRoutePath } from "../../../../utils/getRoute";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
