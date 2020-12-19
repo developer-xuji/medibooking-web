@@ -26,3 +26,4 @@ export const PHARMACY_ICON = pharmacy_icon;
 export const OPTOMETRY_ICON = optometry_icon;
 export const AVATAR_ICON = avatar_icon;
 export const MOBILE_WIDTH = "1000px";
+export const APPOINTMENT_DURATION = 15;

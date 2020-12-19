@@ -5,7 +5,7 @@ import NavItem from "../NavItem";
 import Icon from "../../../Icon";
 import { THEME_COLOR } from "../../../../constants";
 import { MOBILE_WIDTH } from "../../../../constants";
-import { getRoutePath } from "../../../../utils/GetRoute";
+import { getRoutePath } from "../../../../utils/getRoute";
 
 const BORDER_GAP = "20px";
 const Layout = styled.div`

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HOME_BACKGROUND } from "../../constants";
 import { MOBILE_WIDTH } from "../../constants";
-import { getRoutePath } from "../../utils/GetRoute";
+import { getRoutePath } from "../../utils/getRoute";
 
 import ControlCard from "./components/ControlCard";
 import Services from "./components/Services";

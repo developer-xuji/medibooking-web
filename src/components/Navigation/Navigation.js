@@ -7,7 +7,7 @@ import WithAuthenticationModalsAuthentication from "./components/Authentication"
 import NavItem from "./components/NavItem";
 import MobileNav from "./components/MobileNav";
 import { LOGO } from "../../constants";
-import { getRoutePath } from "../../utils/GetRoute";
+import { getRoutePath } from "../../utils/getRoute";
 
 const Layout = styled.div`
   display: flex;
