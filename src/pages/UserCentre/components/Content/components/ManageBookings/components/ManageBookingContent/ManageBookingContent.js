@@ -24,17 +24,20 @@ class ManageBookingContent extends React.Component {
   };
 
   render() {
+    const { bookings, role } = this.props;
     return (
       <div>
         <SearchAndSortBar
           filterText={this.state.filterText}
           onFilterTextChange={this.handleFilterTextChange}
           onSortChange={this.handleSortChange}
+          role={role}
         />
         <BookingList
-          bookings={this.props.bookings}
+          bookings={bookings}
           filterText={this.state.filterText}
           sortMethod={this.state.sortMethod}
+          role={role}
         />
       </div>
     );

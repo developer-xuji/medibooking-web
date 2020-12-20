@@ -1,6 +1,7 @@
 import React from "react";
 import getAuth from "../../../../../../apis/getAuth";
 import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
+import LoadingSpin from "../../../../../../components/LoadingSpin";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
 import fetchData from "../../../../../../apis/fetchData";
@@ -27,11 +28,11 @@ class PersonalInfo extends React.Component {
         const { authority } = grantedAuthorities[0];
         const role = authority === "ROLE_DOCTOR" ? "doctors" : "patients";
         const url = `/${role}/search`;
-        const param = { name: "accountId", value: accountId };
+        const accountIdParam = { name: "accountId", value: accountId };
         this.setState({
           role,
         });
-        fetchData(url, param).then((data) => {
+        fetchData(url, accountIdParam).then((data) => {
           console.log(data);
           this.setState({
             data,
@@ -55,9 +56,9 @@ class PersonalInfo extends React.Component {
 
     console.log(data);
     return (
-      <div>
+      <>
         {loading ? (
-          <div>Loading...</div>
+          <LoadingSpin />
         ) : // <Layout onSubmit={this.handleSubmit}>
         //   <Title>Personal Information</Title>
         //   <FormItem>
@@ -97,7 +98,7 @@ class PersonalInfo extends React.Component {
         ) : (
           <PatientInfoForm data={data} />
         )}
-      </div>
+      </>
     );
   }
 }
