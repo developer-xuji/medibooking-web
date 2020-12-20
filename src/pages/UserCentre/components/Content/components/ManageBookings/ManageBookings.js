@@ -6,11 +6,19 @@ import getAuth from "../../../../../../apis/getAuth";
 import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
 import fetchData from "../../../../../../apis/fetchData";
 import LoadingSpin from "../../../../../../components/LoadingSpin";
+import { Empty } from "antd";
 
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 600;
   margin-top: 0;
+`;
+
+const NoBookings = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const TOKEN = localStorage.getItem("JWT_TOKEN");
@@ -100,10 +108,13 @@ class ManageBookings extends React.Component {
       <>
         {loading ? (
           <LoadingSpin />
+        ) : bookingItemList.length < 1 ? (
+          <NoBookings>
+            <Empty description={"There is currently no bookings."} />
+          </NoBookings>
         ) : (
           <Layout>
             <Title>Manage Bookings</Title>
-
             <ManageBookingContent bookings={bookingItemList} role={role} />
           </Layout>
         )}
