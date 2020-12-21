@@ -1,6 +1,5 @@
 import React from "react";
 import getAuth from "../../../../../../apis/getAuth";
-import sendRestfulApi from "../../../../../../apis/sendRestfulApi";
 import LoadingSpin from "../../../../../../components/LoadingSpin";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
@@ -16,8 +15,8 @@ class PersonalInfo extends React.Component {
       role: undefined,
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -43,13 +42,14 @@ class PersonalInfo extends React.Component {
       .catch(() => {});
   }
 
-  handleChange(event) {
-    this.setState({ healthCondition: event.target.value });
-  }
+  // handleChange(event) {
+  //   this.setState({ healthCondition: event.target.value });
+  // }
 
-  handleSubmit(event) {
-    event.preventDefault();
-  }
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   console.log(event.target);
+  // };
 
   render() {
     const { loading, data, role } = this.state;
