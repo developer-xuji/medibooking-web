@@ -60,3 +60,4 @@ export const SMALL_BREAKPOINT = "767px";
 export const USER_AVATAR1 = user_avatar1;
 export const USER_AVATAR2 = user_avatar2;
 export const QUOTE_ICON = quote_icon;
+export const APPOINTMENT_DURATION = 15;
