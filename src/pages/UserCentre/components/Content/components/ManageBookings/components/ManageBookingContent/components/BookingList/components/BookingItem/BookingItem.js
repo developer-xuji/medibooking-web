@@ -27,7 +27,9 @@ const IconAndInfo = styled.div`
   margin-left: 15px;
 `;
 
-const Options = styled.div``;
+const Options = styled.div`
+  width: 150px;
+`;
 const Button = styled.button`
   cursor: pointer;
   font-size: 18px;
@@ -146,8 +148,9 @@ class BookingItem extends React.Component {
               <DateAndTime>
                 <Date>{`${booking.date}`}</Date>
                 <Time>
-                  {booking.startingTime} <span>{` -- `}</span>
-                  {booking.endingTime}
+                  {booking.startingTime}
+                  {/* <span>{` -- `}</span>
+                  {booking.endingTime} */}
                 </Time>
               </DateAndTime>
 
@@ -160,7 +163,7 @@ class BookingItem extends React.Component {
 
           <Options>
             <Button onClick={() => this.setShowDetailModal()}> Detail</Button>
-            <Button cancel> Cancel</Button>
+            {!booking.isCancelled && <Button cancel> Cancel</Button>}
           </Options>
           {booking.isCancelled && <Cancelled src={cancelledImage} />}
           {showDetailModal && (

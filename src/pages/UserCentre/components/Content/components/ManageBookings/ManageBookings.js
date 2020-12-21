@@ -87,6 +87,7 @@ class ManageBookings extends React.Component {
               ...v,
               doctorName: `${v.doctorFirstName} ${v.doctorLastName}`,
               patientName: `${v.patientFirstName} ${v.patientLastName}`,
+              startingTime: v.startingTime.slice(0, -3),
               doctorIcon:
                 "https://www.medicalone.com.au/sites/default/files/styles/square_500x500_/public/doctor_photos/Dr%20Dan%20Cropped.jpg?itok=HFS7Kp83",
             }));

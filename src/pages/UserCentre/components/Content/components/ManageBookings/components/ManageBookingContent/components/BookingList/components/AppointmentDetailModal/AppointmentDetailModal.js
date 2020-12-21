@@ -104,7 +104,7 @@ class AppointmentDetailModal extends React.Component {
                 <AppointmentInfo>
                   <InfoItem label="Id">{booking.id}</InfoItem>
                   <InfoItem label="Date">{booking.date}</InfoItem>
-                  <InfoItem label="Time">{`${booking.startingTime} to ${booking.endingTime}`}</InfoItem>
+                  <InfoItem label="Time">{`${booking.startingTime} `}</InfoItem>
                 </AppointmentInfo>
               </Block>
               <Block>
