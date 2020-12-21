@@ -2,7 +2,7 @@ import instance from "../../lib/instance/instance";
 
 const processData = (url, method, parameterList, body) => {
   let param = "";
-  if (parameterList !== null) {
+  if (parameterList !== null && parameterList !== undefined) {
     param += "/search?";
     parameterList.forEach((element) => {
       param += element.name + "=" + element.value;

@@ -5,7 +5,7 @@ import TimeSelector from "./components/TimeSelector";
 import DoctorSelector from "./components/DoctorSelector";
 import DateSelector from "./components/DateSelector";
 import addAppointment from "../../utils/addAppointment";
-import { APPOINTMENT_DURATION } from "../../constants";
+import getPatientInfo from "../../utils/getPatientInfo";
 
 const Layout = styled.div`
   display: flex;
@@ -37,7 +37,9 @@ const Note = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  min-height: 100px;
+  textarea {
+    min-height: 100px;
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -84,6 +86,7 @@ class BookingPage extends React.Component {
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
         : addAppointment(appointment);
+      //getPatientInfo(1);
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"
@@ -91,10 +94,10 @@ class BookingPage extends React.Component {
   }
 
   handleTimeSelector(key) {
-    return (value) => {
+    return (event) => {
       this.setState({
-        [key]: value.format("HH:mm"),
-        endTime: value.add(APPOINTMENT_DURATION, "minutes").format("HH:mm"),
+        [key]: event.target.value,
+        endTime: event.target.value,
       });
     };
   }
@@ -115,10 +118,9 @@ class BookingPage extends React.Component {
     };
   }
 
-  handleNoteChange(value) {
-    const previousNotes = this.state.notes;
+  handleNoteChange(event) {
     this.setState({
-      notes: previousNotes + value.nativeEvent.data,
+      notes: event.target.value,
     });
   }
 
@@ -132,11 +134,14 @@ class BookingPage extends React.Component {
     const { doctor, date, startTime, errorMessage } = this.state;
     const SELECTORS = [
       {
-        key: "time_selector",
+        key: "doctor_selector",
         selector: (
-          <TimeSelector
-            title="Select Time "
-            onSelect={this.handleTimeSelector("startTime")}
+          <DoctorSelector
+            title="Select Doctor"
+            selected={
+              doctor === null ? "" : doctor.firstName + " " + doctor.lastName
+            }
+            onSelect={this.handleDoctorSelector("doctor")}
           />
         ),
       },
@@ -150,14 +155,11 @@ class BookingPage extends React.Component {
         ),
       },
       {
-        key: "doctor_selector",
+        key: "time_selector",
         selector: (
-          <DoctorSelector
-            title="Select Doctor"
-            selected={
-              doctor === null ? "" : doctor.firstName + " " + doctor.lastName
-            }
-            onSelect={this.handleDoctorSelector("doctor")}
+          <TimeSelector
+            title="Select Time "
+            onSelect={this.handleTimeSelector("startTime")}
           />
         ),
       },
@@ -177,7 +179,7 @@ class BookingPage extends React.Component {
           ))}
           <Note>
             <h3>Notes</h3>
-            <TextArea onChange={this.handleNoteChange} />
+            <TextArea onChange={(e) => this.handleNoteChange(e)} />
           </Note>
         </SelectArea>
       </Layout>
