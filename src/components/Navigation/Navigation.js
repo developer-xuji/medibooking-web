@@ -60,8 +60,8 @@ const Navigation = () => {
           <Left>
             <Logo as="a" href={getRoutePath("home")}>
               <LogoDiv />
-              MediBooking
             </Logo>
+            MediBooking
             <Main />
           </Left>
           <Right>

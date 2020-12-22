@@ -8,6 +8,7 @@ import {
   Title,
   Submit,
 } from "../../../styling";
+import setPatientInfo from "../../../../../../../../utils/setPatientInfo";
 
 class PatientInfoForm extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class PatientInfoForm extends React.Component {
     e.preventDefault();
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
-    console.log(updatedData);
+    updatedData.id = null;
+    setPatientInfo(updatedData);
   };
 
   render() {
