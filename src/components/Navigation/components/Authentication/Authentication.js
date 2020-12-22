@@ -108,7 +108,7 @@ class Authentication extends React.Component {
               <NavItem
                 as={NakedButton}
                 variant="highlight"
-                onClick={(e) => this.setShowLoginMenu(!ShowLoginMenu, e)}
+                onClick={() => setShowModal("LOG_IN")}
               >
                 <Icon name="sign-in" style={{ fontSize: "30px" }} />
                 Log in

@@ -27,12 +27,6 @@ const SelectArea = styled.div`
   justify-content: space-between;
 `;
 
-const Section = styled.div`
-  width: 100%;
-  & ~ & {
-    margin: 20px 0;
-  }
-`;
 const Note = styled.div`
   display: flex;
   flex-direction: column;
