@@ -2,14 +2,16 @@ import instance from "../../lib/instance/instance";
 
 const processData = (url, method, parameterList, body) => {
   let param = "";
-  if (parameterList !== null) {
+  if (parameterList !== null && parameterList !== undefined) {
     param += "/search?";
     parameterList.forEach((element) => {
-      param += element.name + "=" + element.value;
+      param += element.name + "=" + element.value + "&";
     });
+    param = param.substring(0, param.lastIndexOf("&"));
   }
 
   const processing = (processing_url) => {
+    console.log(processing_url);
     switch (method) {
       case "get":
         return instance.get(processing_url, body);
@@ -21,7 +23,6 @@ const processData = (url, method, parameterList, body) => {
         return null;
     }
   };
-
   if (processing !== null)
     return processing(url + param).then((response) => response.data);
 };

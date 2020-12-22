@@ -5,7 +5,7 @@ import TimeSelector from "./components/TimeSelector";
 import DoctorSelector from "./components/DoctorSelector";
 import DateSelector from "./components/DateSelector";
 import addAppointment from "../../utils/addAppointment";
-import { APPOINTMENT_DURATION } from "../../constants";
+import getAppointmentByDoctorAndDate from "../../utils/getAppointmentByDoctorAndDate";
 
 const Layout = styled.div`
   display: flex;
@@ -37,7 +37,9 @@ const Note = styled.div`
   display: flex;
   flex-direction: column;
   width: 80%;
-  min-height: 100px;
+  textarea {
+    min-height: 100px;
+  }
 `;
 
 const TextArea = styled.textarea`
@@ -59,6 +61,7 @@ class BookingPage extends React.Component {
       endTime: "",
       notes: "",
       errorMessage: "",
+      invalidAppointments: [],
     };
     this.handleBookingClick = this.handleBookingClick.bind(this);
     this.handleTimeSelector = this.handleTimeSelector.bind(this);
@@ -91,34 +94,50 @@ class BookingPage extends React.Component {
   }
 
   handleTimeSelector(key) {
-    return (value) => {
+    return (event) => {
       this.setState({
-        [key]: value.format("HH:mm"),
-        endTime: value.add(APPOINTMENT_DURATION, "minutes").format("HH:mm"),
+        [key]: event.target.value,
+        endTime: event.target.value,
       });
     };
   }
 
+  setInvalidTime() {
+    const { doctorId, date } = this.state;
+    getAppointmentByDoctorAndDate(doctorId, date).then((appointmentList) => {
+      this.setState({ invalidAppointment: appointmentList });
+    });
+  }
+
   handleDoctorSelector(key) {
-    return (value) => {
-      this.setState({
-        [key]: value,
+    return (doctor) => {
+      const { date } = this.state;
+      getAppointmentByDoctorAndDate(doctor.id, date).then((appointmentList) => {
+        this.setState({
+          [key]: doctor,
+          invalidAppointments: appointmentList,
+        });
       });
     };
   }
 
   handleDateSelector(key) {
-    return (value) => {
-      this.setState({
-        [key]: value.format("YYYY-MM-DD"),
-      });
+    return (date) => {
+      const doctorId = this.state.doctor === null ? 0 : this.state.doctor.id;
+      getAppointmentByDoctorAndDate(doctorId, date.format("YYYY-MM-DD")).then(
+        (appointmentList) => {
+          this.setState({
+            [key]: date.format("YYYY-MM-DD"),
+            invalidAppointments: appointmentList,
+          });
+        }
+      );
     };
   }
 
-  handleNoteChange(value) {
-    const previousNotes = this.state.notes;
+  handleNoteChange(event) {
     this.setState({
-      notes: previousNotes + value.nativeEvent.data,
+      notes: event.target.value,
     });
   }
 
@@ -129,39 +148,14 @@ class BookingPage extends React.Component {
   }
 
   render() {
-    const { doctor, date, startTime, errorMessage } = this.state;
-    const SELECTORS = [
-      {
-        key: "time_selector",
-        selector: (
-          <TimeSelector
-            title="Select Time "
-            onSelect={this.handleTimeSelector("startTime")}
-          />
-        ),
-      },
-      {
-        key: "date_selector",
-        selector: (
-          <DateSelector
-            title="Select Date"
-            onSelect={this.handleDateSelector("date")}
-          />
-        ),
-      },
-      {
-        key: "doctor_selector",
-        selector: (
-          <DoctorSelector
-            title="Select Doctor"
-            selected={
-              doctor === null ? "" : doctor.firstName + " " + doctor.lastName
-            }
-            onSelect={this.handleDoctorSelector("doctor")}
-          />
-        ),
-      },
-    ];
+    const {
+      doctor,
+      date,
+      startTime,
+      errorMessage,
+      invalidAppointments,
+    } = this.state;
+
     return (
       <Layout>
         <BookingDetails
@@ -172,12 +166,27 @@ class BookingPage extends React.Component {
         />
         <ErrorMessage>{errorMessage}</ErrorMessage>
         <SelectArea>
-          {SELECTORS.map((s) => (
-            <Section key={s.key}>{s.selector}</Section>
-          ))}
+          <DoctorSelector
+            title="Select Doctor"
+            selected={
+              doctor === null ? "" : doctor.firstName + " " + doctor.lastName
+            }
+            onSelect={this.handleDoctorSelector("doctor")}
+          />
+          <DateSelector
+            title="Select Date"
+            onSelect={this.handleDateSelector("date")}
+          />
+          <TimeSelector
+            title="Select Time "
+            onSelect={this.handleTimeSelector("startTime")}
+            doctorId={doctor === null ? "" : doctor.id}
+            date={date}
+            invalidAppointments={invalidAppointments}
+          />
           <Note>
             <h3>Notes</h3>
-            <TextArea onChange={this.handleNoteChange} />
+            <TextArea onChange={(e) => this.handleNoteChange(e)} />
           </Note>
         </SelectArea>
       </Layout>
