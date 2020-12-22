@@ -36,7 +36,7 @@ class Menu extends React.Component {
     return (
       <Layout>
         <Link to={getRoutePath("user_center")} className="nav-link">
-          {window.location.pathname === "/personalInfo" ? (
+          {window.location.pathname === getRoutePath("user_center") ? (
             <MenuItem active>Personal Information</MenuItem>
           ) : (
             <MenuItem>Personal Information</MenuItem>
@@ -44,7 +44,8 @@ class Menu extends React.Component {
         </Link>
 
         <Link to={getRoutePath("user_center/accountInfo")} className="nav-link">
-          {window.location.pathname === "/accountInfo" ? (
+          {window.location.pathname ===
+          getRoutePath("user_center/accountInfo") ? (
             <MenuItem active>Account Information</MenuItem>
           ) : (
             <MenuItem>Account Information</MenuItem>
@@ -55,7 +56,8 @@ class Menu extends React.Component {
           to={getRoutePath("user_center/manageBookings")}
           className="nav-link"
         >
-          {window.location.pathname === "/manageBookings" ? (
+          {window.location.pathname ===
+          getRoutePath("user_center/manageBookings") ? (
             <MenuItem active>Manage Bookings</MenuItem>
           ) : (
             <MenuItem>Manage Bookings</MenuItem>

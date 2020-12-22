@@ -57,7 +57,7 @@ const allSpecializations = [
   "Surgery",
 ];
 
-const MultiSelector = ({ category, data }) => {
+const MultiSelector = ({ category, data, handleSelectorChange }) => {
   const { Option } = Select;
   const currentSelectedValue =
     category === "languages"
@@ -74,7 +74,8 @@ const MultiSelector = ({ category, data }) => {
         ));
 
   function handleChange(value) {
-    // console.log(`selected ${value}`);
+    handleSelectorChange(value, category);
+    // console.log(value);
   }
 
   return (

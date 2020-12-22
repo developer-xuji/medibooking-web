@@ -1,8 +1,11 @@
 // this is the file item component for the file management page
 import React from "react";
 import styled from "styled-components";
+import avatar from "../../../../../../../../../../../../assets/images/avatar.png";
+import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
+import AppointmentDetailModal from "../AppointmentDetailModal";
 
-const DoctorAvatar = styled.img`
+const Avatar = styled.img`
   height: 100px;
   width: 100px;
 `;
@@ -24,7 +27,9 @@ const IconAndInfo = styled.div`
   margin-left: 15px;
 `;
 
-const Options = styled.div``;
+const Options = styled.div`
+  width: 150px;
+`;
 const Button = styled.button`
   cursor: pointer;
   font-size: 18px;
@@ -44,7 +49,7 @@ const Button = styled.button`
 const Info = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 10px;
+  margin-left: 20px;
   /* justify-content: space-between; */
 `;
 
@@ -71,53 +76,106 @@ const Date = styled.span`
 const Time = styled.span`
   padding-left: 10px;
   font-weight: 500;
-  color: #ffa07a;
-`;
-
-const Specialisation = styled.div`
-  padding-top: 3px;
-  font-size: 18px;
-  font-weight: 500;
-  padding-bottom: 5px;
-  color: #01a4b7;
+  color: #fc8368;
   span {
     color: black;
   }
 `;
-const BookingItem = ({
-  doctorName,
-  startingTime,
-  endingTime,
-  date,
-  doctorPicture,
-  specialisation,
-  notes,
-}) => (
-  <Container>
-    <Booking>
-      <IconAndInfo>
-        <DoctorAvatar src={doctorPicture} />
 
-        <Info>
-          <Name>{doctorName}</Name>
-          <Specialisation>
-            <span>Specialisation: </span>
-            {`${specialisation}`}
-          </Specialisation>
+const Note = styled.div`
+  padding-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  padding-bottom: 5px;
 
-          <DateAndTime>
-            <Date>{`${date}`}</Date>
-            <Time>{`${startingTime} to ${endingTime}`}</Time>
-          </DateAndTime>
-        </Info>
-      </IconAndInfo>
+  color: black;
+  max-width: 30vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
-      <Options>
-        <Button> Detail</Button>
-        <Button cancel> Cancel</Button>
-      </Options>
-    </Booking>
-  </Container>
-);
+  span {
+    color: #01a4b7;
+    padding-right: 2px;
+  }
+`;
+
+const Cancelled = styled.img`
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  left: 60%;
+  z-index: 100;
+`;
+class BookingItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showDetailModal: false,
+    };
+  }
+
+  setShowDetailModal() {
+    this.setState({ showDetailModal: true });
+  }
+
+  setCloseDetailModal() {
+    this.setState({ showDetailModal: false });
+  }
+
+  render() {
+    const { showDetailModal } = this.state;
+    const { booking, role } = this.props;
+
+    return (
+      <Container>
+        <Booking>
+          <IconAndInfo>
+            {role === "patient" ? (
+              <Avatar src={booking.doctorIcon} />
+            ) : (
+              <Avatar src={avatar} />
+            )}
+
+            <Info>
+              {role === "patient" ? (
+                <Name>{booking.doctorName}</Name>
+              ) : (
+                <Name>{booking.patientName}</Name>
+              )}
+
+              <DateAndTime>
+                <Date>{`${booking.date}`}</Date>
+                <Time>
+                  {booking.startingTime}
+                  {/* <span>{` -- `}</span>
+                  {booking.endingTime} */}
+                </Time>
+              </DateAndTime>
+
+              <Note>
+                <span>Appointment message:</span>
+                {`${booking.notes}`}
+              </Note>
+            </Info>
+          </IconAndInfo>
+
+          <Options>
+            <Button onClick={() => this.setShowDetailModal()}> Detail</Button>
+            {!booking.isCancelled && <Button cancel> Cancel</Button>}
+          </Options>
+          {booking.isCancelled && <Cancelled src={cancelledImage} />}
+          {showDetailModal && (
+            <AppointmentDetailModal
+              onClose={() => this.setCloseDetailModal()}
+              booking={booking}
+            />
+          )}
+        </Booking>
+      </Container>
+    );
+  }
+}
 
 export default BookingItem;

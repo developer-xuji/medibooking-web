@@ -32,6 +32,8 @@ const MainContent = styled.div`
   .ant-layout {
     background: white;
   }
+  /* height: 800px;
+  overflow: overlay; */
 `;
 
 const Content = () => {
