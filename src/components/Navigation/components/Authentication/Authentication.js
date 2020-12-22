@@ -78,7 +78,9 @@ class Authentication extends React.Component {
         {user ? (
           <React.Fragment>
             <Avatar as="a" href={getRoutePath("user_center")} />
-            <NavItem>{user}</NavItem>
+            <NavItem as="a" href={getRoutePath("user_center")}>
+              {user}
+            </NavItem>
             <Logout
               as="a"
               href="/"

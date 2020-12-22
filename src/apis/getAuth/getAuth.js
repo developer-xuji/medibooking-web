@@ -1,9 +1,8 @@
-import Axios from "axios";
-import axios from "axios";
+import instance from "../../lib/instance";
 import setUserDetail from "../../utils/setUserDetail";
 
 const getAuth = (token) =>
-  axios.post("http://localhost:8080/auth", token).then((response) => {
+  instance.post("/auth", token).then((response) => {
     const { accountId, grantedAuthorities } = response.data;
     const { authority } = grantedAuthorities[0];
     const role = authority;
