@@ -3,7 +3,12 @@ import PasswordForm from "./components/PasswordForm"
 import { Layout, FormItem, Label, FormInput, Title, Submit } from "../styling";
 import getAuth from "../../../../../../apis/getAuth";
 import logIn from "../../../../../../apis/logIn";
+import putPassword from "../../../../../../utils/putPassword"
 
+
+const ENCRYPTION_STRENGTH = 10;
+let bcrypt = require("bcryptjs");
+let salt = bcrypt.genSaltSync(ENCRYPTION_STRENGTH);
 
 class AccountInfo extends React.Component {
   constructor(props) {
@@ -40,7 +45,10 @@ class AccountInfo extends React.Component {
   };
 
   onNewFinish(event){
+
     console.log(event);
+    let account = {encodedPassword: bcrypt.hashSync(event.newpassword, salt)}
+    putPassword([localStorage.getItem("ACCOUNT_ID")], account)
   };
 
   onPasswordReset(event) {

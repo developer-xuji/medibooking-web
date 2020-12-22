@@ -1,15 +1,15 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import 'antd/dist/antd.css';
-import { Form, Input, Button, Descriptions, Row, Col } from 'antd';
-
+import { Form, Input,Button, Descriptions, Row, Col } from 'antd';
+import {Title} from "../../../styling"
 
 const layout = {
     labelCol: {
-      span: 6,
+      span: 0,
     },
     wrapperCol: {
-      span: 16,
+      span: 0,
     },
   };
   const tailLayout = {
@@ -18,6 +18,29 @@ const layout = {
       span: 16,
     },
   };
+
+const StyledButton = styled.button`
+    background: #01a4b7;
+    display: flex;
+    height: 50px;
+    white-space: nowrap;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 48px;
+    font-size: 20px;
+    outline: none;
+    font-weight: 600;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+`
+
+const StyledDiscription = styled.div`
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 15px;
+`
 
 function PasswordForm(props) {
     
@@ -34,16 +57,15 @@ function PasswordForm(props) {
         case "show":
             return (
                 <>
+                    <Title>Account Information</Title>
                     <Row justify="center">
-                        <Col offset={6} >
-                            <Descriptions title="Account Info">
-                                <Descriptions.Item label="UserName">{username}</Descriptions.Item>
-                            </Descriptions>
+                        <Col offset={0} >
+                            <StyledDiscription>Username: {username}</StyledDiscription>
                         </Col>
                     </Row>
                     <Row justify="center">
                         <Col>
-                            <Button onClick={onPasswordReset}>Reset Your Password</Button>
+                            <StyledButton onClick={onPasswordReset}>Reset Your Password</StyledButton>
                         </Col>
                     </Row>
                 </>
@@ -52,11 +74,10 @@ function PasswordForm(props) {
         case "reset":
             return (
                 <>
+                    <Title>Account Information</Title>
                     <Row justify="center">
                         <Col offset={0}  span={12}>
-                            <Descriptions title="Account Info">
-                                <Descriptions.Item label="UserName">{username}</Descriptions.Item>
-                            </Descriptions>
+                                <StyledDiscription>Username: {username}</StyledDiscription>
                         </Col>
                     </Row>
                     <Row justify="center">
@@ -82,9 +103,9 @@ function PasswordForm(props) {
                                     <Input.Password defaultValue={""}/>
                                 </Form.Item>
                                 <Form.Item {...tailLayout}>
-                                    <Button type="primary" htmlType="submit">
+                                    <StyledButton type="primary" htmlType="submit">
                                     Submit
-                                    </Button>
+                                    </StyledButton>
                                 </Form.Item>
                             </Form>
                         </Col>
@@ -95,11 +116,10 @@ function PasswordForm(props) {
         case "new":
             return (
                 <>
+                    <Title>Account Information</Title>
                     <Row justify="center">
                         <Col offset={0} span={12}>
-                            <Descriptions title="Account Info">
-                                <Descriptions.Item label="UserName">{username}</Descriptions.Item>
-                            </Descriptions>
+                                <StyledDiscription>Username: {username}</StyledDiscription>
                         </Col>
                     </Row>
                     <Row justify="center">
@@ -145,9 +165,9 @@ function PasswordForm(props) {
                                     <Input.Password defaultValue={""}/>
                                 </Form.Item>
                                 <Form.Item {...tailLayout}>
-                                    <Button type="primary" htmlType="submit">
+                                    <StyledButton type="primary" htmlType="submit">
                                     Submit
-                                    </Button>
+                                    </StyledButton>
                                 </Form.Item>
                             </Form>
                         </Col>
@@ -157,12 +177,11 @@ function PasswordForm(props) {
             break;
         case "wrong":
             return (
-                <>    
+                <>
+                    <Title>Account Information</Title>
                     <Row justify="center">
                         <Col offset={0} span={12}>
-                            <Descriptions title="Account Info">
-                                <Descriptions.Item label="UserName">{username}</Descriptions.Item>
-                            </Descriptions>
+                                <StyledDiscription>Username: {username}</StyledDiscription>
                         </Col>
                     </Row>
                     <Row justify="center">
@@ -189,9 +208,9 @@ function PasswordForm(props) {
                                 </Form.Item>
                                 <Row gutter={[24, 24]} justify="center" style={{color:"red"}}>Incorrect Password! Please enter again!</Row>
                                 <Form.Item {...tailLayout}>
-                                    <Button type="primary" htmlType="submit">
+                                    <StyledButton type="primary" htmlType="submit">
                                     Submit
-                                    </Button>
+                                    </StyledButton>
                                 </Form.Item>
                             </Form>
                         </Col>
