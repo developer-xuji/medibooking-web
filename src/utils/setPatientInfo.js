@@ -1,6 +1,7 @@
 import processData from "../apis/processData";
 
-const setPatientInfo = (patientId, patientInfo) => {
+const setPatientInfo = (patientInfo) => {
+  const patientId = localStorage.getItem("USER_ID");
   processData(
     "/patients/" + patientId,
     "put",
