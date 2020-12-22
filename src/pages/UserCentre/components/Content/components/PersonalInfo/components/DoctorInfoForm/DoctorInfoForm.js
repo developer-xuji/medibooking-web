@@ -31,8 +31,41 @@ class DoctorInfoForm extends React.Component {
     e.preventDefault();
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
+
     console.log(updatedData);
   };
+
+  // onFinish = (values) => {
+
+  //   const requestOptions = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       username: sessionStorage.getItem("username"),
+  //       name: values.name,
+  //       dob: dob,
+  //       phone: phone,
+  //       email: email,
+  //       introduction: introduction,
+  //     }),
+  //   };
+  //   fetch(
+  //     url.backendUrl + "/user/info/basic",
+  //     requestOptions
+  //   )
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       console.log(res);
+  //       if (res.success === false) {
+  //         setTimeout(() => {}, 300);
+  //       } else {
+  //         message.success(`Your changes have been saved.`);
+  //         console.log(res.message);
+  //       }
+  //     });}
 
   handleSelectorChange = (value, selector) => {
     selector === "languages"

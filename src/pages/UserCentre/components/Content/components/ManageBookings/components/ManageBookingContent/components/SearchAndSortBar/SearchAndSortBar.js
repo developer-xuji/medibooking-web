@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import "./searchAndSortBar.css";
-
+const role = localStorage.getItem("ROLE");
 const Layout = styled.form`
   max-width: 100%;
   display: flex;
@@ -36,8 +36,8 @@ class SearchAndSortBar extends React.Component {
   };
 
   render() {
-    const { role } = this.props;
-    const oppositeRole = role === "patient" ? "doctor" : "patient";
+    // const { role } = this.props;
+    const oppositeRole = role === "ROLE_DOCTOR" ? "patient" : "doctor";
     return (
       <Layout>
         <SearchBar

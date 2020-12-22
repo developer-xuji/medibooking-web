@@ -1,15 +1,15 @@
 import React from "react";
 import BookingItem from "./components/BookingItem";
-
+const role = localStorage.getItem("ROLE");
 class BookingList extends React.Component {
   render() {
     // const filterText = this.props.filterText;
     // const sortMethod = this.props.sortMethod;
-    const { role, filterText, sortMethod, bookings } = this.props;
+    const { filterText, sortMethod, bookings } = this.props;
     let listAfterSearch = [];
     const rows = [];
 
-    if (role === "patient") {
+    if (role === "ROLE_PATIENT") {
       listAfterSearch = bookings.filter(({ doctorName }) =>
         doctorName.toLowerCase().includes(filterText.toLowerCase())
       );
@@ -30,7 +30,7 @@ class BookingList extends React.Component {
     // );
 
     if (sortMethod === "byName") {
-      role === "patient"
+      role === "ROLE_PATIENT"
         ? listAfterSearch.sort((a, b) =>
             a.doctorName.localeCompare(b.doctorName)
           )
@@ -57,7 +57,6 @@ class BookingList extends React.Component {
         // notes={booking.notes}
         key={booking.id}
         booking={booking}
-        role={role}
       />
     ));
   }

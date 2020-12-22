@@ -9,11 +9,9 @@ const getAppointments = () => {
     name: idName,
     value: userId,
   });
-  processData(
-    "/management/appointments",
-    "get",
-    parametersList
-  ).then((response) => console.log(response));
+  return processData("/management/appointments", "get", parametersList).then(
+    (response) => response
+  );
 };
 
 export default getAppointments;

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import avatar from "../../../../../../../../../../../../assets/images/avatar.png";
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
 import AppointmentDetailModal from "../AppointmentDetailModal";
-
+const role = localStorage.getItem("ROLE");
 const Avatar = styled.img`
   height: 100px;
   width: 100px;
@@ -126,20 +126,20 @@ class BookingItem extends React.Component {
 
   render() {
     const { showDetailModal } = this.state;
-    const { booking, role } = this.props;
+    const { booking } = this.props;
 
     return (
       <Container>
         <Booking>
           <IconAndInfo>
-            {role === "patient" ? (
+            {role === "ROLE_PATIENT" ? (
               <Avatar src={booking.doctorIcon} />
             ) : (
               <Avatar src={avatar} />
             )}
 
             <Info>
-              {role === "patient" ? (
+              {role === "ROLE_PATIENT" ? (
                 <Name>{booking.doctorName}</Name>
               ) : (
                 <Name>{booking.patientName}</Name>

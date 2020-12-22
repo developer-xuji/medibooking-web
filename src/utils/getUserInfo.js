@@ -9,8 +9,8 @@ const getUserInfo = () => {
     name: "accountId",
     value: accountId,
   });
-  processData(url, "get", parametersList, null).then((response) =>
-    console.log(response)
+  return processData(url, "get", parametersList, null).then(
+    (response) => response
   );
 };
 export default getUserInfo;

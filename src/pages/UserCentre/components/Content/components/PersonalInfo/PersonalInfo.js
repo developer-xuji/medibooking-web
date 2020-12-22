@@ -4,8 +4,9 @@ import LoadingSpin from "../../../../../../components/LoadingSpin";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
 import fetchData from "../../../../../../apis/fetchData";
+import getUserInfo from "../../../../../../utils/getUserInfo";
 
-const TOKEN = localStorage.getItem("JWT_TOKEN");
+const role = localStorage.getItem("ROLE");
 class PersonalInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -14,42 +15,17 @@ class PersonalInfo extends React.Component {
       data: undefined,
       role: undefined,
     };
-
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    getAuth({ token: TOKEN })
-      .then((response) => {
-        console.log(response.data);
-        const { accountId, grantedAuthorities } = response.data;
-        const { authority } = grantedAuthorities[0];
-        const role = authority === "ROLE_DOCTOR" ? "doctors" : "patients";
-        const url = `/${role}/search`;
-        const accountIdParam = { name: "accountId", value: accountId };
-        this.setState({
-          role,
-        });
-        fetchData(url, accountIdParam).then((data) => {
-          console.log(data);
-          this.setState({
-            data,
-            loading: false,
-          });
-        });
-      })
-      .catch(() => {});
+    getUserInfo().then((data) => {
+      this.setState({
+        role,
+        data,
+        loading: false,
+      });
+    });
   }
-
-  // handleChange(event) {
-  //   this.setState({ healthCondition: event.target.value });
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   console.log(event.target);
-  // };
 
   render() {
     const { loading, data, role } = this.state;
@@ -59,41 +35,7 @@ class PersonalInfo extends React.Component {
       <>
         {loading ? (
           <LoadingSpin />
-        ) : // <Layout onSubmit={this.handleSubmit}>
-        //   <Title>Personal Information</Title>
-        //   <FormItem>
-        //     <Label>First Name:</Label>
-        //     <FormInput type="text" defaultValue={data.firstName} />
-        //   </FormItem>
-        //   <FormItem>
-        //     <Label>Last Name:</Label>
-        //     <FormInput type="text" defaultValue={data.lastName} />
-        //   </FormItem>
-        //   <FormItem>
-        //     <Label>Age:</Label>
-        //     <FormInput type="int" defaultValue={data.age} />
-        //   </FormItem>
-        //   <FormItem>
-        //     <Label>Phone:</Label>
-        //     <FormInput type="text" defaultValue={data.phone} />
-        //   </FormItem>
-        //   <FormItem>
-        //     <Label>Email:</Label>
-        //     <FormInput type="text" defaultValue={data.email} />
-        //   </FormItem>
-
-        //   <FormItem healthCondition>
-        //     <Label>Health Condition:</Label>
-
-        //     <HealthCondition
-        //       defaultValue={data.healthCondition}
-        //       onChange={this.handleChange}
-        //     />
-        //   </FormItem>
-
-        //   <Submit type="submit" value="Save" />
-        // </Layout>
-        role === "doctors" ? (
+        ) : role === "ROLE_DOCTOR" ? (
           <DoctorInfoForm data={data} />
         ) : (
           <PatientInfoForm data={data} />
