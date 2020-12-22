@@ -17,7 +17,7 @@ const Label = styled.label`
 
 const Error = styled.div`
   margin-top: 2px;
-  color: #e0446d;
+  color: red;
 `;
 
 const FormItem = ({
