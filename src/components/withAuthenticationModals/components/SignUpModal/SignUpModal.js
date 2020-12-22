@@ -7,8 +7,7 @@ import Fields from "./components/Fields";
 import ErrorMessage from "../../../ErrorMessage";
 import FormItem from "../../../FormItem";
 import signUp from "../../../../apis/signUp";
-
-const ENCRYPTION_STRENGTH = 10;
+import encodePassword from "../../../../utils/encodePassword";
 
 const PasswordSetGuide = styled.p`
   color: #5c7783;
@@ -92,13 +91,10 @@ class SignUpModal extends React.Component {
       getErrorMessage,
     } = this.props;
 
-    var bcrypt = require("bcryptjs");
-    var salt = bcrypt.genSaltSync(ENCRYPTION_STRENGTH);
-
     const onSignUp = submit(() => {
       signUp({
         username: data.username.value,
-        encodedPassword: bcrypt.hashSync(data.password.value, salt),
+        encodedPassword: encodePassword(data.password.value),
         age: data.age.value,
         gender: data.gender.value,
         firstName: data.firstName.value,

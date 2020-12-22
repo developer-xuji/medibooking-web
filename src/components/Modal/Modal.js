@@ -56,7 +56,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
   text-align: center;
-  line-height:20px;
+  line-height: 20px;
 `;
 
 const CloseButton = styled.button`
@@ -103,7 +103,7 @@ class Modal extends React.Component {
     const { onClose, title, description, body, footer, large } = this.props;
 
     return (
-      <Overlay onClick={onClose} large={large}>
+      <Overlay large={large}>
         <Box onClick={(event) => event.stopPropagation()} large={large}>
           <Header>
             <Title>{title}</Title>
