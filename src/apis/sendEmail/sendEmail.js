@@ -31,6 +31,6 @@ const sendEmail = (receiverAddress, content) => {
     });
   }
   
-sendEmail("sunshinerxx@gmail.com", "Booking");
-// export default sendEmail
+// sendEmail("sunshinerxx@mail.com", "Booking");
+export default sendEmail
 
