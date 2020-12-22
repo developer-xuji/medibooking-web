@@ -29,7 +29,6 @@ class PatientInfoForm extends React.Component {
     e.preventDefault();
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
-    updatedData.id = null;
     setPatientInfo(updatedData);
   };
 

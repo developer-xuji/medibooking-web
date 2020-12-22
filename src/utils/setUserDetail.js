@@ -1,12 +1,15 @@
-import fetchData from "../apis/fetchData";
+import processDate from "../apis/processData";
+import getParameterList from "./getParameterList";
 
 const setUserDetail = (role, account_id) => {
-  const url = (role === "ROLE_DOCTOR" ? "/doctors" : "/patients") + "/search";
+  const url = role === "ROLE_DOCTOR" ? "/doctors" : "/patients";
   const param = {
     name: "accountId",
     value: account_id,
   };
-  fetchData(url, param).then((response) => {
+  const parameterList = getParameterList(param);
+  processDate(url, "get", parameterList).then((response) => {
+    console.log(response);
     localStorage.setItem("USER_ID", response.id);
   });
 };

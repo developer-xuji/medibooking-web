@@ -34,6 +34,11 @@ const Logo = styled(NavItem)`
   display: flex;
 `;
 
+const Title = styled.div`
+  text-decoration: none;
+  color: ${THEME_COLOR};
+`;
+
 const Left = styled.div`
   display: flex;
   align-items: center;
@@ -60,8 +65,9 @@ const Navigation = () => {
           <Left>
             <Logo as="a" href={getRoutePath("home")}>
               <LogoDiv />
+              <Title>MediBooking</Title>
             </Logo>
-            MediBooking
+
             <Main />
           </Left>
           <Right>
