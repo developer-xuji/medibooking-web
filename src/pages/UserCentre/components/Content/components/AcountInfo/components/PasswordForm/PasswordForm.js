@@ -50,8 +50,10 @@ function PasswordForm(props) {
         onPasswordReset,
         onFinish,
         onNewFinish,
+        PasswordResetResult,
     } = props;
 
+    const resetPasswordResult = PasswordResetResult ? <StyledDiscription>Password reset success!</StyledDiscription> : null;
 
     switch (PasswordResetStatus) {
         case "show":
@@ -169,6 +171,7 @@ function PasswordForm(props) {
                                     Submit
                                     </StyledButton>
                                 </Form.Item>
+                                {resetPasswordResult}
                             </Form>
                         </Col>
                     </Row>

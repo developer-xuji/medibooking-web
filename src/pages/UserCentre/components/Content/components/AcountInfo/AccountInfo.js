@@ -17,6 +17,7 @@ class AccountInfo extends React.Component {
       username: "username",
       password: "123456",
       PasswordResetStatus: "show",
+      PasswordResetResult: false,
     };
 
     this.onFinish = this.onFinish.bind(this);
@@ -49,6 +50,9 @@ class AccountInfo extends React.Component {
     console.log(event);
     let account = {encodedPassword: bcrypt.hashSync(event.newpassword, salt)}
     putPassword([localStorage.getItem("ACCOUNT_ID")], account)
+    this.setState({
+      PasswordResetResult:true,
+    })
   };
 
   onPasswordReset(event) {
@@ -86,6 +90,7 @@ class AccountInfo extends React.Component {
         onPasswordReset={this.onPasswordReset}
         onFinish={this.onFinish}
         onNewFinish={this.onNewFinish}
+        PasswordResetResult={this.state.PasswordResetResult}
       />
     );
   }
