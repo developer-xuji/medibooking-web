@@ -19,6 +19,12 @@ const DoctorName = styled.h2`
   font-size: 30px;
 `;
 
+const FlexContainer = styled.div`
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content:center;
+`;
+
 const DividingLine = styled.div`
   display: flex;
   align-items: center;
@@ -78,9 +84,6 @@ const ImageContainer = styled.div`
   padding: 24px;
   text-align: center;
   border:1px solid black;
-  float:right;
-  position:absolute;
-  right:100px; 
 `;
 
 const BookContainer = styled.div`
@@ -90,12 +93,10 @@ const BookContainer = styled.div`
   border-radius: 4px;
   margin: 24px auto;
   width: 320px;
+  height:350px;
   padding: 24px;
   text-align: center;
   border:1px solid black;
-  position:absolute;
-  left:100px;
-  top:50px;
 `;
 
 
@@ -126,19 +127,17 @@ const DesContainer = styled.div`
   background-color:white;
   padding: 24px;
   text-align: center;
-  position:absolute;
-  left:500px;
   border:1px;
 `;
 
 const Profile = (props) => {
   let currentDoctor = props.Doctor;
-  console.log(currentDoctor);
   
     return (
       <>
           <ParentContainer>
           <Container>
+          <FlexContainer>
           <ImageContainer>
             <img src={image} alt="image" />
             <DoctorName>
@@ -146,8 +145,18 @@ const Profile = (props) => {
           </DoctorName>
           </ImageContainer>
           <DesContainer>
-            {`${currentDoctor.Description}`}
+          {currentDoctor.Description}
           </DesContainer>
+          
+          <BookContainer>
+            <h2>Medibooking</h2>
+            <h3>135 Lonsdale Street, Melbourne</h3>
+            <h3>Phone:xxxxxxxx</h3>
+            <h3>Email:xxxxxx</h3>
+            <h3>Open: 8:00am-8:00pm</h3>
+            <BookButton>Book Appointment</BookButton>
+          </BookContainer>
+          </FlexContainer>
           <center>
           <InfoTable>
             <td>
@@ -158,15 +167,6 @@ const Profile = (props) => {
             </td>
           </InfoTable>
           </center>
-          <BookContainer>
-            <h2>Medibooking</h2>
-            <h3>135 Lonsdale Street, Melbourne</h3>
-            <h3>Phone:xxxxxxxx</h3>
-            <h3>Email:xxxxxx</h3>
-            <h3>Open: 8:00am-8:00pm</h3>
-            <BookButton>Book Appointment</BookButton>
-          </BookContainer>
-          
           
           <DividingLine />
           
