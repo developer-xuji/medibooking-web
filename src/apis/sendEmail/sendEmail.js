@@ -1,5 +1,8 @@
 
 const sendEmail = (receiverAddress, content) => {
+
+    const user = 'sunshinerxx@gmail.com'
+    const pass = 'whAjnqp5g9C8BRJQ'
     const nodemailer = require('nodemailer')
   
     const transporter = nodemailer.createTransport({
@@ -7,16 +10,15 @@ const sendEmail = (receiverAddress, content) => {
       port: 587,
       secure: false,
       auth: {
-        user: 'sunshinerxx@gmail.com',
-        pass: 'whAjnqp5g9C8BRJQ'
+        user: user,
+        pass: pass
       }
     })
   
     const mailOptions = {
-      from: 'info@pepisandbox.com',
+      from: 'info@MediBooking.com',
       to: `${receiverAddress}`,
-      subject: 'Sending Email using Node.js',
-      text: 'That was easy!',
+      subject: 'Subject',
       html: `<h1>${content}</h1>`
     };
     
@@ -29,6 +31,6 @@ const sendEmail = (receiverAddress, content) => {
     });
   }
   
-//   sendEmail("sunshinerxx@gmail.com", "Hello");
-export default sendEmail
+sendEmail("sunshinerxx@gmail.com", "Booking");
+// export default sendEmail
 
