@@ -6,7 +6,7 @@ import Main from "./components/Main";
 import WithAuthenticationModalsAuthentication from "./components/Authentication";
 import NavItem from "./components/NavItem";
 import MobileNav from "./components/MobileNav";
-import { LOGO } from "../../constants";
+import { LOGO, THEME_COLOR } from "../../constants";
 import { getRoutePath } from "../../utils/getRoute";
 
 const Layout = styled.div`
@@ -27,7 +27,7 @@ const Wapper = styled.div`
 `;
 
 const Logo = styled(NavItem)`
-  color: #008fb4;
+  color: ${THEME_COLOR};
   text-decoration: none;
   padding-left: 10px;
   padding-right: 0;
@@ -49,6 +49,7 @@ const LogoDiv = styled.div`
   background-size: cover;
   width: 40px;
   height: 40px;
+  margin-right: 10px;
 `;
 
 const Navigation = () => {
