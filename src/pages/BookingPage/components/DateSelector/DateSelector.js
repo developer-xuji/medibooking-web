@@ -1,6 +1,7 @@
 import React from "react";
 import { DatePicker } from "antd";
 import styled from "styled-components";
+import moment from "moment";
 
 const Layout = styled.div`
   display: flex;
@@ -12,7 +13,12 @@ const DateSelector = ({ title, onSelect }) => {
   return (
     <Layout>
       <h3>{title}</h3>
-      <DatePicker size="default" format={FORMAT} onChange={onSelect} />
+      <DatePicker
+        size="default"
+        disabledDate={(current) => current && current < moment().endOf("day")}
+        format={FORMAT}
+        onChange={onSelect}
+      />
     </Layout>
   );
 };
