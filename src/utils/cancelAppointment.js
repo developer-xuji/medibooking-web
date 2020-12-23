@@ -1,12 +1,12 @@
 import processData from "../apis/processData";
 
 const cancelAppointment = (appointmentId) => {
-  processData(
+  return processData(
     "/management/appointments/" + appointmentId,
     "put",
     null,
     null
-  ).then((response) => console.log(response));
+  ).then((response) => response);
 };
 
 export default cancelAppointment;

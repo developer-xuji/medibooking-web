@@ -4,6 +4,8 @@ import styled from "styled-components";
 import avatar from "../../../../../../../../../../../../assets/images/avatar.png";
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
 import AppointmentDetailModal from "../AppointmentDetailModal";
+import cancelAppointment from "../../../../../../../../../../../../utils/cancelAppointment";
+
 const role = localStorage.getItem("ROLE");
 const Avatar = styled.img`
   height: 100px;
@@ -124,6 +126,11 @@ class BookingItem extends React.Component {
     this.setState({ showDetailModal: false });
   }
 
+  handleOnCancelClick() {
+    const bookinig = this.props.booking;
+    cancelAppointment(bookinig.id).then(() => window.location.reload());
+  }
+
   render() {
     const { showDetailModal } = this.state;
     const { booking } = this.props;
@@ -163,7 +170,12 @@ class BookingItem extends React.Component {
 
           <Options>
             <Button onClick={() => this.setShowDetailModal()}> Detail</Button>
-            {!booking.isCancelled && <Button cancel> Cancel</Button>}
+            {!booking.isCancelled && (
+              <Button cancel onClick={() => this.handleOnCancelClick()}>
+                {" "}
+                Cancel
+              </Button>
+            )}
           </Options>
           {booking.isCancelled && <Cancelled src={cancelledImage} />}
           {showDetailModal && (

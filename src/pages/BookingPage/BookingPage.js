@@ -6,6 +6,7 @@ import DoctorSelector from "./components/DoctorSelector";
 import DateSelector from "./components/DateSelector";
 import addAppointment from "../../utils/addAppointment";
 import getAppointmentByDoctorAndDate from "../../utils/getAppointmentByDoctorAndDate";
+import { getRoutePath } from "../../utils/getRoute";
 
 const Layout = styled.div`
   display: flex;
@@ -81,6 +82,7 @@ class BookingPage extends React.Component {
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
         : addAppointment(appointment);
+      window.location.href = getRoutePath("user_center/manageBookings");
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"

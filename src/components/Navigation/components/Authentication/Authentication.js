@@ -87,7 +87,6 @@ class Authentication extends React.Component {
               onClick={() => {
                 localStorage.clear();
                 this.forceUpdate();
-                console.log("Log out");
               }}
             >
               Log Out
