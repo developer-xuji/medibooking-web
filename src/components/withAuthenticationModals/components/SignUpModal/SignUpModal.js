@@ -75,10 +75,18 @@ class SignUpModal extends React.Component {
   setErrorMessage(message) {
     this.setState({
       errorMessage: message,
+      signUpFailMessage: "",
     });
   }
+
+  setSignUpFailMessage(message) {
+    this.setState({
+      signUpFailMessage: message,
+    });
+  }
+
   render() {
-    const { errorMessage } = this.state;
+    const { errorMessage, signUpFailMessage } = this.state;
 
     const {
       onClose,
@@ -103,7 +111,7 @@ class SignUpModal extends React.Component {
         .then((data) => {
           onClose();
         })
-        .catch((error) => console.log(error.response));
+        .catch(()=>{this.setSignUpFailMessage("Server error, please try again later!")});
     });
 
     return (
@@ -127,7 +135,10 @@ class SignUpModal extends React.Component {
                   id={f.key}
                   type={f.type}
                   placeholder={f.placeholder}
-                  onChange={setData(f.key)}
+                  onChange={(event) => {
+                    setData(event, f.key);
+                    signUpFailMessage && this.setSignUpFailMessage("");
+                  }}
                 />
               </FormItem>
             ))}
@@ -135,7 +146,7 @@ class SignUpModal extends React.Component {
               required
               id="gender"
               form="signUpForm"
-              onChange={setData("gender")}
+              onChange={(event)=>{setData(event,"gender")}}
             >
               <option value="" disabled selected hidden>
                 Please Choose your gender...
@@ -147,6 +158,11 @@ class SignUpModal extends React.Component {
               Use at least 8 characters, avoid dictionary words & common
               passwords.
             </PasswordSetGuide>
+            {signUpFailMessage &&(
+              <FormItem>
+                <ErrorMessage>{signUpFailMessage}</ErrorMessage>
+              </FormItem>
+            )}
             <FormItem>
               <SubmitButton disabled={!valid} block size="lg" variant="success">
                 SIGN UP
