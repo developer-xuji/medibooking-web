@@ -58,6 +58,7 @@ class BookingPage extends React.Component {
       errorMessage: "",
       invalidAppointments: [],
     };
+    this.handleSelector = this.handleSelector.bind(this);
     this.handleBookingClick = this.handleBookingClick.bind(this);
     this.handleTimeSelector = this.handleTimeSelector.bind(this);
     this.handleDoctorSelector = this.handleDoctorSelector.bind(this);
@@ -89,13 +90,24 @@ class BookingPage extends React.Component {
       );
   }
 
-  handleTimeSelector(key) {
-    return (event) => {
-      this.setState({
-        [key]: event.target.value,
-        endTime: event.target.value,
-      });
-    };
+  handleSelector(key) {
+    switch (key) {
+      case "doctor":
+        return (doctor) => this.handleDoctorSelector(doctor);
+      case "date":
+        return (date) => this.handleDateSelector(date);
+      case "time":
+        return (event) => this.handleTimeSelector(event);
+      default:
+        return null;
+    }
+  }
+
+  handleTimeSelector(event) {
+    this.setState({
+      startTime: event.target.value,
+      endTime: event.target.value,
+    });
   }
 
   setInvalidTime() {
@@ -105,30 +117,26 @@ class BookingPage extends React.Component {
     });
   }
 
-  handleDoctorSelector(key) {
-    return (doctor) => {
-      const { date } = this.state;
-      getAppointmentByDoctorAndDate(doctor.id, date).then((appointmentList) => {
-        this.setState({
-          [key]: doctor,
-          invalidAppointments: appointmentList,
-        });
+  handleDoctorSelector(doctor) {
+    const { date } = this.state;
+    getAppointmentByDoctorAndDate(doctor.id, date).then((appointmentList) => {
+      this.setState({
+        doctor: doctor,
+        invalidAppointments: appointmentList,
       });
-    };
+    });
   }
 
-  handleDateSelector(key) {
-    return (date) => {
-      const doctorId = this.state.doctor === null ? 0 : this.state.doctor.id;
-      getAppointmentByDoctorAndDate(doctorId, date.format("YYYY-MM-DD")).then(
-        (appointmentList) => {
-          this.setState({
-            [key]: date.format("YYYY-MM-DD"),
-            invalidAppointments: appointmentList,
-          });
-        }
-      );
-    };
+  handleDateSelector(date) {
+    const doctorId = this.state.doctor === null ? 0 : this.state.doctor.id;
+    getAppointmentByDoctorAndDate(doctorId, date.format("YYYY-MM-DD")).then(
+      (appointmentList) => {
+        this.setState({
+          date: date.format("YYYY-MM-DD"),
+          invalidAppointments: appointmentList,
+        });
+      }
+    );
   }
 
   handleNoteChange(event) {
@@ -167,15 +175,15 @@ class BookingPage extends React.Component {
             selected={
               doctor === null ? "" : doctor.firstName + " " + doctor.lastName
             }
-            onSelect={this.handleDoctorSelector("doctor")}
+            onSelect={this.handleSelector("doctor")}
           />
           <DateSelector
             title="Select Date"
-            onSelect={this.handleDateSelector("date")}
+            onSelect={this.handleSelector("date")}
           />
           <TimeSelector
             title="Select Time "
-            onSelect={this.handleTimeSelector("startTime")}
+            onSelect={this.handleSelector("time")}
             doctorId={doctor === null ? "" : doctor.id}
             date={date}
             invalidAppointments={invalidAppointments}
