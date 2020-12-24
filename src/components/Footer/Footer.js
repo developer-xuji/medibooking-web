@@ -3,18 +3,28 @@ import styled from "styled-components";
 import { LOGO } from "../../constants";
 import { FOOT_BACKGROUND } from "../../constants";
 import Specialists from "./Components/Specialists";
+import Contact from "./Components/Contact";
 import Title from "./Components/Title";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
+import { faMapMarkerAlt, faPhoneSquareAlt ,faEnvelope, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
+library.add( faFacebook, faTwitter, faInstagram, faMapMarkerAlt, faPhoneSquareAlt ,faEnvelope, faAngleRight );
 
 const Layout = styled.div`
   background: url(${FOOT_BACKGROUND});
   background-size: cover;
   width: 100%;
-  height: 300px;
+  height: 400px;
   margin-top: 50px;
 
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+`;
+
+const LogoContainer = styled.div`
+  width: 20%;
 `;
 
 const Logo = styled.div`
@@ -22,12 +32,25 @@ const Logo = styled.div`
   background-size: cover;
   width: 100px;
   height: 100px;
+  margin: 0 auto;
+`;
+
+const InfoContainer = styled.div`
+  width: 75%;
+  display: flex;
+  justify-content: space-around;
+  margin-right: 3em;
+  align-items: center;
 `;
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  height: 200px;
+  padding: 15px 25px;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 5px; 
 `;
 
 const LINK_LIST = [
@@ -48,13 +71,18 @@ const LINK_LIST = [
 const Footer = () => {
   return (
     <Layout>
-      <Logo />
-      <Info>
-        {LINK_LIST.map((l) => (
-          <Title key={l.key} titleName={l.contains} />
-        ))}
-      </Info>
-      <Specialists></Specialists>
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
+      <InfoContainer>
+        <Info>
+          {LINK_LIST.map((l) => (
+            <Title key={l.key} titleName={l.contains} />
+          ))}
+        </Info>
+        <Specialists></Specialists>
+        <Contact/>
+      </InfoContainer>
     </Layout>
   );
 };

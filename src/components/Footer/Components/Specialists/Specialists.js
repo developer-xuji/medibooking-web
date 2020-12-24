@@ -6,6 +6,10 @@ const Layout = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  padding: 20px 25px;
+  border-radius: 6px;
+  height: 320px
 `;
 
 const UntitleList = styled.ul`
@@ -20,13 +24,15 @@ const UntitleList = styled.ul`
   justify-content: space-between;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  padding-left: 27px;
 `;
 
 const Item = styled.li`
-  width: 70%;
+  width: 100%;
   color: white;
   display: block;
-  margin: 10px;
+  margin: 15px 0;
+  font-size: 15px
 `;
 
 const LIST = [
