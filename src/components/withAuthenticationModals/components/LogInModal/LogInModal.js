@@ -42,7 +42,7 @@ class LoginModal extends React.Component {
 
     this.state = {
       errorMessage: "",
-      loginFailMessage: "",
+      logInFailMessage: "",
     };
   }
 
@@ -54,7 +54,7 @@ class LoginModal extends React.Component {
 
   setLoginFailMessage(message) {
     this.setState({
-      loginFailMessage: message,
+      logInFailMessage: message,
     });
   }
 
@@ -89,7 +89,7 @@ class LoginModal extends React.Component {
                   onClose();
                   onLogIn(JSON.parse(response));
                 })
-                .catch(this.setLoginFailMessage("Wrong username or password!"));
+                .catch(()=>{this.setLoginFailMessage("Wrong username or password!")});
             })}
           >
             {errorMessage && (
@@ -110,11 +110,10 @@ class LoginModal extends React.Component {
                     setData(event, f.key);
                     loginFailMessage && this.setLoginFailMessage("");
                   }}
-                  // onChange={setData(f.key)}
                 />
               </FormItem>
             ))}
-            {loginFailMessage && (
+            {loginFailMessage &&(
               <FormItem>
                 <ErrorMessage>{loginFailMessage}</ErrorMessage>
               </FormItem>

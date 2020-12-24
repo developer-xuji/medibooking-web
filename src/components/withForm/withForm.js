@@ -79,8 +79,6 @@ const withForm = (Fields) => (Component) => {
       const { data, formDirty } = this.state;
       const valid = this.valid();
 
-      console.log(data);
-
       return (
         <Component
           {...this.props}
