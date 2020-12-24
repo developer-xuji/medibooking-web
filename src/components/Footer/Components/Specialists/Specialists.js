@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Title from "../Title";
+import { MOBILE_WIDTH } from "../../../../constants";
+import { SMALL_BREAKPOINT } from "../../../../constants";
 
 const Layout = styled.div`
   display: flex;
@@ -9,7 +11,12 @@ const Layout = styled.div`
   border: 1px solid rgba(200, 200, 200, 0.3);
   padding: 20px 25px;
   border-radius: 6px;
-  height: 320px
+  height: 320px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    padding: 10px 9px;
+    height: 220px;
+    font-size: 12px;
+  }
 `;
 
 const UntitleList = styled.ul`
@@ -32,7 +39,11 @@ const Item = styled.li`
   color: white;
   display: block;
   margin: 15px 0;
-  font-size: 15px
+  font-size: 15px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    font-size: 9px;
+    margin: 9px 0;
+  }
 `;
 
 const LIST = [

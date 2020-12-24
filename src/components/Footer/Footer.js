@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { LOGO } from "../../constants";
 import { FOOT_BACKGROUND } from "../../constants";
+import { MOBILE_WIDTH } from "../../constants";
+import { SMALL_BREAKPOINT } from "../../constants";
 import Specialists from "./Components/Specialists";
 import Contact from "./Components/Contact";
 import Title from "./Components/Title";
@@ -21,10 +23,16 @@ const Layout = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    height: 300px
+}
 `;
 
 const LogoContainer = styled.div`
-  width: 20%;
+  width: 17%;
+  @media screen and (max-width: 1224px) {
+    display:none;
+  }
 `;
 
 const Logo = styled.div`
@@ -41,6 +49,10 @@ const InfoContainer = styled.div`
   justify-content: space-around;
   margin-right: 3em;
   align-items: center;
+  @media screen and (max-width: 1224px) {
+    width: 100%;
+    margin-right: 0em;
+  }
 `;
 
 const Info = styled.div`
@@ -50,7 +62,10 @@ const Info = styled.div`
   height: 200px;
   padding: 15px 25px;
   border: 1px solid rgba(200, 200, 200, 0.3);
-  border-radius: 5px; 
+  border-radius: 5px;
+  @media screen and (max-width: ${SMALL_BREAKPOINT}) {
+    display:none
+  } 
 `;
 
 const LINK_LIST = [

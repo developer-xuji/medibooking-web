@@ -2,12 +2,18 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from "../Title";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MOBILE_WIDTH } from "../../../../constants";
 
 const Layout = styled.div`
     border: 1px solid rgba(200, 200, 200, 0.3);
     padding: 20px 25px;
     border-radius: 6px;
     height: 320px;
+    @media screen and (max-width: ${MOBILE_WIDTH}) {
+        padding: 10px 9px;
+        height: 220px;
+        font-size: 12px;
+      }
 `;
 
 const ContactList = styled.ul`
@@ -20,14 +26,21 @@ const ContactItem = styled.li`
     list-style: none;
     margin: 12px 0 0 3px;
     line-height: 1.8em;
-    padding:2px 1em;
+    padding: 2px 1em;
+    @media screen and (max-width: ${MOBILE_WIDTH}) {
+        font-size: 10px;
+    }
 `;
 
 const MediaList = styled.ul`
     display: flex;
     padding-left: 0;
     justify-content: space-around;
-    margin-top: 3.1em
+    margin-top: 3.1em;
+    @media screen and (max-width: ${MOBILE_WIDTH}) {
+        font-size: 10px;
+        margin-top: 1.9em;
+    }
 `;
 
 const IconItem = styled.li`
@@ -53,18 +66,9 @@ const LIST_CONTACT = [
 ];
 
 const LIST_ICON = [
-    {
-        key: "facebook",
-        contains: "facebook"
-    },
-    {
-        key: "twitter",
-        contains: "twitter"
-    },
-    {
-        key: "instagram",
-        contains: "instagram"
-    },
+    "facebook",
+    "twitter",
+    "instagram",
 ];
 
 const Contact = () => {
@@ -83,9 +87,9 @@ const Contact = () => {
         </ContactList>
         <MediaList>
             {LIST_ICON.map((l) => (
-                <IconItem key={l.key}>
+                <IconItem key={l}>
                     <FontAwesomeIcon
-                    icon={['fab', l.contains]}
+                    icon={['fab', l]}
                     color="white"
                     size="3x"
                     />

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MOBILE_WIDTH } from "../../../../constants";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
@@ -25,6 +26,12 @@ const Layout = styled.div`
     cursor: pointer;
     h3, svg {
       color: #201309;
+    }
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    h3 {
+      font-size: 1.1em
     }
   }
 `;
