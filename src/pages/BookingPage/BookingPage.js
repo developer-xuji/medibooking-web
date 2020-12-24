@@ -129,14 +129,18 @@ class BookingPage extends React.Component {
 
   handleDateSelector(date) {
     const doctorId = this.state.doctor === null ? 0 : this.state.doctor.id;
-    getAppointmentByDoctorAndDate(doctorId, date.format("YYYY-MM-DD")).then(
-      (appointmentList) => {
+    getAppointmentByDoctorAndDate(doctorId, date.format("YYYY-MM-DD"))
+      .then((appointmentList) => {
         this.setState({
           date: date.format("YYYY-MM-DD"),
           invalidAppointments: appointmentList,
         });
-      }
-    );
+      })
+      .catch(() => {
+        this.setState({
+          date: date.format("YYYY-MM-DD"),
+        });
+      });
   }
 
   handleNoteChange(event) {

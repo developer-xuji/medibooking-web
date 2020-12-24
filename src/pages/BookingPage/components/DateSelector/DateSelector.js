@@ -15,7 +15,9 @@ const DateSelector = ({ title, onSelect }) => {
       <h3>{title}</h3>
       <DatePicker
         size="default"
-        disabledDate={(current) => current && current < moment().endOf("day")}
+        disabledDate={(current) =>
+          current < moment().subtract(1, "days").endOf("day")
+        }
         format={FORMAT}
         onChange={onSelect}
       />

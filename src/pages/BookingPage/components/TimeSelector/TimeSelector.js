@@ -3,6 +3,8 @@ import styled from "styled-components";
 import "antd/dist/antd.css";
 import { Radio } from "antd";
 import { APPOINTMENT_TIMES } from "../../../../constants";
+import { TIMES } from "../../../../constants";
+import moment from "moment";
 
 const Layout = styled.div`
   display: flex;
@@ -10,45 +12,42 @@ const Layout = styled.div`
   max-width: 100%;
 `;
 
-class TimeSelector extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const isTimeExpired = (time, date) => {
+  if (date !== moment().format("YYYY-MM-DD")) return false;
+  const { hour } = time;
+  const currentHour = parseInt(moment().format("HH"));
+  return parseInt(hour) < currentHour || parseInt(hour) === currentHour;
+};
 
+class TimeSelector extends React.Component {
   render() {
-    const { title, onSelect, invalidAppointments } = this.props;
+    const { title, onSelect, invalidAppointments, date } = this.props;
     const invalidTime = [];
     invalidAppointments.forEach((appointment) => {
       invalidTime.push(appointment.startingTime);
     });
-    console.log(invalidTime);
+
     return (
       <Layout>
         <h3>{title}</h3>
         <Radio.Group onChange={onSelect}>
-          {APPOINTMENT_TIMES.map((time) => {
+          {TIMES(8, 20).map((time) => {
             let valid = true;
+            const timeString = time.hour + ":" + time.minute;
             invalidTime.forEach((t) => {
-              if (t === time + ":00") valid = false;
+              if (t === timeString + ":00") valid = false;
             });
 
-            if (valid)
-              return (
-                <Radio.Button key={time} value={time} style={{ margin: 8 }}>
-                  {time}
-                </Radio.Button>
-              );
-            else
-              return (
-                <Radio.Button
-                  key={time}
-                  value={time}
-                  disabled={true}
-                  style={{ margin: 8 }}
-                >
-                  {time}
-                </Radio.Button>
-              );
+            return (
+              <Radio.Button
+                key={time.key}
+                value={timeString}
+                disabled={!valid || isTimeExpired(time, date)}
+                style={{ margin: 8 }}
+              >
+                {timeString}
+              </Radio.Button>
+            );
           })}
         </Radio.Group>
       </Layout>
