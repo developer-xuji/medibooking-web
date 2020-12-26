@@ -1,8 +1,14 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import Profile from "./components/Profile";
-import Contact from "./components/Contact";
-import Link from "./components/Link";
+// import Profile from "./components/Profile";
+// import Contact from "./components/Contact";
+// import Link from "./components/Link";
+import InfoHeader from "./components/InfoHeader";
+import InfoBody from "./components/InfoBody";
+
+import { connect } from 'react-redux'
+import { loadDoctor } from '../../actions/doctor'
+
 
 import {
   BrowserRouter as Router,
@@ -46,7 +52,7 @@ const Container = styled.div`
 `;
 
 function B2F(doctorObject) {
-  console.log(doctorObject);
+  // console.log(doctorObject);
   let returnedDoctorObject = {};
   let SpecializationList = [];
   let LanguageList = [];
@@ -72,40 +78,42 @@ function B2F(doctorObject) {
 
 class DoctorInfo extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      Doctor : {}
-    };
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     Doctor: {}
+  //   };
 
-  }
+  // }
 
   componentDidMount() {
-    
-    console.log(`http://localhost:8080/doctors/${this.props.match.params.DoctorsID}`);
-    fetch(`http://localhost:8080/doctors/${this.props.match.params.DoctorsID}`,{
-      method:'GET',
-      headers:{
-        'Content-Type':'application/json;charset=UTF-8'
-      },
-      mode:'cors',
-      cache:'default'
-    })
-    .then(res =>res.json())
-    .then((data) => {
-      this.setState({
-        Doctor: B2F(data),
-      });
-    });
-    Loading = false;
+
+    const { loadDoctor } = this.props
+    loadDoctor(this.props.match.params.DoctorsID)
+    // fetch(`http://localhost:8080/doctors/${this.props.match.params.DoctorsID}`, {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'application/json;charset=UTF-8'
+    //   },
+    //   mode: 'cors',
+    //   cache: 'default'
+    // })
+    //   .then(res => res.json())
+    //   .then((data) => {
+    //     this.setState({
+    //       Doctor: B2F(data),
+    //     });
+    //   });
+    // Loading = false;
   }
 
-  componentDidUpdate() {
-    Loading = true;
-  }
+  // componentDidUpdate() {
+  //   Loading = true;
+  // }
 
   render() {
-    if (Loading) {
+    const { loading, doctor } = this.props
+    if (loading) {
       return (
         <DivLoader>
           <SvgLoader viewBox="0 0 100 100" width="10em" height="10em">
@@ -117,10 +125,25 @@ class DoctorInfo extends React.Component {
     else {
       return (
         <Container>
-          <Profile Doctor={this.state.Doctor}/>
+          <InfoHeader name={doctor.firstName + " " + doctor.lastName} />
+          <InfoBody description={doctor.description} languages={doctor.languages} specializations={doctor.specializations}/>
+          {/* <Profile Doctor={this.state.Doctor}/> */}
         </Container>
       )
     }
   }
 }
-export default DoctorInfo;
+
+const mapStateToProps = (state) => {
+  const { doctor: { loading, doctor } } = state
+  return {
+    loading,
+    doctor
+  }
+}
+
+const mapActionsToProps = {
+  loadDoctor,
+}
+
+export default connect(mapStateToProps, mapActionsToProps)(DoctorInfo);

@@ -26,6 +26,11 @@ import doc5_pic from "./assets/images/gallary_doctor5.jpg"
 import user_avatar1 from "./assets/images/user_avatar1.svg"
 import user_avatar2 from "./assets/images/user_avatar2.svg"
 import quote_icon from "./assets/images/quote.svg"
+import doc_header_pic from "./assets/images/Doc_HeaderImg.jpg"
+import address_icon from "./assets/images/address.svg"
+import phone_icon from "./assets/images/phone-call.svg"
+import email_icon from "./assets/images/email.svg"
+import open_icon from "./assets/images/open.svg"
 
 
 export const THEME_COLOR = "#008fb4";
@@ -43,6 +48,7 @@ export const PHARMACY_ICON = pharmacy_icon;
 export const OPTOMETRY_ICON = optometry_icon;
 export const AVATAR_ICON = avatar_icon;
 export const MOBILE_WIDTH = "1000px";
+//for front page
 export const JUMBOTRON_PIC = jumbotron_pic;
 export const DATA_ADS_PIC = data_ads_pic;
 export const HOSPITAL_REG_ICON = hospital_reg_icon;
@@ -60,6 +66,18 @@ export const SMALL_BREAKPOINT = "767px";
 export const USER_AVATAR1 = user_avatar1;
 export const USER_AVATAR2 = user_avatar2;
 export const QUOTE_ICON = quote_icon;
+//for doc info page
+export const DOC_HEADER_PIC = doc_header_pic;
+export const ADDRESS_ICON = address_icon;
+export const PHONE_ICON = phone_icon;
+export const EMAIL_ICON = email_icon;
+export const OPEN_ICON = open_icon;
+export const CLINIC_INFO = {
+  address: "135 Lonsdale Street, Melbourne",
+  phone: "0412334897",
+  email: "medibooking@gmail.com",
+  openTime: "8:00am-8:00pm"
+};
 export const APPOINTMENT_DURATION = 15;
 
 export const APPOINTMENT_TIMES = [
