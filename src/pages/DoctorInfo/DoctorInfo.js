@@ -5,19 +5,20 @@ import styled, { keyframes } from "styled-components";
 // import Link from "./components/Link";
 import InfoHeader from "./components/InfoHeader";
 import InfoBody from "./components/InfoBody";
+import Recommendation from "./components/Recommendation"
 
 import { connect } from 'react-redux'
 import { loadDoctor } from '../../actions/doctor'
 
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   useParams
+// } from "react-router-dom";
 
-let Loading = true;
+// let Loading = true;
 
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
@@ -46,34 +47,42 @@ const Container = styled.div`
   background: #fff;
   box-shadow: 0 1px 10px rgba(92, 119, 131, 0.15);
   border-radius: 4px;
-  margin: 24px auto;
+  // margin: 24px auto;
   padding: 24px;
   text-align: center;
 `;
 
-function B2F(doctorObject) {
-  // console.log(doctorObject);
-  let returnedDoctorObject = {};
-  let SpecializationList = [];
-  let LanguageList = [];
-  doctorObject.specializations.map((specialization) => {
-    SpecializationList.push(specialization.specializationName);
-  });
-  doctorObject.languages.map((language) => {
-    LanguageList.push(language.languageName);
-  });
-  returnedDoctorObject = {
-    DoctorsID: doctorObject.id,
-    FirstName: doctorObject.firstName,
-    SecondName: doctorObject.lastName,
-    Age: doctorObject.age,
-    Gender: doctorObject.gender,
-    Description: doctorObject.description,
-    Specialization: SpecializationList,
-    Language: LanguageList,
+const BodyContainer = styled.div`
+  display: flex;
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
   }
-  return returnedDoctorObject;
-}
+`
+
+// function B2F(doctorObject) {
+//   // console.log(doctorObject);
+//   let returnedDoctorObject = {};
+//   let SpecializationList = [];
+//   let LanguageList = [];
+//   doctorObject.specializations.map((specialization) => {
+//     SpecializationList.push(specialization.specializationName);
+//   });
+//   doctorObject.languages.map((language) => {
+//     LanguageList.push(language.languageName);
+//   });
+//   returnedDoctorObject = {
+//     DoctorsID: doctorObject.id,
+//     FirstName: doctorObject.firstName,
+//     SecondName: doctorObject.lastName,
+//     Age: doctorObject.age,
+//     Gender: doctorObject.gender,
+//     Description: doctorObject.description,
+//     Specialization: SpecializationList,
+//     Language: LanguageList,
+//   }
+//   return returnedDoctorObject;
+// }
 
 
 class DoctorInfo extends React.Component {
@@ -125,8 +134,13 @@ class DoctorInfo extends React.Component {
     else {
       return (
         <Container>
-          <InfoHeader name={doctor.firstName + " " + doctor.lastName} />
+          <InfoHeader id={doctor.id} name={doctor.firstName + " " + doctor.lastName} gender={doctor.gender}/>
+          <BodyContainer>
           <InfoBody description={doctor.description} languages={doctor.languages} specializations={doctor.specializations}/>
+          <Recommendation doctorID={doctor.id} specializationID={doctor.specializations[0].id}/>
+          </BodyContainer>
+          
+
           {/* <Profile Doctor={this.state.Doctor}/> */}
         </Container>
       )

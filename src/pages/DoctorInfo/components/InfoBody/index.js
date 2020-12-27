@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import TagArea from "./TagArea"
+import MapArea from "./MapArea"
 import { THEME_COLOR } from "../../../../constants"
 import { ADDRESS_ICON } from "../../../../constants"
 import { PHONE_ICON } from "../../../../constants"
@@ -13,7 +14,7 @@ const Layout = styled.div`
   margin: 12px;
   width: 70%;
   text-align: left;
-  padding: 12px 100px;
+  padding: 12px 48px 12px 100px;
 
   h1 {
     color: #5b7189;
@@ -32,9 +33,15 @@ const Layout = styled.div`
     height: 30px;
     margin-right: 18px;
   }
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    padding: 12px;
+  }
 `
 const PracInfoArea = styled.div`
 `
+
 
 const InfoBody = ({ description, languages, specializations }) => {
   return <Layout>
@@ -47,6 +54,7 @@ const InfoBody = ({ description, languages, specializations }) => {
     <p><img src={PHONE_ICON} alt="phone" />{CLINIC_INFO.phone}</p>
     <p><img src={EMAIL_ICON} alt="email" />{CLINIC_INFO.email}</p>
     <p><img src={OPEN_ICON} alt="open" />{CLINIC_INFO.openTime}</p>
+    <MapArea />
   </Layout>
 }
 

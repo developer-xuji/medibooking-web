@@ -27,10 +27,13 @@ import user_avatar1 from "./assets/images/user_avatar1.svg"
 import user_avatar2 from "./assets/images/user_avatar2.svg"
 import quote_icon from "./assets/images/quote.svg"
 import doc_header_pic from "./assets/images/Doc_HeaderImg.jpg"
+import male_icon from "./assets/images/male.svg"
+import female_icon from "./assets/images/female.svg"
 import address_icon from "./assets/images/address.svg"
 import phone_icon from "./assets/images/phone-call.svg"
 import email_icon from "./assets/images/email.svg"
 import open_icon from "./assets/images/open.svg"
+import location_icon from "./assets/images/placeholder.svg"
 
 
 export const THEME_COLOR = "#008fb4";
@@ -68,6 +71,8 @@ export const USER_AVATAR2 = user_avatar2;
 export const QUOTE_ICON = quote_icon;
 //for doc info page
 export const DOC_HEADER_PIC = doc_header_pic;
+export const MALE_ICON = male_icon;
+export const FEMALE_ICON = female_icon;
 export const ADDRESS_ICON = address_icon;
 export const PHONE_ICON = phone_icon;
 export const EMAIL_ICON = email_icon;
@@ -76,8 +81,12 @@ export const CLINIC_INFO = {
   address: "135 Lonsdale Street, Melbourne",
   phone: "0412334897",
   email: "medibooking@gmail.com",
-  openTime: "8:00am-8:00pm"
+  openTime: "8:00am-8:00pm",
+  latitude: -37.812230,
+  longitude: 144.962630
 };
+export const LOCATION_ICON =location_icon;
+
 export const APPOINTMENT_DURATION = 15;
 
 export const APPOINTMENT_TIMES = [
