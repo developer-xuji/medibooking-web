@@ -1,4 +1,5 @@
 import React from "react";
+import setDoctorInfo from "../../../../../../../../utils/setDoctorInfo";
 import {
   Layout,
   FormItem,
@@ -8,7 +9,7 @@ import {
   GenderSelector,
   Title,
   Submit,
-} from "../../../styling";
+} from "../../../formStyle";
 import MultiSelector from "./components/MultiSelector";
 
 class DoctorInfoForm extends React.Component {
@@ -33,6 +34,14 @@ class DoctorInfoForm extends React.Component {
     updatedData.age = Number(updatedData.age);
 
     console.log(updatedData);
+    setDoctorInfo(updatedData).then((res) => {
+      if (res.success === false) {
+        setTimeout(() => {}, 300);
+      } else {
+        window.location.reload();
+        console.log(`Your changes have been saved.`);
+      }
+    });
   };
 
   // onFinish = (values) => {
@@ -68,6 +77,22 @@ class DoctorInfoForm extends React.Component {
   //     });}
 
   handleSelectorChange = (value, selector) => {
+    // if (allOptions && selector === "languages") {
+    //   value.map((currentOption) => {
+    //     allOptions.find((language) => language.languageName === currentOption);
+    //   });
+    //   console.log(value);
+    // }
+
+    // if (allOptions && selector === "specializations") {
+    //   value.map((currentOption) => {
+    //     allOptions.find(
+    //       (specialization) =>
+    //         specialization.specializationName === currentOption
+    //     );
+    //   });
+    //   console.log(value);
+    // }
     selector === "languages"
       ? this.setState({
           languages: value,

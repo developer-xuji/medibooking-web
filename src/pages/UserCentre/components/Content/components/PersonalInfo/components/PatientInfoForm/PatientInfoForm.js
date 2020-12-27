@@ -7,7 +7,7 @@ import {
   GenderSelector,
   Title,
   Submit,
-} from "../../../styling";
+} from "../../../formStyle";
 import setPatientInfo from "../../../../../../../../utils/setPatientInfo";
 
 class PatientInfoForm extends React.Component {
@@ -29,9 +29,18 @@ class PatientInfoForm extends React.Component {
     e.preventDefault();
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
-    setPatientInfo(updatedData).then(() => {
-      this.forceUpdate();
-    });
+
+    // setPatientInfo(updatedData).then();
+    setPatientInfo(updatedData)
+      // .then((res) => res.json())
+      .then((res) => {
+        if (res.success === false) {
+          setTimeout(() => {}, 300);
+        } else {
+          window.location.reload();
+          console.log(`Your changes have been saved.`);
+        }
+      });
   };
 
   render() {

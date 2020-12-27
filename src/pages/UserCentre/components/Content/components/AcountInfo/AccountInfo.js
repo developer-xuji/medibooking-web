@@ -1,10 +1,16 @@
 import React from "react";
-import PasswordForm from "./components/PasswordForm"
-import { Layout, FormItem, Label, FormInput, Title, Submit } from "../styling";
+import PasswordForm from "./components/PasswordForm";
+// import {
+//   Layout,
+//   FormItem,
+//   Label,
+//   FormInput,
+//   Title,
+//   Submit,
+// } from "../formStyle";
 import getAuth from "../../../../../../apis/getAuth";
 import logIn from "../../../../../../apis/logIn";
-import putPassword from "../../../../../../utils/putPassword"
-
+import putPassword from "../../../../../../utils/putPassword";
 
 const ENCRYPTION_STRENGTH = 10;
 let bcrypt = require("bcryptjs");
@@ -35,51 +41,49 @@ class AccountInfo extends React.Component {
         console.log(response);
         this.setState({
           PasswordResetStatus: "new",
-        })
+        });
       })
       .catch((error) => {
         console.log(error);
         this.setState({
           PasswordResetStatus: "wrong",
-        })
+        });
       });
-  };
+  }
 
-  onNewFinish(event){
-
+  onNewFinish(event) {
     console.log(event);
-    let account = {encodedPassword: bcrypt.hashSync(event.newpassword, salt)}
-    putPassword([localStorage.getItem("ACCOUNT_ID")], account)
+    let account = { encodedPassword: bcrypt.hashSync(event.newpassword, salt) };
+    putPassword([localStorage.getItem("ACCOUNT_ID")], account);
     this.setState({
-      PasswordResetResult:true,
-    })
-  };
+      PasswordResetResult: true,
+    });
+  }
 
   onPasswordReset(event) {
     this.setState({
       PasswordResetStatus: "reset",
     });
-  };
+  }
 
   setUser(data) {
     this.setState({
       username: data.username,
     });
-  };
+  }
 
-  componentDidMount(){
+  componentDidMount() {
     const token = localStorage.getItem("JWT_TOKEN");
     getAuth({ token: token })
-      .then((response) => (this.setUser(response.data)))
+      .then((response) => this.setUser(response.data))
       .catch(() => {});
-  };
+  }
 
   // componentDidUpdate(){
   //   this.setState({
   //     PasswordResetStatus: "show",
   //   });
   // };
-
 
   render() {
     console.log(this.state.username);
