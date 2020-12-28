@@ -44,6 +44,7 @@ const TextArea = styled.div`
       font-family: "Open Sans", sans-serif;
       font-weight: 600;
       color: #5b7189;
+      text-align: left;
   }
 
     img {
