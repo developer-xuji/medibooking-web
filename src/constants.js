@@ -10,22 +10,31 @@ import mental_health_icon from "./assets/images/mental-health.svg";
 import pharmacy_icon from "./assets/images/medicine.svg";
 import optometry_icon from "./assets/images/glasses.svg";
 import avatar_icon from "./assets/images/avatar.png";
-import jumbotron_pic from "./assets/images/homepage_jumbotron.jpg";
-import data_ads_pic from "./assets/images/DataAdsPic.jpg";
-import hospital_reg_icon from "./assets/images/hospital-regular.svg";
-import medical_icon from "./assets/images/briefcase-medical-solid.svg";
-import smile_icon from "./assets/images/smile-beam-regular.svg";
-import bed_icon from "./assets/images/medical-bed.svg";
-import support_icon from "./assets/images/support.svg";
-import experience_icon from "./assets/images/experience.svg";
-import doc1_pic from "./assets/images/gallary_doctor1.jpg";
-import doc2_pic from "./assets/images/gallary_doctor2.jpg";
-import doc3_pic from "./assets/images/gallary_doctor3.jpg";
-import doc4_pic from "./assets/images/gallary_doctor4.png";
-import doc5_pic from "./assets/images/gallary_doctor5.jpg";
-import user_avatar1 from "./assets/images/user_avatar1.svg";
-import user_avatar2 from "./assets/images/user_avatar2.svg";
-import quote_icon from "./assets/images/quote.svg";
+import jumbotron_pic from "./assets/images/homepage_jumbotron.jpg"
+import data_ads_pic from "./assets/images/DataAdsPic.jpg"
+import hospital_reg_icon from "./assets/images/hospital-regular.svg"
+import medical_icon from "./assets/images/briefcase-medical-solid.svg"
+import smile_icon from "./assets/images/smile-beam-regular.svg"
+import bed_icon from "./assets/images/medical-bed.svg"
+import support_icon from "./assets/images/support.svg"
+import experience_icon from "./assets/images/experience.svg"
+import doc1_pic from "./assets/images/gallary_doctor1.jpg"
+import doc2_pic from "./assets/images/gallary_doctor2.jpg"
+import doc3_pic from "./assets/images/gallary_doctor3.jpg"
+import doc4_pic from "./assets/images/gallary_doctor4.png"
+import doc5_pic from "./assets/images/gallary_doctor5.jpg"
+import user_avatar1 from "./assets/images/user_avatar1.svg"
+import user_avatar2 from "./assets/images/user_avatar2.svg"
+import quote_icon from "./assets/images/quote.svg"
+import doc_header_pic from "./assets/images/Doc_HeaderImg.jpg"
+import male_icon from "./assets/images/male.svg"
+import female_icon from "./assets/images/female.svg"
+import address_icon from "./assets/images/address.svg"
+import phone_icon from "./assets/images/phone-call.svg"
+import email_icon from "./assets/images/email.svg"
+import open_icon from "./assets/images/open.svg"
+import location_icon from "./assets/images/placeholder.svg"
+
 
 export const THEME_COLOR = "#008fb4";
 export const NAVIGATION_GAP = "80px";
@@ -42,6 +51,7 @@ export const PHARMACY_ICON = pharmacy_icon;
 export const OPTOMETRY_ICON = optometry_icon;
 export const AVATAR_ICON = avatar_icon;
 export const MOBILE_WIDTH = "1000px";
+//for front page
 export const JUMBOTRON_PIC = jumbotron_pic;
 export const DATA_ADS_PIC = data_ads_pic;
 export const HOSPITAL_REG_ICON = hospital_reg_icon;
@@ -59,19 +69,25 @@ export const SMALL_BREAKPOINT = "767px";
 export const USER_AVATAR1 = user_avatar1;
 export const USER_AVATAR2 = user_avatar2;
 export const QUOTE_ICON = quote_icon;
-export const APPOINTMENT_DURATION = 15;
-
-export const TIMES = (startHour, endHour) => {
-  let times = [];
-  for (let h = startHour; h !== endHour; ++h)
-    for (let m = 0; m !== 60; m += 15)
-      times.push({
-        hour: h < 10 ? "0" + h : h.toString(),
-        minute: m < 10 ? "0" + m : m.toString(),
-        key: h + ":" + m,
-      });
-  return times;
+//for doc info page
+export const DOC_HEADER_PIC = doc_header_pic;
+export const MALE_ICON = male_icon;
+export const FEMALE_ICON = female_icon;
+export const ADDRESS_ICON = address_icon;
+export const PHONE_ICON = phone_icon;
+export const EMAIL_ICON = email_icon;
+export const OPEN_ICON = open_icon;
+export const CLINIC_INFO = {
+  address: "135 Lonsdale Street, Melbourne",
+  phone: "0412334897",
+  email: "medibooking@gmail.com",
+  openTime: "8:00am-8:00pm",
+  latitude: -37.812230,
+  longitude: 144.962630
 };
+export const LOCATION_ICON =location_icon;
+
+export const APPOINTMENT_DURATION = 15;
 
 export const APPOINTMENT_TIMES = [
   "08:00",
