@@ -5,11 +5,10 @@ import styled, { keyframes } from "styled-components";
 // import Link from "./components/Link";
 import InfoHeader from "./components/InfoHeader";
 import InfoBody from "./components/InfoBody";
-import Recommendation from "./components/Recommendation"
+import Recommendation from "./components/Recommendation";
 
-import { connect } from 'react-redux'
-import { loadDoctor } from '../../actions/doctor'
-
+import { connect } from "react-redux";
+import { loadDoctor } from "../../actions/doctor";
 
 // import {
 //   BrowserRouter as Router,
@@ -23,7 +22,7 @@ import { loadDoctor } from '../../actions/doctor'
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-`
+`;
 
 const DivLoader = styled.div`
   width: 100vw;
@@ -32,7 +31,7 @@ const DivLoader = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 9999;
-`
+`;
 
 const SvgLoader = styled.svg`
   animation-name: ${spinAnimation};
@@ -40,7 +39,7 @@ const SvgLoader = styled.svg`
   animation-duration: 0.5s;
   animation-iteration-count: infinite;
   margin: auto;
-`
+`;
 
 const Container = styled.div`
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
@@ -58,7 +57,7 @@ const BodyContainer = styled.div`
   @media screen and (max-width: 900px) {
     flex-direction: column;
   }
-`
+`;
 
 // function B2F(doctorObject) {
 //   // console.log(doctorObject);
@@ -84,9 +83,7 @@ const BodyContainer = styled.div`
 //   return returnedDoctorObject;
 // }
 
-
 class DoctorInfo extends React.Component {
-
   // constructor(props) {
   //   super(props);
   //   this.state = {
@@ -96,9 +93,8 @@ class DoctorInfo extends React.Component {
   // }
 
   componentDidMount() {
-
-    const { loadDoctor } = this.props
-    loadDoctor(this.props.match.params.DoctorsID)
+    const { loadDoctor } = this.props;
+    loadDoctor(this.props.match.params.DoctorsID);
     // fetch(`http://localhost:8080/doctors/${this.props.match.params.DoctorsID}`, {
     //   method: 'GET',
     //   headers: {
@@ -121,43 +117,72 @@ class DoctorInfo extends React.Component {
   // }
 
   render() {
-    const { loading, doctor } = this.props
+    const { loading, doctor } = this.props;
     if (loading) {
       return (
         <DivLoader>
           <SvgLoader viewBox="0 0 100 100" width="10em" height="10em">
-            <path ng-attr-d="{{config.pathCmd}}" ng-attr-fill="{{config.color}}" stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#51CACC" transform="rotate(179.719 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path>
+            <path
+              ng-attr-d="{{config.pathCmd}}"
+              ng-attr-fill="{{config.color}}"
+              stroke="none"
+              d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50"
+              fill="#51CACC"
+              transform="rotate(179.719 50 51)"
+            >
+              <animateTransform
+                attributeName="transform"
+                type="rotate"
+                calcMode="linear"
+                values="0 50 51;360 50 51"
+                keyTimes="0;1"
+                dur="1s"
+                begin="0s"
+                repeatCount="indefinite"
+              ></animateTransform>
+            </path>
           </SvgLoader>
         </DivLoader>
-      )
-    }
-    else {
+      );
+    } else {
       return (
         <Container>
-          <InfoHeader id={doctor.id} name={doctor.firstName + " " + doctor.lastName} gender={doctor.gender}/>
+          <InfoHeader
+            id={doctor.id}
+            name={doctor.firstName + " " + doctor.lastName}
+            gender={doctor.gender}
+          />
           <BodyContainer>
-          <InfoBody description={doctor.description} languages={doctor.languages} specializations={doctor.specializations}/>
-          <Recommendation doctorID={doctor.id} specializationID={doctor.specializations[0].id}/>
+            <InfoBody
+              description={doctor.description}
+              languages={doctor.languages}
+              specializations={doctor.specializations}
+            />
+            <Recommendation
+              doctorID={doctor.id}
+              specializationID={doctor.specializations[0].id}
+            />
           </BodyContainer>
-          
 
           {/* <Profile Doctor={this.state.Doctor}/> */}
         </Container>
-      )
+      );
     }
   }
 }
 
 const mapStateToProps = (state) => {
-  const { doctor: { loading, doctor } } = state
+  const {
+    doctor: { loading, doctor },
+  } = state;
   return {
     loading,
-    doctor
-  }
-}
+    doctor,
+  };
+};
 
 const mapActionsToProps = {
   loadDoctor,
-}
+};
 
 export default connect(mapStateToProps, mapActionsToProps)(DoctorInfo);

@@ -7,6 +7,7 @@ import DateSelector from "./components/DateSelector";
 import addAppointment from "../../utils/addAppointment";
 import getAppointmentByDoctorAndDate from "../../utils/getAppointmentByDoctorAndDate";
 import { getRoutePath } from "../../utils/getRoute";
+import getDoctorById from "../../utils/getDoctorById";
 
 const Layout = styled.div`
   display: flex;
@@ -49,8 +50,10 @@ class BookingPage extends React.Component {
   constructor(props) {
     super(props);
 
+    const addedDoctorId = this.props.match.params.DoctorsID;
     this.state = {
       doctor: null,
+      addedDoctorId: addedDoctorId,
       date: "",
       startTime: "",
       endTime: "",
@@ -64,6 +67,10 @@ class BookingPage extends React.Component {
     this.handleDoctorSelector = this.handleDoctorSelector.bind(this);
     this.handleDateSelector = this.handleDateSelector.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
+
+    getDoctorById(addedDoctorId).then((doctor) =>
+      this.handleDoctorSelector(doctor)
+    );
   }
 
   handleBookingClick() {
@@ -158,6 +165,7 @@ class BookingPage extends React.Component {
   render() {
     const {
       doctor,
+      addedDoctorId,
       date,
       startTime,
       errorMessage,
@@ -180,6 +188,7 @@ class BookingPage extends React.Component {
               doctor === null ? "" : doctor.firstName + " " + doctor.lastName
             }
             onSelect={this.handleSelector("doctor")}
+            addedDoctorId={addedDoctorId}
           />
           <DateSelector
             title="Select Date"
