@@ -4,7 +4,9 @@ import { List, Avatar } from "antd";
 import styled, { css } from "styled-components";
 import { THEME_COLOR } from "../../../../constants";
 import getDoctors from "../../../../utils/getDoctors";
+import getDoctorById from "../../../../utils/getDoctorById";
 
+const DOCTOR_LIST_LENGTH = 5;
 const Layout = styled.div``;
 const ItemBox = styled.div`
   display: flex;
@@ -24,13 +26,20 @@ class DoctorSelector extends React.Component {
     super(props);
     this.state = {
       doctorList: null,
+      addedDoctor: null,
     };
   }
 
   componentDidMount() {
     getDoctors().then((response) =>
       this.setState({
-        doctorList: response.slice(0, 5),
+        doctorList: response.slice(0, DOCTOR_LIST_LENGTH),
+      })
+    );
+    const { addedDoctorId } = this.props;
+    getDoctorById(addedDoctorId).then((response) =>
+      this.setState({
+        addedDoctor: response,
       })
     );
   }
@@ -38,7 +47,14 @@ class DoctorSelector extends React.Component {
   render() {
     const { title, selected, onSelect } = this.props;
     const emptyList = [];
-    const { doctorList } = this.state;
+    const { doctorList, addedDoctor } = this.state;
+    if (
+      doctorList &&
+      addedDoctor &&
+      doctorList.length === DOCTOR_LIST_LENGTH &&
+      addedDoctor.id > DOCTOR_LIST_LENGTH
+    )
+      doctorList.unshift(addedDoctor);
 
     return (
       <Layout>

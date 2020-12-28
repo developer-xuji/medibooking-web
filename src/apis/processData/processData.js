@@ -11,7 +11,6 @@ const processData = (url, method, parameterList, body) => {
   }
 
   const processing = (processing_url) => {
-    console.log(processing_url);
     switch (method) {
       case "get":
         return instance.get(processing_url, body);
@@ -24,7 +23,9 @@ const processData = (url, method, parameterList, body) => {
     }
   };
   if (processing !== null)
-    return processing(url + param).then((response) => response.data);
+    return processing(url + param)
+      .then((response) => response.data)
+      .catch((err) => console.log(err));
 };
 
 export default processData;

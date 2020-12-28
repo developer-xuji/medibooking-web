@@ -46,4 +46,9 @@ export const ROUTES = [
     path: "/booking",
     page: BookingPage,
   },
+  {
+    key: "booking_with_doctor",
+    path: "/booking/:DoctorsID",
+    page: BookingPage,
+  },
 ];
