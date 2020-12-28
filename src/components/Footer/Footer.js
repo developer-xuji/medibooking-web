@@ -7,31 +7,48 @@ import { SMALL_BREAKPOINT } from "../../constants";
 import Specialists from "./Components/Specialists";
 import Contact from "./Components/Contact";
 import Title from "./Components/Title";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons'
-import { faMapMarkerAlt, faPhoneSquareAlt ,faEnvelope, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { library } from "@fortawesome/fontawesome-svg-core";
+import {
+  faFacebook,
+  faTwitter,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons";
+import {
+  faMapMarkerAlt,
+  faPhoneSquareAlt,
+  faEnvelope,
+  faAngleRight,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add( faFacebook, faTwitter, faInstagram, faMapMarkerAlt, faPhoneSquareAlt ,faEnvelope, faAngleRight );
+library.add(
+  faFacebook,
+  faTwitter,
+  faInstagram,
+  faMapMarkerAlt,
+  faPhoneSquareAlt,
+  faEnvelope,
+  faAngleRight
+);
 
 const Layout = styled.div`
   background: url(${FOOT_BACKGROUND});
   background-size: cover;
   width: 100%;
   height: 400px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   @media screen and (max-width: ${MOBILE_WIDTH}) {
-    height: 300px
-}
+    height: 300px;
+  }
 `;
 
 const LogoContainer = styled.div`
   width: 17%;
   @media screen and (max-width: 1224px) {
-    display:none;
+    display: none;
   }
 `;
 
@@ -64,8 +81,8 @@ const Info = styled.div`
   border: 1px solid rgba(200, 200, 200, 0.3);
   border-radius: 5px;
   @media screen and (max-width: ${SMALL_BREAKPOINT}) {
-    display:none
-  } 
+    display: none;
+  }
 `;
 
 const LINK_LIST = [
@@ -96,7 +113,7 @@ const Footer = () => {
           ))}
         </Info>
         <Specialists></Specialists>
-        <Contact/>
+        <Contact />
       </InfoContainer>
     </Layout>
   );
