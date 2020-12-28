@@ -1,9 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import "antd/dist/antd.css";
-import { Form, Input, Button, Descriptions, Row, Col } from "antd";
-import { Title } from "../../../formStyle";
+import { Form, Input, Row, Col } from "antd";
 
+export const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 0;
+`;
 const layout = {
   labelCol: {
     span: 0,

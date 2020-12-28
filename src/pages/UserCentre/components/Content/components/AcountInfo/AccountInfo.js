@@ -1,13 +1,5 @@
 import React from "react";
 import PasswordForm from "./components/PasswordForm";
-// import {
-//   Layout,
-//   FormItem,
-//   Label,
-//   FormInput,
-//   Title,
-//   Submit,
-// } from "../formStyle";
 import getAuth from "../../../../../../apis/getAuth";
 import logIn from "../../../../../../apis/logIn";
 import putPassword from "../../../../../../utils/putPassword";
