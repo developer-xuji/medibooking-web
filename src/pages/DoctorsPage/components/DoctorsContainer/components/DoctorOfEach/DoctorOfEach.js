@@ -1,13 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams
-  } from "react-router-dom";
-// import image from './assets/img/IMG_1.jpg'
+import {Link} from "react-router-dom";
 
 const DoctorContainer = styled.div`
     width: 250px;
@@ -39,19 +32,6 @@ const DoctorName = styled.div`
     align-content: center;
 `
 
-const DoctorLanguage = styled.div`
-    width: 100%;
-    align-content: center;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-`
-
-const DoctorSpecialization = styled.div`
-    width: 100%;
-    align-content: center;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-`
 const Mask = styled.div`
     position: absolute;
     top: 0;
@@ -70,9 +50,6 @@ function DoctorOfEach(props) {
     let DoctorId = props.DoctorId;
     let FirstName = props.Doctor.FirstName;
     let SecondName = props.Doctor.SecondName;
-    let Language = props.Doctor.Language;
-    let Specialization = props.Doctor.Specialization;
-    // const ImgURL = require('./assets/img/IMG_'+ DoctorId + '.jpg')
     
     const reqSvgs = require.context('./assets/img/', true, /\.jpe?g$/);
     const allSvgFilepaths = reqSvgs.keys();
@@ -93,12 +70,6 @@ function DoctorOfEach(props) {
                     <DoctorName>
                         {`Dr. ${FirstName} ${SecondName}`}
                     </DoctorName>
-                    {/* <DoctorLanguage>
-                        {`${Language}`}
-                    </DoctorLanguage>
-                    <DoctorSpecialization>
-                        {`${Specialization}`}
-                    </DoctorSpecialization> */}
                 </DoctorNameLanguageSpecializationWrapper>
                 
             </DoctorContainer>

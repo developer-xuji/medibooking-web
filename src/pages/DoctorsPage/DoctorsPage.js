@@ -3,10 +3,8 @@ import styled, { keyframes } from "styled-components";
 import DoctorsContainer from "./components/DoctorsContainer";
 import DoctorsSearchBar from "./components/DoctorsSearchBar";
 import DoctorsFilter from "./components/DoctorsFilter";
-
-const Debug = styled.div`
-  background-color: black;
-`;
+import {B2F, SelectDoctors} from "./utils/SelectDoctors"
+import getDoctors from "../../utils/getDoctors"
 
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
@@ -32,191 +30,7 @@ const SvgLoader = styled.svg`
 
 let Loading = true;
 const MaximumNumOfDoctorsToShow = 8;
-
-function B2F(doctorObject) {
-  console.log(doctorObject);
-  let returnedDoctorObject = {};
-  for (let i = 0; i < doctorObject.length; i++){
-    let SpecializationList = [];
-    let LanguageList = [];
-    doctorObject[i].specializations.map((specialization) => {
-      SpecializationList.push(specialization.specializationName);
-    });
-    doctorObject[i].languages.map((language) => {
-      LanguageList.push(language.languageName);
-    });
-    returnedDoctorObject[doctorObject[i].id] = {
-      FirstName: doctorObject[i].firstName,
-      SecondName: doctorObject[i].lastName,
-      Age: doctorObject[i].age,
-      Gender: doctorObject[i].gender,
-      Description: doctorObject[i].description,
-      Specialization: SpecializationList,
-      Language: LanguageList,
-    }
-  }
-  return returnedDoctorObject;
-}
-
-
-let allDoctors = {
-  0: {
-    FirstName: "123",
-    SecondName: "ggg",
-    Specialization: "dental",
-    Language: "English",
-  },
-  1: {
-    FirstName: "456",
-    SecondName: "hhh",
-    Specialization: "dental",
-    Language: "Chinese",
-  },
-  2: {
-    FirstName: "789",
-    SecondName: "ggg",
-    Specialization: "Surgeon",
-    Language: "English",
-  },
-  3: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "Surgeon",
-    Language: "Chinese",
-  },
-  4: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  5: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "Surgeon",
-    Language: "English",
-  },
-  6: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "Psychiatrist",
-    Language: "English",
-  },
-  7: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  8: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  9: {
-    FirstName: "fff",
-    SecondName: "def",
-    Specialization: "Psychiatrist",
-    Language: "English",
-  },
-  10: {
-    FirstName: "ggg",
-    SecondName: "def",
-    Specialization: "Psychiatrist",
-    Language: "English",
-  },
-  11: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  12: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "Chinese",
-  },
-  13: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  14: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  15: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  16: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  17: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  18: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  19: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  20: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  21: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  22: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  23: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  24: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-  25: {
-    FirstName: "abc",
-    SecondName: "def",
-    Specialization: "dental",
-    Language: "English",
-  },
-};
+let allDoctors = {}
 let allDoctorsList = Object.keys(allDoctors);
 
 class DoctorsPage extends React.Component {
@@ -238,10 +52,26 @@ class DoctorsPage extends React.Component {
       this
     );
     this.handleLanguageChange = this.handleLanguageChange.bind(this);
+    this.SetCurrentNumOfDoctorsShowed = this.SetCurrentNumOfDoctorsShowed.bind(this);
+  }
+  
+  SetCurrentNumOfDoctorsShowed(DoctorsList){
+    if (DoctorsList.length > MaximumNumOfDoctorsToShow) {
+      this.setState({
+        CurrentDoctorsList: DoctorsList,
+        CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
+        IfMore: true,
+      });
+    } else {
+      this.setState({
+        CurrentDoctorsList: DoctorsList,
+        CurrentNumOfDoctorsShowed: DoctorsList.length,
+        IfMore: false,
+      });
+    }
   }
 
   handleMoreClick() {
-    // console.log(this.state.CurrentNumOfDoctorsShowed);
     if (
       this.state.CurrentDoctorsList.length -
         this.state.CurrentNumOfDoctorsShowed >
@@ -261,7 +91,7 @@ class DoctorsPage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let TempList = [];
+    let ReturnedDoctorsList = [];
     for (let i = 0; i < allDoctorsList.length; i++) {
       if (
         allDoctors[allDoctorsList[i]].FirstName.includes(
@@ -269,19 +99,19 @@ class DoctorsPage extends React.Component {
         ) ||
         allDoctors[allDoctorsList[i]].SecondName.includes(this.state.SearchText)
       ) {
-        TempList.push(allDoctorsList[i]);
+        ReturnedDoctorsList.push(allDoctorsList[i]);
       }
     }
-    console.log(TempList);
-    if (TempList.length > MaximumNumOfDoctorsToShow) {
+    console.log(ReturnedDoctorsList);
+    if (ReturnedDoctorsList.length > MaximumNumOfDoctorsToShow) {
       this.setState({
-        CurrentDoctorsList: TempList,
+        CurrentDoctorsList: ReturnedDoctorsList,
         CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
         IfMore: true,
       });
     } else {
       this.setState({
-        CurrentDoctorsList: TempList,
+        CurrentDoctorsList: ReturnedDoctorsList,
         CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
         IfMore: false,
       });
@@ -289,89 +119,24 @@ class DoctorsPage extends React.Component {
   }
 
   handleChange(event) {
-    // let TempList = [];
-    // for (let i = 0; i < allDoctorsList.length; i++){
-    //     if (allDoctors[allDoctorsList[i]].FirstName.includes(event.target.value) || allDoctors[allDoctorsList[i]].SecondName.includes(event.target.value)) {
-    //         TempList.push(allDoctorsList[i]);
-    //     }
-    // }
-    // console.log(TempList);
     this.setState({
-      // CurrentDoctorsList : TempList,
       SearchText: event.target.value,
     });
-    // console.log(this.state.CurrentDoctorsList);
   }
 
   handleSpecializationChange(event) {
-    console.log(allDoctors);
     if (event === "AllSpecialization") {
       this.setState({
         SpecializationSelected: undefined,
       });
-      let TempList = [];
-      if (this.state.LanguageSelected !== undefined) {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (
-            allDoctors[allDoctorsList[i]].Language.indexOf(
-              this.state.LanguageSelected
-            ) !== -1
-          ) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      } else {
-        TempList = Object.keys(allDoctors);
-      }
-      if (TempList.length > MaximumNumOfDoctorsToShow) {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: true,
-        });
-      } else {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: false,
-        });
-      }
+      let ReturnedDoctorsList = SelectDoctors(undefined, this.state.LanguageSelected, allDoctors, allDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
     } else {
       this.setState({
         SpecializationSelected: event,
       });
-      let TempList = [];
-      if (this.state.LanguageSelected !== undefined) {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (
-            allDoctors[allDoctorsList[i]].Specialization.indexOf(event) !== -1 &&
-            allDoctors[allDoctorsList[i]].Language.indexOf(
-              this.state.LanguageSelected
-            ) !== -1
-          ) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      } else {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (allDoctors[allDoctorsList[i]].Specialization.indexOf(event) !== -1) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      }
-      if (TempList.length > MaximumNumOfDoctorsToShow) {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: true,
-        });
-      } else {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: false,
-        });
-      }
+      let ReturnedDoctorsList = SelectDoctors(event, this.state.LanguageSelected, allDoctors, allDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
     }
   }
 
@@ -380,83 +145,21 @@ class DoctorsPage extends React.Component {
       this.setState({
         LanguageSelected: undefined,
       });
-      let TempList = [];
-      if (this.state.SpecializationSelected !== undefined) {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (
-            allDoctors[allDoctorsList[i]].Specialization.indexOf(
-              this.state.SpecializationSelected
-            ) !== -1
-          ) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      } else {
-        TempList = Object.keys(allDoctors);
-      }
-      if (TempList.length > MaximumNumOfDoctorsToShow) {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: true,
-        });
-      } else {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: false,
-        });
-      }
+      let ReturnedDoctorsList = SelectDoctors(this.state.SpecializationSelected, undefined, allDoctors, allDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
     } else {
       this.setState({
         LanguageSelected: event,
       });
-      let TempList = [];
-      if (this.state.SpecializationSelected !== undefined) {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (
-            allDoctors[allDoctorsList[i]].Language.indexOf(event) !== -1 &&
-            allDoctors[allDoctorsList[i]].Specialization.indexOf(
-              this.state.SpecializationSelected
-            ) !== -1
-          ) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      } else {
-        for (let i = 0; i < allDoctorsList.length; i++) {
-          if (allDoctors[allDoctorsList[i]].Language.indexOf(event) !== -1) {
-            TempList.push(allDoctorsList[i]);
-          }
-        }
-      }
-      if (TempList.length > MaximumNumOfDoctorsToShow) {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: true,
-        });
-      } else {
-        this.setState({
-          CurrentDoctorsList: TempList,
-          CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-          IfMore: false,
-        });
-      }
+      let ReturnedDoctorsList = SelectDoctors(this.state.SpecializationSelected, event, allDoctors, allDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
     }
   }
 
   componentDidMount() {
     Loading = false;
-    fetch('http://localhost:8080/doctors',{
-      method:'GET',
-      headers:{
-        'Content-Type':'application/json;charset=UTF-8'
-      },
-      mode:'cors',
-      cache:'default'
-    })
-     .then(res =>res.json())
+    getDoctors
+     .then(res => res.json())
      .then((data) => {
         console.log(data);
         allDoctors = B2F(data);
@@ -468,9 +171,6 @@ class DoctorsPage extends React.Component {
     })
   }
 
-  // componentDidUpdate() {
-  //   Loading = true;
-  // }
 
   render() {
     console.log(this.state.CurrentDoctorsList);
