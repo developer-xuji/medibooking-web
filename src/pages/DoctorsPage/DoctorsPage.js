@@ -3,7 +3,6 @@ import styled, { keyframes } from "styled-components";
 import DoctorsContainer from "./components/DoctorsContainer";
 import DoctorsSearchBar from "./components/DoctorsSearchBar";
 import DoctorsFilter from "./components/DoctorsFilter";
-import {B2F, SelectDoctors} from "./utils/SelectDoctors"
 import getDoctors from "../../utils/getDoctors"
 
 const spinAnimation = keyframes`
@@ -32,6 +31,71 @@ let Loading = true;
 const MaximumNumOfDoctorsToShow = 8;
 let allDoctors = {}
 let allDoctorsList = Object.keys(allDoctors);
+
+const B2F = (doctorObject) => {
+  console.log(doctorObject);
+  let returnedDoctorObject = {};
+  for (let i = 0; i < doctorObject.length; i++){
+    let SpecializationList = [];
+    let LanguageList = [];
+    doctorObject[i].specializations.map((specialization) => {
+      SpecializationList.push(specialization.specializationName);
+    });
+    doctorObject[i].languages.map((language) => {
+      LanguageList.push(language.languageName);
+    });
+    returnedDoctorObject[doctorObject[i].id] = {
+      FirstName: doctorObject[i].firstName,
+      SecondName: doctorObject[i].lastName,
+      Age: doctorObject[i].age,
+      Gender: doctorObject[i].gender,
+      Description: doctorObject[i].description,
+      Specialization: SpecializationList,
+      Language: LanguageList,
+    }
+  }
+  return returnedDoctorObject;
+};
+
+const SelectDoctors = (specialization, language, allDoctors, allDoctorsList) => {
+  let ReturnedDoctorsList = [];
+  if (specialization === undefined){
+      if (language !== undefined) {
+          for (let i = 0; i < allDoctorsList.length; i++) {
+          if (
+              allDoctors[allDoctorsList[i]].Language.indexOf(language) !== -1
+          ) {
+              ReturnedDoctorsList.push(allDoctorsList[i]);
+          }
+          }
+      } else {
+          ReturnedDoctorsList = Object.keys(allDoctors);
+      }
+  }
+  else{
+      if (language !== undefined) {
+          for (let i = 0; i < allDoctorsList.length; i++) {
+              if (
+                allDoctors[allDoctorsList[i]].Specialization.indexOf(specialization) !== -1 &&
+                allDoctors[allDoctorsList[i]].Language.indexOf(language) !== -1
+              ) {
+                ReturnedDoctorsList.push(allDoctorsList[i]);
+              }
+          }
+      }
+      else{
+          for (let i = 0; i < allDoctorsList.length; i++) {
+              if (
+                  allDoctors[allDoctorsList[i]].Specialization.indexOf(specialization) !== -1
+              ) {
+              ReturnedDoctorsList.push(allDoctorsList[i]);
+              }
+          }
+      }
+  }
+  return ReturnedDoctorsList;
+};
+
 
 class DoctorsPage extends React.Component {
   constructor(props) {
@@ -158,8 +222,7 @@ class DoctorsPage extends React.Component {
 
   componentDidMount() {
     Loading = false;
-    getDoctors
-     .then(res => res.json())
+    getDoctors()
      .then((data) => {
         console.log(data);
         allDoctors = B2F(data);
@@ -168,9 +231,8 @@ class DoctorsPage extends React.Component {
           AllDoctors: allDoctors,
           CurrentDoctorsList: allDoctorsList,
         });
-    })
+      })
   }
-
 
   render() {
     console.log(this.state.CurrentDoctorsList);
