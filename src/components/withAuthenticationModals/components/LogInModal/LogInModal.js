@@ -76,7 +76,7 @@ export class LoginModal extends React.Component {
     return (
       <Modal
         onClose={onClose}
-        title="Patient log in"
+        title="User log in"
         description="Log in to book appointments faster."
         body={
           <form

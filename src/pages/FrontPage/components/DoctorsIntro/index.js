@@ -25,17 +25,13 @@ const TextIntro = styled.div`
     background-color: #aecc54;
     font-weight: bold;
     margin: 12px 0;
-    a {
-      color: #fff;
-    }
 
     &:hover {
       background-color: transparent;
       border: 1px solid #aecc54;
       cursor: pointer;
-      a {
-        color: #aecc54;
-      }
+
+      color: #aecc54;
     }
   }
 
@@ -86,9 +82,10 @@ const DoctorsIntro = () => {
           With over 170 Doctors, we’ll help find the right one for you and your
           family.
         </Description>
-        <button>
-          <a href={getRoutePath("doctors")}>View All →</a>
-        </button>
+
+        <a href={getRoutePath("doctors")}>
+          <button>View All →</button>
+        </a>
       </TextIntro>
     </Layout>
   );
