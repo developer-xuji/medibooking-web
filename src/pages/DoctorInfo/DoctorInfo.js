@@ -83,7 +83,7 @@ const BodyContainer = styled.div`
 //   return returnedDoctorObject;
 // }
 
-class DoctorInfo extends React.Component {
+export class DoctorInfo extends React.Component {
   // constructor(props) {
   //   super(props);
   //   this.state = {
