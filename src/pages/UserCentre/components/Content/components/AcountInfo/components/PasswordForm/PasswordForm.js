@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import "antd/dist/antd.css";
 import { Form, Input, Row, Col } from "antd";
 
@@ -93,7 +93,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "reset":
       return (
         <>
@@ -138,7 +137,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "new":
       return (
         <>
@@ -206,7 +204,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "wrong":
       return (
         <>
@@ -258,7 +255,7 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
+    default:
   }
 }
 

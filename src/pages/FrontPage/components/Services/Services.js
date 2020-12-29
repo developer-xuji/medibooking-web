@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ServiceCard from "./components/ServiceCard";
 import TitleArea from "../TitleArea";
 import { MOBILE_WIDTH } from "../../../../constants";
-import { THEME_COLOR } from "../../../../constants";
 
 const Layout = styled.div`
   display: flex;
@@ -70,7 +69,10 @@ const BOTTOM_LIST = [
 const Services = () => {
   return (
     <>
-      <TitleArea titleText="Services" subTitleText="Finding Doctors by Specialization"/>
+      <TitleArea
+        titleText="Services"
+        subTitleText="Finding Doctors by Specialization"
+      />
       <Layout>
         <Top>
           {TOP_LIST.map((l) => (

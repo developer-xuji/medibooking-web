@@ -7,7 +7,6 @@ class BookingList extends React.Component {
     // const sortMethod = this.props.sortMethod;
     const { filterText, sortMethod, bookings } = this.props;
     let listAfterSearch = [];
-    const rows = [];
 
     if (role === "ROLE_PATIENT") {
       listAfterSearch = bookings.filter(({ doctorName }) =>

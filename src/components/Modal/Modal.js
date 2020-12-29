@@ -1,4 +1,3 @@
-import { Descriptions } from "antd";
 import React from "react";
 import styled, { css } from "styled-components";
 
