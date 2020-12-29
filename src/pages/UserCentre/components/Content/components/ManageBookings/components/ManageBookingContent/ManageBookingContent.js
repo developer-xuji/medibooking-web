@@ -24,6 +24,7 @@ class ManageBookingContent extends React.Component {
   };
 
   render() {
+    const { bookings } = this.props;
     return (
       <div>
         <SearchAndSortBar
@@ -32,7 +33,7 @@ class ManageBookingContent extends React.Component {
           onSortChange={this.handleSortChange}
         />
         <BookingList
-          bookings={this.props.bookings}
+          bookings={bookings}
           filterText={this.state.filterText}
           sortMethod={this.state.sortMethod}
         />

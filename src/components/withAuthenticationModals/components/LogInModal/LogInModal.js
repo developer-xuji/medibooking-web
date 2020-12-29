@@ -36,12 +36,13 @@ const SignUpButton = styled.button`
   color: #01a4b7;
 `;
 
-class LoginModal extends React.Component {
+export class LoginModal extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       errorMessage: "",
+      logInFailMessage: "",
     };
   }
 
@@ -50,8 +51,15 @@ class LoginModal extends React.Component {
       errorMessage: message,
     });
   }
+
+  setLoginFailMessage(message) {
+    this.setState({
+      logInFailMessage: message,
+    });
+  }
+
   render() {
-    const { errorMessage } = this.state;
+    const { errorMessage, loginFailMessage } = this.state;
 
     const {
       onClose,
@@ -68,7 +76,7 @@ class LoginModal extends React.Component {
     return (
       <Modal
         onClose={onClose}
-        title="Patient log in"
+        title="User log in"
         description="Log in to book appointments faster."
         body={
           <form
@@ -77,13 +85,14 @@ class LoginModal extends React.Component {
                 username: data.username.value,
                 password: data.password.value,
               })
-                .then(
-                  response=>{
+                .then((response) => {
                   onClose();
                   onLogIn(JSON.parse(response));
-                  }
-                )
-                .catch((error) => console.log(error.response));
+                  window.location.reload();
+                })
+                .catch(() => {
+                  this.setLoginFailMessage("Wrong username or password!");
+                });
             })}
           >
             {errorMessage && (
@@ -100,10 +109,18 @@ class LoginModal extends React.Component {
                   id={f.key}
                   type={f.type}
                   placeholder={f.placeholder}
-                  onChange={setData(f.key)}
+                  onChange={(event) => {
+                    setData(event, f.key);
+                    loginFailMessage && this.setLoginFailMessage("");
+                  }}
                 />
               </FormItem>
             ))}
+            {loginFailMessage && (
+              <FormItem>
+                <ErrorMessage>{loginFailMessage}</ErrorMessage>
+              </FormItem>
+            )}
             <FormItem>
               <SubmitButton disabled={!valid} block size="lg" variant="success">
                 Log in

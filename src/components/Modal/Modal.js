@@ -1,6 +1,5 @@
-import { Descriptions } from "antd";
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Overlay = styled.div`
   position: fixed;
@@ -10,17 +9,26 @@ const Overlay = styled.div`
   left: 0;
   background: rgba(0, 0, 0, 0.75);
   display: flex;
-  align-items: center;
+  align-items: ${(props) => (props.large ? "" : "center")};
   justify-content: center;
+  z-index: 200;
 `;
 
 const Box = styled.div`
   background: white;
   width: 400px;
   border-radius: 5px;
+
+  ${(props) =>
+    props.large &&
+    css`
+      width: 700px;
+      height: 80vh;
+      margin-top: 15vh;
+    `}
 `;
 
-const VERTICAL_GAP = "20px";
+const VERTICAL_GAP = "10px";
 const HORIZONTAL_GAP = "20px";
 
 const Header = styled.div`
@@ -47,6 +55,7 @@ const Title = styled.h1`
 
 const Description = styled.p`
   text-align: center;
+  line-height: 20px;
 `;
 
 const CloseButton = styled.button`
@@ -59,7 +68,7 @@ const CloseButton = styled.button`
   color: gray;
   font-size: 30px;
   cursor: pointer;
-  &: hover {
+  &:hover {
     color: lightgray;
   }
 `;
@@ -90,11 +99,11 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { onClose, title, description, body, footer } = this.props;
+    const { onClose, title, description, body, footer, large } = this.props;
 
     return (
-      <Overlay onClick={onClose}>
-        <Box onClick={(event) => event.stopPropagation()}>
+      <Overlay large={large}>
+        <Box onClick={(event) => event.stopPropagation()} large={large}>
           <Header>
             <Title>{title}</Title>
             <Description>{description}</Description>

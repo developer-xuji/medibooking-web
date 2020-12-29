@@ -1,7 +1,9 @@
 import axios from "axios";
+import getAuth from "../../apis/getAuth";
+import { MEDIBOOKING_URL } from "../../env";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: MEDIBOOKING_URL,
 });
 
 instance.interceptors.response.use((response) => {
@@ -9,6 +11,8 @@ instance.interceptors.response.use((response) => {
   if (authToken) {
     const jwtToken = authToken.substring(7);
     localStorage.setItem("JWT_TOKEN", jwtToken);
+    console.log(jwtToken);
+    getAuth({ token: jwtToken });
   }
   return response;
 });

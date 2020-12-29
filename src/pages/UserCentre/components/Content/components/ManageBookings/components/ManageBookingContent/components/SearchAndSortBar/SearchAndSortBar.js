@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // import "./searchAndSortBar.css";
-
+const role = localStorage.getItem("ROLE");
 const Layout = styled.form`
   max-width: 100%;
   display: flex;
@@ -36,12 +36,14 @@ class SearchAndSortBar extends React.Component {
   };
 
   render() {
+    // const { role } = this.props;
+    const oppositeRole = role === "ROLE_DOCTOR" ? "patient" : "doctor";
     return (
       <Layout>
         <SearchBar
           className="searchBar"
           type="text"
-          placeholder="Search by doctor's name..."
+          placeholder={`Search by ${oppositeRole}'s name...`}
           value={this.props.filterText}
           onChange={this.handleFilterTextChange}
         />
@@ -50,7 +52,7 @@ class SearchAndSortBar extends React.Component {
           {/* <option value="byDefault">Sort By Default</option> */}
           <option value="byDateNew">Sort By Date (New)</option>
           <option value="byDateOld">Sort By Date (Old)</option>
-          <option value="byName">Sort By Doctor's Name</option>
+          <option value="byName">Sort By Name</option>
         </SortBar>
       </Layout>
     );

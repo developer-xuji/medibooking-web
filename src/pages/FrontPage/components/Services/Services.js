@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ServiceCard from "./components/ServiceCard";
+import TitleArea from "../TitleArea";
 import { MOBILE_WIDTH } from "../../../../constants";
 
 const Layout = styled.div`
@@ -8,10 +9,11 @@ const Layout = styled.div`
   flex-direction: column;
   text-align: center;
   margin-bottom: 20vh;
-
-  & h3 {
-    font-size: 30px;
-  }
+  // background-color: rgba(244, 246, 250, 0.5);
+  width: 80%;
+  align-items: center;
+  margin: 24px 12px;
+  padding: 12px;
 `;
 
 const Top = styled.div`
@@ -66,29 +68,34 @@ const BOTTOM_LIST = [
 
 const Services = () => {
   return (
-    <Layout>
-      <h3>Services</h3>
-      <Top>
-        {TOP_LIST.map((l) => (
-          <ServiceCard
-            key={l.key}
-            icon={l.key}
-            text={l.contains}
-            href={l.href}
-          />
-        ))}
-      </Top>
-      <Bottom>
-        {BOTTOM_LIST.map((l) => (
-          <ServiceCard
-            key={l.key}
-            icon={l.key}
-            text={l.contains}
-            href={l.href}
-          />
-        ))}
-      </Bottom>
-    </Layout>
+    <>
+      <TitleArea
+        titleText="Services"
+        subTitleText="Finding Doctors by Specialization"
+      />
+      <Layout>
+        <Top>
+          {TOP_LIST.map((l) => (
+            <ServiceCard
+              key={l.key}
+              icon={l.key}
+              text={l.contains}
+              href={l.href}
+            />
+          ))}
+        </Top>
+        <Bottom>
+          {BOTTOM_LIST.map((l) => (
+            <ServiceCard
+              key={l.key}
+              icon={l.key}
+              text={l.contains}
+              href={l.href}
+            />
+          ))}
+        </Bottom>
+      </Layout>
+    </>
   );
 };
 export default Services;

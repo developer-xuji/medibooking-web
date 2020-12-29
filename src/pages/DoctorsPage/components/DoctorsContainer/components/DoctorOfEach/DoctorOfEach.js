@@ -1,15 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-} from "react-router-dom";
-// import image from './assets/img/IMG_1.jpg'
+import { Link } from "react-router-dom";
 
 const DoctorContainer = styled.div`
+  width: 250px;
   flex-shrink: 0;
   margin-bottom: 1.5625rem;
   align-content: center;
@@ -27,22 +21,17 @@ const DoctorImageContainer = styled.div`
 const DoctorNameLanguageSpecializationWrapper = styled.div`
   width: 100%;
   font-size: medium;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  display: flex;
 `;
 
 const DoctorName = styled.div`
+  margin-top: 10px;
   width: 100%;
   align-content: center;
 `;
 
-const DoctorLanguage = styled.div`
-  width: 100%;
-  align-content: center;
-`;
-
-const DoctorSpecialization = styled.div`
-  width: 100%;
-  align-content: center;
-`;
 const Mask = styled.div`
   position: absolute;
   top: 0;
@@ -61,14 +50,7 @@ function DoctorOfEach(props) {
   let DoctorId = props.DoctorId;
   let FirstName = props.Doctor.FirstName;
   let SecondName = props.Doctor.SecondName;
-  let Language = props.Doctor.Language;
-  let Specialization = props.Doctor.Specialization;
-  // const ImgURL = require('./assets/img/IMG_'+ DoctorId + '.jpg')
 
-  const reqSvgs = require.context("./assets/img/", true, /\.jpe?g$/);
-  const allSvgFilepaths = reqSvgs.keys();
-  const imagePath = allSvgFilepaths[DoctorId];
-  const image = reqSvgs(imagePath);
   console.log(DoctorId);
 
   return (
@@ -76,14 +58,17 @@ function DoctorOfEach(props) {
       <DoctorContainer>
         <Link to={`/doctors/${DoctorId}`}>
           <DoctorImageContainer>
-            <img src={image.default} width="250" height="250" />
+            <img
+              alt="doctor"
+              src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${DoctorId}.jpg`}
+              width="250"
+              height="250"
+            />
             <Mask />
           </DoctorImageContainer>
         </Link>
         <DoctorNameLanguageSpecializationWrapper>
           <DoctorName>{`Dr. ${FirstName} ${SecondName}`}</DoctorName>
-          <DoctorLanguage>{`${Language}`}</DoctorLanguage>
-          <DoctorSpecialization>{`${Specialization}`}</DoctorSpecialization>
         </DoctorNameLanguageSpecializationWrapper>
       </DoctorContainer>
     </React.Fragment>

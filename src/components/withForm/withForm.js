@@ -10,7 +10,7 @@ const withForm = (Fields) => (Component) => {
           dirty: false,
         },
       }),
-      {}
+      { gender: { value: "", dirty: false } }
     );
 
   class Form extends React.Component {
@@ -32,18 +32,16 @@ const withForm = (Fields) => (Component) => {
       });
     }
 
-    setData(key) {
-      return (event) => {
-        this.setState((prevState) => ({
-          data: {
-            ...prevState.data,
-            [key]: {
-              value: event.target.value,
-              dirty: true,
-            },
+    setData(event, key) {
+      this.setState((prevState) => ({
+        data: {
+          ...prevState.data,
+          [key]: {
+            value: event.target.value,
+            dirty: true,
           },
-        }));
-      };
+        },
+      }));
     }
 
     submit(onSubmit) {

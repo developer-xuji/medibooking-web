@@ -7,13 +7,22 @@ const InfoTable = styled.table`
   font-size: 20px;
   margin-top: 10px;
   line-height: 21px;
+  width:650px;
   text-align: center;
-  border-spacing:50px 3px
+  position:absolute;
+  top:580px;
+  left:650px;  
 `;
 
 const DoctorName = styled.h2`
   color: black;
   font-size: 30px;
+`;
+
+const FlexContainer = styled.div`
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content:center;
 `;
 
 const DividingLine = styled.div`
@@ -45,38 +54,51 @@ const DividingLine = styled.div`
 const ParentContainer = styled.div`
   position:relative;
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
-  background: #E0FFFF;
+  background: red;
   border-radius: 4px;
   margin: 24px auto;
   padding: 24px;
   text-align: center;
+  height:700px;
 `;
 
 const Container = styled.div`
   left:0;
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
-  background: #E0FFFF;
-  border-radius: 4px;
-  margin: 24px auto;
-  padding: 24px;
+  background-color:white;
+  margin: 3px auto;
+  padding: 2px;
   text-align: center;
+  height:660px;
 `;
 
 
-const Container3 = styled.div`
+const ImageContainer = styled.div`
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
-  background: #fff;
+  background: #FFF0F5;
+  box-shadow: 0 1px 10px rgba(92, 119, 131, 0.15);
+  border-radius: 4px;
+  margin: 24px auto;
+  width: 500px;
+  height: 450px;
+  padding: 24px;
+  text-align: center;
+  border:1px solid black;
+`;
+
+const BookContainer = styled.div`
+  font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
+  background: #FFF0F5;
   box-shadow: 0 1px 10px rgba(92, 119, 131, 0.15);
   border-radius: 4px;
   margin: 24px auto;
   width: 320px;
+  height:350px;
   padding: 24px;
   text-align: center;
   border:1px solid black;
-  float:right;
-  position:absolute;
-  right:18px;
 `;
+
 
 const BookButton = styled.button`
   width: 80%;
@@ -88,25 +110,24 @@ const BookButton = styled.button`
   height: auto;
   color: white;
   background: #01a4b7;
-  border: 2px solid #01a4b7;
+  background-color:red;
+  border: 2px solid;
   border-radius: 100px;
   cursor: pointer;
 `;
 
 
-const Container2 = styled.div`
-  position:absolute;
-  right:0;
+const DesContainer = styled.div`
   font-family: MessinaSansWeb, Source Sans Pro, sans-serif;
-  background: white;
-  width:300px;
-  height:350px;
-  
+  font-size:20px;
   border-radius: 4px;
-  margin: 24px auto;
+  margin: 24px auto; 
+  width: 600px;
+  height: 400px;
+  background-color:white;
   padding: 24px;
   text-align: center;
-  float:right;
+  border:1px;
 `;
 
 const Profile = (props) => {
@@ -116,35 +137,39 @@ const Profile = (props) => {
       <>
           <ParentContainer>
           <Container>
-          <Container3>
+          <FlexContainer>
+          <ImageContainer>
+            <img src={image} alt="image" />
+            <DoctorName>
+            {`${currentDoctor.FirstName} ${currentDoctor.SecondName}`}
+          </DoctorName>
+          </ImageContainer>
+          <DesContainer>
+          {currentDoctor.Description}
+          </DesContainer>
+          
+          <BookContainer>
             <h2>Medibooking</h2>
             <h3>135 Lonsdale Street, Melbourne</h3>
             <h3>Phone:xxxxxxxx</h3>
             <h3>Email:xxxxxx</h3>
             <h3>Open: 8:00am-8:00pm</h3>
             <BookButton>Book Appointment</BookButton>
-          </Container3>
-          <img src={image} alt="image" />
-          <DoctorName>
-            {`${currentDoctor.FirstName} ${currentDoctor.SecondName}`}
-          </DoctorName>
-          <DividingLine />
+          </BookContainer>
+          </FlexContainer>
           <center>
           <InfoTable>
-            <tr>
-              <td>phone: {currentDoctor.PhoneNumber}</td>
-              <td>buildibg: xxxxx</td>
-            </tr>
-            <tr>
-              <td>email: {currentDoctor.Email}</td>
-              <td>road: xxxxx</td>
-            </tr>
-            <tr>
-              <td>Language: {currentDoctor.Language}</td>
-              <td>Specialization: {currentDoctor.Specialization}</td>
-            </tr>
+            <td>
+            <ul>
+              <li>Language: {currentDoctor.Language.join(", ")}</li>
+              <li>Specialization: {currentDoctor.Specialization.join(", ")}</li>
+            </ul>
+            </td>
           </InfoTable>
           </center>
+          
+          <DividingLine />
+          
           </Container>
           </ParentContainer>
       </>

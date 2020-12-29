@@ -1,19 +1,49 @@
 import React from "react";
 import styled from "styled-components";
+import { MOBILE_WIDTH } from "../../../../constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Layout = styled.div`
-  border-bottom: 1px solid rgba(200, 200, 200, 0.3);
   color: white;
-  text-align: center;
+  text-align: left;
+  display: flex;
+  transition: all 3.35s ease;
 
-  & ~ & {
-    margin: 30px;
+  h3 {
+    color: white;
+    font-size: 1.45em;
+    font-weight: 500;
+    margin-left: 12px;
+    font-family: Arial;
+    letter-spacing: 1px;
+    position: relative;
+    top: 3.2px;
+  }
+
+  :hover {
+    cursor: pointer;
+    h3,
+    svg {
+      color: #a6ce39;
+    }
+  }
+
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    h3 {
+      font-size: 1.1em;
+    }
   }
 `;
 
 const Title = ({ titleName }) => {
   return (
     <Layout>
+      <FontAwesomeIcon
+        color="white"
+        icon="angle-right"
+        size="2x"
+        className="AngleRight"
+      />
       <h3>{titleName}</h3>
     </Layout>
   );

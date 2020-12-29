@@ -6,6 +6,7 @@ import PersonalInfo from "./components/PersonalInfo";
 import AccountInfo from "./components/AcountInfo";
 import ManageBookings from "./components/ManageBookings";
 import Menu from "./components/Menu";
+import { getRoutePath } from "../../../../utils/getRoute";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -31,6 +32,8 @@ const MainContent = styled.div`
   .ant-layout {
     background: white;
   }
+  /* height: 800px;
+  overflow: overlay; */
 `;
 
 const Content = () => {
@@ -44,9 +47,18 @@ const Content = () => {
         <MainContent>
           <Switch>
             <Route exact path="/" component={PersonalInfo} />
-            <Route path="/personalInfo" component={PersonalInfo} />
-            <Route path="/accountInfo" component={AccountInfo} />
-            <Route path="/manageBookings" component={ManageBookings} />
+            <Route
+              path={getRoutePath("user_center")}
+              component={PersonalInfo}
+            />
+            <Route
+              path={getRoutePath("user_center/accountInfo")}
+              component={AccountInfo}
+            />
+            <Route
+              path={getRoutePath("user_center/manageBookings")}
+              component={ManageBookings}
+            />
           </Switch>
         </MainContent>
       </Layout>

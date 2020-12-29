@@ -12,7 +12,7 @@ import { OPTOMETRY_ICON } from "../../../../constants";
 const Layout = styled.div`
   height: 100px;
   width: 100px;
-  background-color: rgba(255, 0, 0, 0.06);
+  background-color: rgba(174, 204, 84, 0.4);
   border-radius: 50px;
   display: flex;
   justify-content: center;

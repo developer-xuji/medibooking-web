@@ -6,7 +6,7 @@ import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import { THEME_COLOR } from "../../../../constants";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
-import { getRoutePath } from "../../../../utils/GetRoute";
+import { getRoutePath } from "../../../../utils/getRoute";
 
 const Layout = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const Logout = styled(NavItem)`
   }
 `;
 
-class Authentication extends React.Component {
+export class Authentication extends React.Component {
   constructor(props) {
     super(props);
 
@@ -78,14 +78,15 @@ class Authentication extends React.Component {
         {user ? (
           <React.Fragment>
             <Avatar as="a" href={getRoutePath("user_center")} />
-            <NavItem>{user}</NavItem>
+            <NavItem as="a" href={getRoutePath("user_center")}>
+              {user}
+            </NavItem>
             <Logout
               as="a"
               href="/"
               onClick={() => {
                 localStorage.clear();
                 this.forceUpdate();
-                console.log("Log out");
               }}
             >
               Log Out
@@ -106,7 +107,7 @@ class Authentication extends React.Component {
               <NavItem
                 as={NakedButton}
                 variant="highlight"
-                onClick={(e) => this.setShowLoginMenu(!ShowLoginMenu, e)}
+                onClick={() => setShowModal("LOG_IN")}
               >
                 <Icon name="sign-in" style={{ fontSize: "30px" }} />
                 Log in
