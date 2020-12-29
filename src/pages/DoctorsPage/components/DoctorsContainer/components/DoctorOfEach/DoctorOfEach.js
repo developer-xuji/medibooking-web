@@ -62,7 +62,7 @@ function DoctorOfEach(props) {
             <DoctorContainer>
                 <Link to={`/doctors/${DoctorId}`}>
                     <DoctorImageContainer>
-                        <img src={image.default} width="250" height="250"/>
+                        <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${DoctorId}.jpg`} width="250" height="250"/>
                         <Mask/>
                     </DoctorImageContainer>
                 </Link>
