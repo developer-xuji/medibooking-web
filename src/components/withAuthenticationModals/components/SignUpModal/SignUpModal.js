@@ -63,7 +63,7 @@ const LogInButton = styled.button`
   color: #01a4b7;
 `;
 
-class SignUpModal extends React.Component {
+export class SignUpModal extends React.Component {
   constructor(props) {
     super(props);
 
