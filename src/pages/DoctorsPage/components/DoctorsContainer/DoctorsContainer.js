@@ -2,15 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import DoctorOfEach from './components/DoctorOfEach'
 import MoreButton from './components/MoreButton'
-import DoctorInfo from '../../../DoctorInfo'
-
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link,
-    useParams
-  } from "react-router-dom";
 
 const DoctorsMainContainer = styled.div`
     @media screen and (max-width: 300px) {
