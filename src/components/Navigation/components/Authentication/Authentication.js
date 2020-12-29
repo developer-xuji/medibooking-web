@@ -34,7 +34,7 @@ const Logout = styled(NavItem)`
   }
 `;
 
-class Authentication extends React.Component {
+export class Authentication extends React.Component {
   constructor(props) {
     super(props);
 
