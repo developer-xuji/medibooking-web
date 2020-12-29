@@ -83,6 +83,18 @@ const Fields = [
       },
     ],
   },
+  {
+    key: "email",
+    label: "email",
+    type: "text",
+    placeholder: "Email",
+    validations: [
+      {
+        message: "Please enter a valid username",
+        validator: (value) => validator.isEmail(value),
+      },
+    ],
+  },
 ];
 
 export default Fields;

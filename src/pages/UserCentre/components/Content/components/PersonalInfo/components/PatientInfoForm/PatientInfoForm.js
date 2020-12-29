@@ -44,8 +44,7 @@ class PatientInfoForm extends React.Component {
   };
 
   render() {
-    const { firstName, lastName, age, gender } = this.state;
-    const email = "sadasd";
+    const { firstName, lastName, age, gender, email } = this.state;
     return (
       <Layout onSubmit={this.handleSubmit}>
         <Title>Personal Information</Title>

@@ -7,7 +7,6 @@ import Fields from "./components/Fields";
 import ErrorMessage from "../../../ErrorMessage";
 import FormItem from "../../../FormItem";
 import signUp from "../../../../apis/signUp";
-import encodePassword from "../../../../utils/encodePassword";
 
 const PasswordSetGuide = styled.p`
   color: #5c7783;
@@ -107,8 +106,9 @@ export class SignUpModal extends React.Component {
         gender: data.gender.value,
         firstName: data.firstName.value,
         lastName: data.lastName.value,
+        email: data.email.value,
       })
-        .then((data) => {
+        .then(() => {
           onClose();
           window.location.reload();
         })

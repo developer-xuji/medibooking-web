@@ -4,7 +4,7 @@ import encodedPassword from "../../utils/encodePassword";
 import Login from "../logIn";
 
 const signUp = (data) => {
-  const { username, password, firstName, lastName, gender, age } = data;
+  const { username, password, firstName, lastName, gender, age, email } = data;
   console.log(password);
   const account = {
     username: username,
@@ -21,6 +21,7 @@ const signUp = (data) => {
           lastName: lastName,
           gender: gender,
           age: age,
+          email: email,
         };
         console.log("PARIENT: ", patient);
         return addPatient(patient);
