@@ -5,6 +5,7 @@ import Login from "../logIn";
 
 const signUp = (data) => {
   const { username, password, firstName, lastName, gender, age } = data;
+  console.log(password);
   const account = {
     username: username,
     encodedPassword: encodedPassword(password),
