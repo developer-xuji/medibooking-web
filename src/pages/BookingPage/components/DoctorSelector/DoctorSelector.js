@@ -37,11 +37,12 @@ class DoctorSelector extends React.Component {
       })
     );
     const { addedDoctorId } = this.props;
-    getDoctorById(addedDoctorId).then((response) =>
-      this.setState({
-        addedDoctor: response,
-      })
-    );
+    if (addedDoctorId)
+      getDoctorById(addedDoctorId).then((response) =>
+        this.setState({
+          addedDoctor: response,
+        })
+      );
   }
 
   render() {

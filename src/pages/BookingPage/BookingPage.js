@@ -68,9 +68,10 @@ class BookingPage extends React.Component {
     this.handleDateSelector = this.handleDateSelector.bind(this);
     this.handleNoteChange = this.handleNoteChange.bind(this);
 
-    getDoctorById(addedDoctorId).then((doctor) =>
-      this.handleDoctorSelector(doctor)
-    );
+    if (addedDoctorId)
+      getDoctorById(addedDoctorId).then((doctor) =>
+        this.handleDoctorSelector(doctor)
+      );
   }
 
   handleBookingClick() {
