@@ -1,6 +1,7 @@
+import { MEDIBOOKING_URL } from "../env";
 export const loadDoctor = (params) => (dispatch) => {
   dispatch(loadDoctorRequested());
-  fetch(`http://localhost:8080/doctors/${params}`, {
+  fetch(`${MEDIBOOKING_URL}/doctors/${params}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json;charset=UTF-8",

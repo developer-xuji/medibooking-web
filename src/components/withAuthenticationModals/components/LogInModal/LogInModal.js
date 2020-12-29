@@ -88,8 +88,11 @@ class LoginModal extends React.Component {
                 .then((response) => {
                   onClose();
                   onLogIn(JSON.parse(response));
+                  window.location.reload();
                 })
-                .catch(()=>{this.setLoginFailMessage("Wrong username or password!")});
+                .catch(() => {
+                  this.setLoginFailMessage("Wrong username or password!");
+                });
             })}
           >
             {errorMessage && (
@@ -113,7 +116,7 @@ class LoginModal extends React.Component {
                 />
               </FormItem>
             ))}
-            {loginFailMessage &&(
+            {loginFailMessage && (
               <FormItem>
                 <ErrorMessage>{loginFailMessage}</ErrorMessage>
               </FormItem>

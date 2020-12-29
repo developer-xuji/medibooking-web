@@ -82,6 +82,7 @@ const SloganContainer = styled.div`
 `;
 
 const FrontPage = () => {
+  const token = localStorage.getItem("JWT_TOKEN");
   return (
     <Layout>
       <SloganContainer>
@@ -90,6 +91,17 @@ const FrontPage = () => {
           The very best <br />
           <b>general practitioners</b> for you and your family
         </h1>
+        <button
+          disabled={localStorage.getItem("JWT_TOKEN") === undefined}
+          onClick={() =>
+            token === undefined || token === null
+              ? ""
+              : (window.location.href = getRoutePath("booking"))
+          }
+        >
+          Booking Now
+        </button>
+        {token === undefined || token === null ? <p>Please log in</p> : ""}
       </SloganContainer>
       <DataAds />
       <DoctosIntro />
