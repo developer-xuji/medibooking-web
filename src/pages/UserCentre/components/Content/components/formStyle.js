@@ -1,6 +1,3 @@
-import React from "react";
-// import { Button, Upload, Avatar, Col, Row } from "antd";
-// import { UploadOutlined, UserOutlined } from "@ant-design/icons";
 import styled, { css } from "styled-components";
 
 export const Layout = styled.form`

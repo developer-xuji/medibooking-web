@@ -20,7 +20,7 @@ const TextIntro = styled.div`
   padding: 0 36px;
   button {
     color: #fff;
-    border: none;
+    border: 1px solid #aecc54;
     padding: 16px 24px;
     background-color: #aecc54;
     font-weight: bold;

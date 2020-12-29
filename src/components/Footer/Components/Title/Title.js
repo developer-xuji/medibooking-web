@@ -1,15 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { MOBILE_WIDTH } from "../../../../constants";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Layout = styled.div`
-  color: white
+  color: white;
   text-align: left;
   display: flex;
   transition: all 3.35s ease;
-  
 
   h3 {
     color: white;
@@ -24,14 +22,15 @@ const Layout = styled.div`
 
   :hover {
     cursor: pointer;
-    h3, svg {
-      color: #201309;
+    h3,
+    svg {
+      color: #a6ce39;
     }
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     h3 {
-      font-size: 1.1em
+      font-size: 1.1em;
     }
   }
 `;
@@ -39,11 +38,11 @@ const Layout = styled.div`
 const Title = ({ titleName }) => {
   return (
     <Layout>
-      <FontAwesomeIcon 
-      color='white' 
-      icon='angle-right'
-      size='2x'
-      className="AngleRight"
+      <FontAwesomeIcon
+        color="white"
+        icon="angle-right"
+        size="2x"
+        className="AngleRight"
       />
       <h3>{titleName}</h3>
     </Layout>

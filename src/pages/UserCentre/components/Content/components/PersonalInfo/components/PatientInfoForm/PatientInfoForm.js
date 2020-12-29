@@ -45,6 +45,7 @@ class PatientInfoForm extends React.Component {
 
   render() {
     const { firstName, lastName, age, gender } = this.state;
+    const email = "sadasd";
     return (
       <Layout onSubmit={this.handleSubmit}>
         <Title>Personal Information</Title>
@@ -87,14 +88,16 @@ class PatientInfoForm extends React.Component {
             <option value="female">Female</option>
           </GenderSelector>
         </FormItem>
-        {/* <FormItem>
-      <Label>Phone:</Label>
-      <FormInput name="phone" type="text" defaultValue={data.phone} />
-    </FormItem>
-    <FormItem>
-      <Label>Email:</Label>
-      <FormInput name="email" type="text" defaultValue={data.email} />
-    </FormItem> */}
+
+        <FormItem>
+          <Label>Email:</Label>
+          <FormInput
+            name="email"
+            type="text"
+            defaultValue={email}
+            onChange={this.handleChange}
+          />
+        </FormItem>
 
         <Submit type="submit" value="Save" />
       </Layout>

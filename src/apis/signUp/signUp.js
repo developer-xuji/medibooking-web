@@ -14,18 +14,17 @@ const signUp = (data) => {
   return authInstance.post("/register", account).then((response) => {
     if (response.data.id) {
       const accountId = response.data.id;
-      return Login({ username: username, password: password }).then(
-        (response) => {
-          const patient = {
-            accountId: accountId,
-            firstName: firstName,
-            lastName: lastName,
-            gender: gender,
-            age: age,
-          };
-          return addPatient(patient);
-        }
-      );
+      return Login({ username: username, password: password }).then(() => {
+        const patient = {
+          accountId: accountId,
+          firstName: firstName,
+          lastName: lastName,
+          gender: gender,
+          age: age,
+        };
+        console.log("PARIENT: ", patient);
+        return addPatient(patient);
+      });
     }
   });
 };
