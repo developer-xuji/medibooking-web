@@ -1,9 +1,7 @@
 import React from "react";
-import getAuth from "../../../../../../apis/getAuth";
 import LoadingSpin from "../../../../../../components/LoadingSpin";
 import PatientInfoForm from "./components/PatientInfoForm";
 import DoctorInfoForm from "./components/DoctorInfoForm";
-import fetchData from "../../../../../../apis/fetchData";
 import getUserInfo from "../../../../../../utils/getUserInfo";
 
 const role = localStorage.getItem("ROLE");

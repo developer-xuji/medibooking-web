@@ -1,9 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import "antd/dist/antd.css";
-import { Form, Input, Button, Descriptions, Row, Col } from "antd";
-import { Title } from "../../../styling";
+import { Form, Input, Row, Col } from "antd";
 
+export const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 600;
+  margin-top: 0;
+`;
 const layout = {
   labelCol: {
     span: 0,
@@ -32,6 +36,8 @@ const StyledButton = styled.button`
   outline: none;
   font-weight: 600;
   user-select: none;
+  /* width: 135%; */
+  padding: 25px;
   align-items: center;
   justify-content: center;
 `;
@@ -39,7 +45,10 @@ const StyledButton = styled.button`
 const StyledDiscription = styled.div`
   font-size: 15px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  span {
+    color: red;
+  }
 `;
 
 function PasswordForm(props) {
@@ -52,8 +61,14 @@ function PasswordForm(props) {
     PasswordResetResult,
   } = props;
 
+  const SuccessMessage = styled.div`
+    font-size: 15px;
+    font-weight: 700;
+    color: green;
+  `;
+
   const resetPasswordResult = PasswordResetResult ? (
-    <StyledDiscription>Password reset success!</StyledDiscription>
+    <SuccessMessage>Password reset success!</SuccessMessage>
   ) : null;
 
   switch (PasswordResetStatus) {
@@ -63,7 +78,10 @@ function PasswordForm(props) {
           <Title>Account Information</Title>
           <Row justify="center">
             <Col offset={0}>
-              <StyledDiscription>Username: {username}</StyledDiscription>
+              <StyledDiscription>
+                <span>{`Username: `}</span>
+                {username}
+              </StyledDiscription>
             </Col>
           </Row>
           <Row justify="center">
@@ -82,7 +100,10 @@ function PasswordForm(props) {
           <Title>Account Information</Title>
           <Row justify="center">
             <Col offset={0} span={12}>
-              <StyledDiscription>Username: {username}</StyledDiscription>
+              <StyledDiscription>
+                <span>{`Username: `}</span>
+                {username}
+              </StyledDiscription>
             </Col>
           </Row>
           <Row justify="center">
@@ -124,7 +145,10 @@ function PasswordForm(props) {
           <Title>Account Information</Title>
           <Row justify="center">
             <Col offset={0} span={12}>
-              <StyledDiscription>Username: {username}</StyledDiscription>
+              <StyledDiscription>
+                <span>{`Username: `}</span>
+                {username}
+              </StyledDiscription>
             </Col>
           </Row>
           <Row justify="center">
@@ -138,7 +162,7 @@ function PasswordForm(props) {
                 onFinish={onNewFinish}
               >
                 <Form.Item
-                  label="New Password   "
+                  label={`New Password   `}
                   name="newpassword"
                   rules={[
                     {
@@ -189,7 +213,10 @@ function PasswordForm(props) {
           <Title>Account Information</Title>
           <Row justify="center">
             <Col offset={0} span={12}>
-              <StyledDiscription>Username: {username}</StyledDiscription>
+              <StyledDiscription>
+                <span>{`Username: `}</span>
+                {username}
+              </StyledDiscription>
             </Col>
           </Row>
           <Row justify="center">

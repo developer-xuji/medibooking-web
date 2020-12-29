@@ -90,9 +90,6 @@ const FrontPage = () => {
           The very best <br />
           <b>general practitioners</b> for you and your family
         </h1>
-        <button>
-          <a href={getRoutePath("booking")}>Booking Now</a>
-        </button>
       </SloganContainer>
       <DataAds />
       <DoctosIntro />

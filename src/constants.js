@@ -26,6 +26,14 @@ import doc5_pic from "./assets/images/gallary_doctor5.jpg";
 import user_avatar1 from "./assets/images/user_avatar1.svg";
 import user_avatar2 from "./assets/images/user_avatar2.svg";
 import quote_icon from "./assets/images/quote.svg";
+import doc_header_pic from "./assets/images/Doc_HeaderImg.jpg";
+import male_icon from "./assets/images/male.svg";
+import female_icon from "./assets/images/female.svg";
+import address_icon from "./assets/images/address.svg";
+import phone_icon from "./assets/images/phone-call.svg";
+import email_icon from "./assets/images/email.svg";
+import open_icon from "./assets/images/open.svg";
+import location_icon from "./assets/images/placeholder.svg";
 
 export const THEME_COLOR = "#008fb4";
 export const NAVIGATION_GAP = "80px";
@@ -42,6 +50,7 @@ export const PHARMACY_ICON = pharmacy_icon;
 export const OPTOMETRY_ICON = optometry_icon;
 export const AVATAR_ICON = avatar_icon;
 export const MOBILE_WIDTH = "1000px";
+//for front page
 export const JUMBOTRON_PIC = jumbotron_pic;
 export const DATA_ADS_PIC = data_ads_pic;
 export const HOSPITAL_REG_ICON = hospital_reg_icon;
@@ -59,8 +68,25 @@ export const SMALL_BREAKPOINT = "767px";
 export const USER_AVATAR1 = user_avatar1;
 export const USER_AVATAR2 = user_avatar2;
 export const QUOTE_ICON = quote_icon;
-export const APPOINTMENT_DURATION = 15;
+//for doc info page
+export const DOC_HEADER_PIC = doc_header_pic;
+export const MALE_ICON = male_icon;
+export const FEMALE_ICON = female_icon;
+export const ADDRESS_ICON = address_icon;
+export const PHONE_ICON = phone_icon;
+export const EMAIL_ICON = email_icon;
+export const OPEN_ICON = open_icon;
+export const CLINIC_INFO = {
+  address: "135 Lonsdale Street, Melbourne",
+  phone: "0412334897",
+  email: "medibooking@gmail.com",
+  openTime: "8:00am-8:00pm",
+  latitude: -37.81223,
+  longitude: 144.96263,
+};
+export const LOCATION_ICON = location_icon;
 
+export const APPOINTMENT_DURATION = 15;
 export const TIMES = (startHour, endHour) => {
   let times = [];
   for (let h = startHour; h !== endHour; ++h)
@@ -72,46 +98,3 @@ export const TIMES = (startHour, endHour) => {
       });
   return times;
 };
-
-export const APPOINTMENT_TIMES = [
-  "08:00",
-  "08:15",
-  "08:30",
-  "08:45",
-  "09:00",
-  "09:15",
-  "09:30",
-  "09:45",
-  "10:00",
-  "10:15",
-  "10:30",
-  "10:45",
-  "11:00",
-  "11:15",
-  "11:30",
-  "11:45",
-  "12:00",
-  "12:15",
-  "12:30",
-  "12:45",
-  "13:00",
-  "13:15",
-  "13:30",
-  "13:45",
-  "14:00",
-  "14:15",
-  "14:30",
-  "14:45",
-  "15:00",
-  "15:15",
-  "15:30",
-  "15:45",
-  "16:00",
-  "16:15",
-  "16:30",
-  "16:45",
-  "17:00",
-  "17:15",
-  "17:30",
-  "17:45",
-];
