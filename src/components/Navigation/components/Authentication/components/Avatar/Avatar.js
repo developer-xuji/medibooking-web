@@ -3,9 +3,9 @@ import { AVATAR_ICON } from "../../../../../../constants";
 const role = localStorage.getItem("ROLE");
 const doctorId = localStorage.getItem("USER_ID");
 const AVATAR_ICON_URL =
-  role && role === "ROLE_PATIENT"
-    ? AVATAR_ICON
-    : `https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctorId}.jpg`;
+  role && role === "ROLE_DOCTOR"
+    ? `https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctorId}.jpg`
+    : AVATAR_ICON;
 console.log("doctorId", doctorId);
 
 // const { userId } = this.props;
