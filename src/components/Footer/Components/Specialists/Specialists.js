@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import Title from "../Title";
 import { MOBILE_WIDTH } from "../../../../constants";
-import { SMALL_BREAKPOINT } from "../../../../constants";
 
 const Layout = styled.div`
   display: flex;

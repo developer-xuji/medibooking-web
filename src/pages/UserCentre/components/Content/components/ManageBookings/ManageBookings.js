@@ -2,9 +2,7 @@ import React from "react";
 import ManageBookingContent from "./components/ManageBookingContent";
 import styled from "styled-components";
 import Layout from "antd/lib/layout/layout";
-import getAuth from "../../../../../../apis/getAuth";
 import getAppointments from "../../../../../../utils/getAppointments";
-import fetchData from "../../../../../../apis/fetchData";
 import LoadingSpin from "../../../../../../components/LoadingSpin";
 import { Empty } from "antd";
 
@@ -22,8 +20,6 @@ const NoBookings = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-const TOKEN = localStorage.getItem("JWT_TOKEN");
 
 class ManageBookings extends React.Component {
   constructor(props) {

@@ -6,6 +6,7 @@ import moment from "moment";
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 36px;
 `;
 const FORMAT = "YYYY-MM-DD";
 
@@ -20,6 +21,7 @@ const DateSelector = ({ title, onSelect }) => {
         }
         format={FORMAT}
         onChange={onSelect}
+        style={{ height: "42px"}}
       />
     </Layout>
   );

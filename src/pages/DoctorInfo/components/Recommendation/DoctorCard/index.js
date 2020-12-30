@@ -1,10 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { getRoutePath } from "../../../../../utils/getRoute";
 
-import { DOC1_PIC } from "../../../../../constants"
-import { MALE_ICON } from "../../../../../constants"
-import { FEMALE_ICON } from "../../../../../constants"
+import { MALE_ICON } from "../../../../../constants";
+import { FEMALE_ICON } from "../../../../../constants";
 
 const Layout = styled.a`
   display: flex;
@@ -13,15 +11,15 @@ const Layout = styled.a`
   width: 100%;
   margin: 16px 12px 0px 0px;
   padding: 12px 18px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      object-position: center;
-      border-radius: 100%;
-      margin-right: 18px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    margin-right: 18px;
   }
 
   @media screen and (max-width: 900px) {
@@ -29,44 +27,46 @@ const Layout = styled.a`
   }
 
   &:hover {
-      cursor: pointer;
-      transform: scale(1.1, 1.1);
+    cursor: pointer;
+    transform: scale(1.1, 1.1);
   }
-`
+`;
 
 const TextArea = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 8px;
 
-    h3 {
-      font-size: 18px;
-      font-family: "Open Sans", sans-serif;
-      font-weight: 600;
-      color: #5b7189;
-      text-align: left;
+  h3 {
+    font-size: 18px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    color: #5b7189;
+    text-align: left;
   }
 
-    img {
-        width: 20px;
-        height: 20px;
-    }
-  `
+  img {
+    width: 20px;
+    height: 20px;
+  }
+`;
 
 const DoctorCard = ({ id, firstName, lastName, gender }) => {
+  return (
+    <Layout href={"/doctors/" + id}>
+      <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor"></img>
+      <TextArea>
+        <h3>
+          {firstName} {lastName}
+        </h3>
+        {gender === "male" ? (
+          <img src={MALE_ICON} alt="male" />
+        ) : (
+          <img src={FEMALE_ICON} alt="female" />
+        )}
+      </TextArea>
+    </Layout>
+  );
+};
 
-    return <Layout  href={"/doctors/" + id}>
-            <img src={DOC1_PIC} alt="doctor"></img>
-            <TextArea>
-                <h3>{firstName} {lastName}</h3>
-                {gender === "male" ? <img src={MALE_ICON} alt="male" /> : <img src={FEMALE_ICON} alt="female" />}
-            </TextArea>
-        </Layout>
-
-
-
-
-
-}
-
-export default DoctorCard
+export default DoctorCard;

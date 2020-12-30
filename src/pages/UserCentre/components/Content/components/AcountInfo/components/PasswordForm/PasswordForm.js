@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import "antd/dist/antd.css";
 import { Form, Input, Row, Col } from "antd";
 
@@ -93,7 +93,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "reset":
       return (
         <>
@@ -138,7 +137,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "new":
       return (
         <>
@@ -169,6 +167,10 @@ function PasswordForm(props) {
                       required: true,
                       message: "Please input your new password!",
                     },
+                    {
+                      min: 8,
+                      message: "Password must be minimum 8 characters.",
+                    },
                   ]}
                 >
                   <Input.Password defaultValue={""} />
@@ -180,6 +182,10 @@ function PasswordForm(props) {
                     {
                       required: true,
                       message: "Please Confirm your new password!",
+                    },
+                    {
+                      min: 8,
+                      message: "Password must be minimum 8 characters.",
                     },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
@@ -206,7 +212,6 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
     case "wrong":
       return (
         <>
@@ -258,7 +263,7 @@ function PasswordForm(props) {
           </Row>
         </>
       );
-      break;
+    default:
   }
 }
 

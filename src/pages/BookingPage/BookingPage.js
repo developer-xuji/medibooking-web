@@ -17,12 +17,17 @@ const Layout = styled.div`
   margin: 50px auto;
   border-radius: 15px;
   box-shadow: 0px 3px 30px 0px rgba(0, 0, 0, 0.3);
+
+  h3 {
+    color: #5b7189;
+    font-size: 24px;
+  }
 `;
 
 const SelectArea = styled.div`
   width: 100%;
   border-radius: 0 0 0 15px;
-  padding: 20px 30px;
+  padding: 20px 40px;
 
   display: flex;
   flex-direction: column;
@@ -32,18 +37,41 @@ const SelectArea = styled.div`
 const Note = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80%;
-  textarea {
-    min-height: 100px;
-  }
+  margin: 36px 0;
 `;
 
 const TextArea = styled.textarea`
   height: 100%;
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  color: #666;
+  font-style: normal;
+  box-shadow: inset 0 0 0.25rem #ddd;
+  &:focus {
+    outline: none;
+  }
+  &[placeholder] { 
+    font-style: italic;
+    font-size: 0.875rem;
+  }
 `;
 
+const Count = styled.div`
+  width: 100%;
+  text-align: right;
+  padding: 0.3rem 0 0 0;
+  font-size: 0.875rem;
+  color: #5b7189;`
+
 const ErrorMessage = styled.div`
-  color: red;
+  color: #cc0000;
+  background-color: rgba(255, 0, 51, 0.2);
+  padding: 12px 24px;
+  margin-top: 12px;
 `;
 
 class BookingPage extends React.Component {
@@ -60,6 +88,7 @@ class BookingPage extends React.Component {
       notes: "",
       errorMessage: "",
       invalidAppointments: [],
+      textCount: 0
     };
     this.handleSelector = this.handleSelector.bind(this);
     this.handleBookingClick = this.handleBookingClick.bind(this);
@@ -90,8 +119,14 @@ class BookingPage extends React.Component {
 
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
-        : addAppointment(appointment);
-      window.location.href = getRoutePath("user_center/manageBookings");
+        : addAppointment(appointment).then(
+          () =>
+            (window.location.href = getRoutePath(
+              "user_center/manageBookings"
+            ))
+        );
+
+      // console.log("APPOINTMENT: ", appointment);
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"
@@ -132,6 +167,13 @@ class BookingPage extends React.Component {
         doctor: doctor,
         invalidAppointments: appointmentList,
       });
+
+      if (appointmentList.filter((apmt) => apmt.startingTime.slice(0,5) == this.state.startTime).length > 0) {
+        this.setState({
+          startTime: "",
+          endTime: "",
+        })
+      }     
     });
   }
 
@@ -143,6 +185,12 @@ class BookingPage extends React.Component {
           date: date.format("YYYY-MM-DD"),
           invalidAppointments: appointmentList,
         });
+        if (appointmentList.filter((apmt) => apmt.startingTime.slice(0,5) == this.state.startTime).length > 0) {
+          this.setState({
+            startTime: "",
+            endTime: "",
+          })
+        }
       })
       .catch(() => {
         this.setState({
@@ -154,6 +202,7 @@ class BookingPage extends React.Component {
   handleNoteChange(event) {
     this.setState({
       notes: event.target.value,
+      textCount: event.target.value.length
     });
   }
 
@@ -171,6 +220,7 @@ class BookingPage extends React.Component {
       startTime,
       errorMessage,
       invalidAppointments,
+      textCount
     } = this.state;
 
     return (
@@ -181,7 +231,7 @@ class BookingPage extends React.Component {
           time={startTime}
           onBooingClick={this.handleBookingClick}
         />
-        <ErrorMessage>{errorMessage}</ErrorMessage>
+        {errorMessage.length === 0? <></> : <ErrorMessage>{errorMessage}</ErrorMessage>}
         <SelectArea>
           <DoctorSelector
             title="Select Doctor"
@@ -204,7 +254,8 @@ class BookingPage extends React.Component {
           />
           <Note>
             <h3>Notes</h3>
-            <TextArea onChange={(e) => this.handleNoteChange(e)} />
+            <TextArea onChange={(e) => this.handleNoteChange(e)} placeholder="Leave your notes..." maxLength={3000}/>
+          <Count><span>{textCount} / 3000</span></Count>
           </Note>
         </SelectArea>
       </Layout>

@@ -7,12 +7,7 @@ const Layout = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const NavBar = styled.div`
-  width: 100%;
-  height: 50px;
-  font-size: 30px;
-  border-bottom: 1px solid #e1e1e1;
-`;
+
 const Banner = styled.div`
   display: flex;
   justify-content: space-between;
