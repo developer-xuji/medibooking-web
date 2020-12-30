@@ -35,7 +35,7 @@ const Container = styled.div`
   box-shadow: 0 1px 10px rgba(92, 119, 131, 0.15);
   border-radius: 4px;
   // margin: 24px auto;
-  padding: 24px;
+  //padding: 24px;
   text-align: center;
 `;
 
