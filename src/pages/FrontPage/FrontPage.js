@@ -4,11 +4,12 @@ import { HOME_BACKGROUND } from "../../constants";
 import { MOBILE_WIDTH } from "../../constants";
 import { JUMBOTRON_PIC } from "../../constants";
 import { getRoutePath } from "../../utils/getRoute";
-
+import LoginModal from "../../components/withAuthenticationModals/components/LogInModal";
 import Services from "./components/Services";
 import DataAds from "./components/DataAds";
 import DoctosIntro from "./components/DoctorsIntro";
 import CustomerResponse from "./components/CustomerResponse";
+import { render } from "@testing-library/react";
 
 const Layout = styled.div`
   display: flex;
@@ -61,53 +62,69 @@ const SloganContainer = styled.div`
   }
 
   button {
-    border: none;
+    border: 1px solid transparent;
     padding: 16px 32px;
-    background-color: #aecc54;
+    background-color: #dfebbc;
     font-weight: bold;
     border-radius: 8px;
-    a {
-      color: #fff;
-    }
+    color: #738892;
   }
 
   button:hover {
-    background-color: transparent;
-    border: 1px solid #aecc54;
+    background-color: #aecc54;
     cursor: pointer;
-    a {
-      color: #aecc54;
-    }
   }
 `;
+const token = localStorage.getItem("JWT_TOKEN");
+class FrontPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-const FrontPage = () => {
-  const token = localStorage.getItem("JWT_TOKEN");
-  return (
-    <Layout>
-      <SloganContainer>
-        <p>Welcome </p> <hr />
-        <h1>
-          The very best <br />
-          <b>general practitioners</b> for you and your family
-        </h1>
-        <button
-          disabled={localStorage.getItem("JWT_TOKEN") === undefined}
-          onClick={() =>
-            token === undefined || token === null
-              ? ""
-              : (window.location.href = getRoutePath("booking"))
-          }
-        >
-          Booking Now
-        </button>
-        {token === undefined || token === null ? <p>Please log in</p> : ""}
-      </SloganContainer>
-      <DataAds />
-      <DoctosIntro />
-      <Services />
-      <CustomerResponse />
-    </Layout>
-  );
-};
+    this.state = {
+      showLoginModal: false,
+    };
+  }
+  setShowLoginModal() {
+    this.setState({ showLoginModal: true });
+  }
+
+  setCloseLoginModal() {
+    this.setState({ showLoginModal: false });
+  }
+
+  render() {
+    return (
+      <Layout>
+        <SloganContainer>
+          <p>Welcome </p> <hr />
+          <h1>
+            The very best <br />
+            <b>general practitioners</b> for you and your family
+          </h1>
+          <button
+            disabled={localStorage.getItem("JWT_TOKEN") === undefined}
+            onClick={() =>
+              token === undefined || token === null
+                ? this.setShowLoginModal()
+                : (window.location.href = getRoutePath("booking"))
+            }
+          >
+            Booking Now
+          </button>
+          {/* {token === undefined || token === null ? <p>Please log in</p> : ""} */}
+        </SloganContainer>
+        {this.state.showLoginModal && (
+          <LoginModal
+            onClose={() => this.setCloseLoginModal()}
+            onLogIn={() => {}}
+          />
+        )}
+        <DataAds />
+        <DoctosIntro />
+        <Services />
+        <CustomerResponse />
+      </Layout>
+    );
+  }
+}
 export default FrontPage;
