@@ -18,50 +18,7 @@ const Selector = styled(Select)`
   }
 `;
 
-// const allLanguages = [
-//   "Mandarin Chinese",
-//   "Spanish",
-//   "English",
-//   "Hindi",
-//   "Bengali",
-//   "Portuguese",
-//   "Russian",
-//   "Japanese",
-//   "Korean",
-//   "French",
-//   "German",
-//   "Vietnamese",
-//   "Italian",
-// ];
-// const allSpecializations = [
-//   "Addiction medicine",
-//   "Anaesthesia",
-//   "Dermatology",
-//   "Emergency medicine",
-//   "General practice",
-//   "Intensive care medicine",
-//   "Medical administration",
-//   "Obstetrics and gynaecology",
-//   "Occupational and environmental medicine",
-//   "Ophthalmology",
-//   "Paediatrics and child health",
-//   "Pain medicine",
-//   "Palliative medicine",
-//   "Pathology",
-//   "Physician",
-//   "Psychiatry",
-//   "Public health medicine",
-//   "Radiation oncology",
-//   "Radiology",
-//   "Rehabilitation medicine",
-//   "Sexual health medicine",
-//   "Sport and exercise medicine",
-//   "Surgery",
-// ];
-
-// console.log(allLanguages2);
 const { Option } = Select;
-
 class MultiSelector extends React.Component {
   constructor(props) {
     super(props);
@@ -83,12 +40,6 @@ class MultiSelector extends React.Component {
     });
   }
 
-  // handleChange(value) {
-  //   const { category, handleSelectorChange } = this.state;
-  //   console.log(this.state);
-  //   handleSelectorChange(value, category);
-  // }
-
   render() {
     const { category, data, handleSelectorChange } = this.props;
     const { allOptions, loading } = this.state;
@@ -98,15 +49,6 @@ class MultiSelector extends React.Component {
         category === "languages"
           ? data.map((value) => value.languageName)
           : data.map((value) => value.specializationName);
-
-      // const children =
-      //   category === "languages"
-      //     ? allLanguages.map((language) => (
-      //         <Option key={language}>{language}</Option>
-      //       ))
-      //     : allSpecializations.map((specialization) => (
-      //         <Option key={specialization}>{specialization}</Option>
-      //       ));
 
       const children =
         category === "languages"
@@ -120,8 +62,6 @@ class MultiSelector extends React.Component {
                 {specialization.specializationName}
               </Option>
             ));
-
-      // console.log("category & state: ", category, this.state);
 
       return (
         <Wrappper>
@@ -158,42 +98,5 @@ class MultiSelector extends React.Component {
     }
   }
 }
-
-// const MultiSelector = ({ category, data, handleSelectorChange }) => {
-//   const { Option } = Select;
-//   const currentSelectedValue =
-//     category === "languages"
-//       ? data.map((value) => value.languageName)
-//       : data.map((value) => value.specializationName);
-
-//   const children =
-//     category === "languages"
-//       ? allLanguages.map((language) => (
-//           <Option key={language}>{language}</Option>
-//         ))
-//       : allSpecializations.map((specialization) => (
-//           <Option key={specialization}>{specialization}</Option>
-//         ));
-
-//   function handleChange(value) {
-//     handleSelectorChange(value, category);
-//     // console.log(value);
-//   }
-
-//   return (
-//     <Wrappper>
-//       <Selector
-//         mode="multiple"
-//         allowClear
-//         style={{ width: "100%" }}
-//         placeholder={`Please select your ${category}`}
-//         defaultValue={currentSelectedValue}
-//         onChange={handleChange}
-//       >
-//         {children}
-//       </Selector>
-//     </Wrappper>
-//   );
-// };
 
 export default MultiSelector;

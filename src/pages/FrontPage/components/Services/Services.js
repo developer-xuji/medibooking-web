@@ -39,7 +39,7 @@ const TOP_LIST = [
   {
     key: "general_practice",
     contains: "General Practice",
-    href: "#/doctors",
+    href: "/",
   },
   {
     key: "travel_shuts",
