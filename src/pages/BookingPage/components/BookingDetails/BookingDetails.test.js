@@ -18,11 +18,8 @@ describe('<BookingDetails />', () => {
         time={time}
         onBooingClick={onBookingClick}/>);
 
-        expect(wrapper.children().at(0).text()).toEqual("");
-        expect(wrapper.children().at(1).text()).toEqual("date");
-        expect(wrapper.children().at(2).text()).toEqual("time");
         expect(onBookingClick).not.toBeCalled();
-        wrapper.children().at(3).simulate("click");
+        wrapper.children().at(1).simulate("click");
         expect(onBookingClick).toBeCalled();        
     });
 
@@ -33,11 +30,8 @@ describe('<BookingDetails />', () => {
         time={time}
         onBooingClick={onBookingClick}/>);
 
-        expect(wrapper.children().at(0).text()).toEqual("firstName lastName");
-        expect(wrapper.children().at(1).text()).toEqual("date");
-        expect(wrapper.children().at(2).text()).toEqual("time");
         expect(onBookingClick).not.toBeCalled();
-        wrapper.children().at(3).simulate("click");
+        wrapper.children().at(1).simulate("click");
         expect(onBookingClick).toBeCalled();        
     });
 });
