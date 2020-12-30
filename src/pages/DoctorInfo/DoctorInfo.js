@@ -1,23 +1,11 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-// import Profile from "./components/Profile";
-// import Contact from "./components/Contact";
-// import Link from "./components/Link";
 import InfoHeader from "./components/InfoHeader";
 import InfoBody from "./components/InfoBody";
 import Recommendation from "./components/Recommendation";
 
 import { connect } from "react-redux";
 import { loadDoctor } from "../../actions/doctor";
-
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   useParams
-// } from "react-router-dom";
-
-// let Loading = true;
 
 const spinAnimation = keyframes`
   0% { transform: rotate(0deg); }
