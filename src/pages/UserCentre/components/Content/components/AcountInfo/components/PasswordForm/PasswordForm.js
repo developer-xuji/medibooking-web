@@ -168,8 +168,8 @@ function PasswordForm(props) {
                       message: "Please input your new password!",
                     },
                     {
-                      min: 8, 
-                      message: 'Username must be minimum 8 characters.',
+                      min: 8,
+                      message: "Password must be minimum 8 characters.",
                     },
                   ]}
                 >
@@ -184,8 +184,8 @@ function PasswordForm(props) {
                       message: "Please Confirm your new password!",
                     },
                     {
-                      min: 8, 
-                      message: 'Username must be minimum 8 characters.',
+                      min: 8,
+                      message: "Password must be minimum 8 characters.",
                     },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
