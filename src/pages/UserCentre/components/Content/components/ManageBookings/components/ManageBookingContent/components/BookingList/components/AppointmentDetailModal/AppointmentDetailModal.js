@@ -3,7 +3,8 @@ import styled from "styled-components";
 import Modal from "../../../../../../../../../../../../components/Modal";
 import InfoItem from "./components/InfoItem";
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
-import fetchData from "../../../../../../../../../../../../apis/fetchData";
+// import fetchData from "../../../../../../../../../../../../apis/fetchData";
+import getPatientById from "../../../../../../../../../../../../utils/getPatientById";
 
 const Block = styled.div`
   padding-bottom: 15px;
@@ -75,11 +76,20 @@ class AppointmentDetailModal extends React.Component {
   }
 
   componentDidMount() {
-    const { booking } = this.props;
-    const url = `/patients/patientId/${booking.patient}`;
+    // const { booking } = this.props;
+    // const url = `/patients/patientId/${booking.patient}`;
 
-    fetchData(url).then((data) => {
-      console.log(data);
+    // fetchData(url).then((data) => {
+    //   console.log(data);
+    //   this.setState({
+    //     patientData: data,
+    //     loading: false,
+    //   });
+    // });
+    const { booking } = this.props;
+
+    getPatientById(booking.patient).then((data) => {
+      console.log("patient: ", data);
       this.setState({
         patientData: data,
         loading: false,

@@ -90,8 +90,14 @@ class BookingPage extends React.Component {
 
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
-        : addAppointment(appointment);
-      window.location.href = getRoutePath("user_center/manageBookings");
+        : addAppointment(appointment).then(
+            () =>
+              (window.location.href = getRoutePath(
+                "user_center/manageBookings"
+              ))
+          );
+
+      // console.log("APPOINTMENT: ", appointment);
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"
