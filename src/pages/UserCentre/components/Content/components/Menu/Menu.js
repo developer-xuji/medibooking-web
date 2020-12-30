@@ -31,7 +31,7 @@ const MenuItem = styled.li`
   font-weight: ${(props) => (props.active ? "700" : {})};
 `;
 
-class Menu extends React.Component {
+export class Menu extends React.Component {
   render() {
     return (
       <Layout>
