@@ -56,7 +56,7 @@ function DoctorOfEach(props) {
   return (
     <React.Fragment>
       <DoctorContainer>
-        <Link to={`/doctors/${DoctorId}`}>
+        <a href={`/doctors/${DoctorId}`}>
           <DoctorImageContainer>
             <img
               alt="doctor"
@@ -66,7 +66,7 @@ function DoctorOfEach(props) {
             />
             <Mask />
           </DoctorImageContainer>
-        </Link>
+        </a>
         <DoctorNameLanguageSpecializationWrapper>
           <DoctorName>{`Dr. ${FirstName} ${SecondName}`}</DoctorName>
         </DoctorNameLanguageSpecializationWrapper>

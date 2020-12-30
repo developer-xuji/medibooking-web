@@ -167,6 +167,10 @@ function PasswordForm(props) {
                       required: true,
                       message: "Please input your new password!",
                     },
+                    {
+                      min: 8, 
+                      message: 'Username must be minimum 8 characters.',
+                    },
                   ]}
                 >
                   <Input.Password defaultValue={""} />
@@ -178,6 +182,10 @@ function PasswordForm(props) {
                     {
                       required: true,
                       message: "Please Confirm your new password!",
+                    },
+                    {
+                      min: 8, 
+                      message: 'Username must be minimum 8 characters.',
                     },
                     ({ getFieldValue }) => ({
                       validator(rule, value) {
