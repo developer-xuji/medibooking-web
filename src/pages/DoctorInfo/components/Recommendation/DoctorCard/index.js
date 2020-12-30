@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { DOC1_PIC } from "../../../../../constants";
 import { MALE_ICON } from "../../../../../constants";
 import { FEMALE_ICON } from "../../../../../constants";
 
@@ -55,7 +54,7 @@ const TextArea = styled.div`
 const DoctorCard = ({ id, firstName, lastName, gender }) => {
   return (
     <Layout href={"/doctors/" + id}>
-      <img src={DOC1_PIC} alt="doctor"></img>
+      <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor"></img>
       <TextArea>
         <h3>
           {firstName} {lastName}
