@@ -46,9 +46,16 @@ class AccountInfo extends React.Component {
   onNewFinish(event) {
     console.log(event);
     let account = { encodedPassword: bcrypt.hashSync(event.newpassword, salt) };
-    putPassword([localStorage.getItem("ACCOUNT_ID")], account);
-    this.setState({
-      PasswordResetResult: true,
+    putPassword(localStorage.getItem("ACCOUNT_ID"), account).then((res) => {
+      this.setState({
+        PasswordResetResult: true,
+      });
+      if (res.success === false) {
+        setTimeout(() => {}, 300);
+      } else {
+        window.location.reload();
+        console.log(`Your changes have been saved.`);
+      }
     });
   }
 

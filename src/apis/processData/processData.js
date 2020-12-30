@@ -22,10 +22,11 @@ const processData = (url, method, parameterList, body) => {
         return null;
     }
   };
+  console.log(url + param);
   if (processing !== null)
     return processing(url + param)
       .then((response) => response.data)
-      .catch((err) => console.log(err));
+      .catch((err) => err);
 };
 
 export default processData;

@@ -38,10 +38,18 @@ class BookingList extends React.Component {
           );
     }
     if (sortMethod === "byDateNew") {
-      listAfterSearch.sort((a, b) => b.date.localeCompare(a.date));
+      listAfterSearch.sort(
+        (a, b) =>
+          b.date.localeCompare(a.date) ||
+          b.startingTime.localeCompare(a.startingTime)
+      );
     }
     if (sortMethod === "byDateOld") {
-      listAfterSearch.sort((a, b) => a.date.localeCompare(b.date));
+      listAfterSearch.sort(
+        (a, b) =>
+          a.date.localeCompare(b.date) ||
+          a.startingTime.localeCompare(b.startingTime)
+      );
     }
 
     console.log(listAfterSearch);

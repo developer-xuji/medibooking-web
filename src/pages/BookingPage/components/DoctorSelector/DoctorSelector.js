@@ -1,25 +1,39 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { List, Avatar } from "antd";
+import DoctorCard from "./DoctorCard"
 import styled, { css } from "styled-components";
 import { THEME_COLOR } from "../../../../constants";
 import getDoctors from "../../../../utils/getDoctors";
 import getDoctorById from "../../../../utils/getDoctorById";
 
 const DOCTOR_LIST_LENGTH = 5;
-const Layout = styled.div``;
+const Layout = styled.div`  `;
 const ItemBox = styled.div`
   display: flex;
   & ~ & {
-    border-top: 1px solid gray;
+     border-top: 1px solid rgba(0, 143, 180, 0.2);
   }
   ${(props) =>
     ({
       true: css`
-        background-color: ${THEME_COLOR};
+        background-color: rgba(0, 143, 180, 0.2);
       `,
     }[props.isSelected])}
 `;
+
+const DocLink = styled.div`
+  margin-top: 8px;
+  font-size: 16px;
+  text-decoration: underline;
+  width: 100%;
+  text-align: right;
+
+  a{
+    color: ${THEME_COLOR}
+  }
+  
+  `
 
 class DoctorSelector extends React.Component {
   constructor(props) {
@@ -70,22 +84,21 @@ class DoctorSelector extends React.Component {
                 isSelected={selected === doctorName}
                 onClick={() => onSelect(doctor)}
               >
-                <List.Item>
+                <DoctorCard key={doctor.id} id={doctor.id} firstName={doctor.firstName} lastName={doctor.lastName} gender={doctor.gender} specializations={doctor.specializations}/>
+                {/* <List.Item>
                   <List.Item.Meta
                     avatar={
-                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                      <Avatar  src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctor.id}.jpg`} />
                     }
                     title={doctorName}
                     description="Specialization:"
                   />
-                </List.Item>
+                </List.Item> */}
               </ItemBox>
             );
           }}
         />
-        <div>
-          <a href="/doctors">More Doctors</a>
-        </div>
+        <DocLink><a href="/doctors">More Doctors →</a></DocLink>
       </Layout>
     );
   }

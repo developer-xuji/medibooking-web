@@ -116,9 +116,9 @@ export class LoginModal extends React.Component {
                 />
               </FormItem>
             ))}
-            {loginFailMessage && (
+            {this.state.logInFailMessage && (
               <FormItem>
-                <ErrorMessage>{loginFailMessage}</ErrorMessage>
+                <ErrorMessage>{this.state.logInFailMessage}</ErrorMessage>
               </FormItem>
             )}
             <FormItem>
