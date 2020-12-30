@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { DOC2_PIC } from "../../../../constants";
 import { DOC_HEADER_PIC } from "../../../../constants";
 import { CLINIC_INFO } from "../../../../constants";
 import { MALE_ICON } from "../../../../constants";
@@ -119,7 +118,7 @@ const InfoHeader = ({ id, name, gender }) => {
   return (
     <Layout>
       <DoctorPic>
-        <img src={DOC2_PIC} alt="doctor" />
+        <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor" />
       </DoctorPic>
       <TextArea>
         <h1>
