@@ -26,7 +26,7 @@ const Layout = styled.div`
   position: relative;
 
   button {
-    border: none;
+    border: 1px solid transparent;
     padding: 16px 32px;
     background-color: #5b7189;
     font-weight: bold;
@@ -37,10 +37,10 @@ const Layout = styled.div`
     color: #fff;
 
     &:hover {
-      background-color: transparent;
-      border: 1px solid #5b7189;
+      background-color: #aecc54;
+      border: 1px solid #aecc54;
       cursor: pointer;
-      color: #5b7189;
+      color: white;
     }
   }
 
@@ -115,6 +115,7 @@ const TextArea = styled.div`
 
 const InfoHeader = ({ id, name, gender }) => {
   const booking_url = "/booking/" + id;
+  const token = localStorage.getItem("JWT_TOKEN");
   return (
     <Layout>
       <DoctorPic>
@@ -133,7 +134,9 @@ const InfoHeader = ({ id, name, gender }) => {
         <p>Phone: {CLINIC_INFO.phone}</p>
       </TextArea>
       <Link to={booking_url}>
-        <button>Booking</button>
+        <button disabled={token === null || token === undefined}>
+          Booking
+        </button>
       </Link>
     </Layout>
   );
