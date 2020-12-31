@@ -9,7 +9,6 @@ import Services from "./components/Services";
 import DataAds from "./components/DataAds";
 import DoctosIntro from "./components/DoctorsIntro";
 import CustomerResponse from "./components/CustomerResponse";
-import { render } from "@testing-library/react";
 
 const Layout = styled.div`
   display: flex;

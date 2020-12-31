@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import NavItem from "../NavItem";
-import DropdownWidget from "../../../DropdownWidget";
 import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
 import { THEME_COLOR } from "../../../../constants";
@@ -57,21 +56,7 @@ export class Authentication extends React.Component {
   }
 
   render() {
-    const { ShowLoginMenu } = this.state;
     const { setShowModal, user } = this.props;
-
-    const LOGIN_MENU = [
-      {
-        key: "log in as a patient",
-        contains: "Log in as a patient",
-        onclick: () => setShowModal("LOG_IN"),
-      },
-      {
-        key: "log in as a doctor",
-        href: "#/doctor_login",
-        contains: "Log in as a doctor",
-      },
-    ];
 
     return (
       <Layout>
@@ -112,7 +97,6 @@ export class Authentication extends React.Component {
                 <Icon name="sign-in" style={{ fontSize: "30px" }} />
                 Log in
               </NavItem>
-              {ShowLoginMenu && <DropdownWidget items={LOGIN_MENU} />}
             </div>
           </React.Fragment>
         )}

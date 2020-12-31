@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import { MALE_ICON } from "../../../../../constants";
 import { FEMALE_ICON } from "../../../../../constants";
-import Tag from "../../../../DoctorInfo/components/InfoBody/TagArea/Tag" 
 
 const Layout = styled.a`
   display: flex;
@@ -20,7 +19,6 @@ const Layout = styled.a`
     border-radius: 100%;
     margin-right: 18px;
   }
-
 `;
 
 const TextArea = styled.div`
@@ -46,32 +44,41 @@ const TextArea = styled.div`
 const SpecArea = styled.div`
   display: flex;
   flex-wrap: wrap;
-  
+
   span {
-      margin: 8px 12px 0 0;
-      padding: 2px 8px;
-      background-color: rgba(91, 113, 137, 0.1);
-      color: #5b7189;
+    margin: 8px 12px 0 0;
+    padding: 2px 8px;
+    background-color: rgba(91, 113, 137, 0.1);
+    color: #5b7189;
   }
-`
+`;
 
 const DoctorCard = ({ id, firstName, lastName, gender, specializations }) => {
-    return (
-        <Layout>
-            <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor"></img>
-            <TextArea>
-                <h4>
-                    {firstName} {lastName}
-                    {gender === "male" ? (
-                        <img src={MALE_ICON} alt="male" />
-                    ) : (
-                            <img src={FEMALE_ICON} alt="female" />
-                        )}
-                </h4>
-                <SpecArea>{specializations.map((specialization) => <span key={specialization.id}>{specialization.specializationName}</span>)}</SpecArea>
-            </TextArea>
-        </Layout>
-    );
+  return (
+    <Layout>
+      <img
+        src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`}
+        alt="doctor"
+      ></img>
+      <TextArea>
+        <h4>
+          {firstName} {lastName}
+          {gender === "male" ? (
+            <img src={MALE_ICON} alt="male" />
+          ) : (
+            <img src={FEMALE_ICON} alt="female" />
+          )}
+        </h4>
+        <SpecArea>
+          {specializations.map((specialization) => (
+            <span key={specialization.id}>
+              {specialization.specializationName}
+            </span>
+          ))}
+        </SpecArea>
+      </TextArea>
+    </Layout>
+  );
 };
 
 export default DoctorCard;
