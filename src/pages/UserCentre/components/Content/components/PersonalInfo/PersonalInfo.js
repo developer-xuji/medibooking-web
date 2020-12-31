@@ -28,7 +28,6 @@ class PersonalInfo extends React.Component {
   render() {
     const { loading, data, role } = this.state;
 
-    console.log(data);
     return (
       <>
         {loading ? (

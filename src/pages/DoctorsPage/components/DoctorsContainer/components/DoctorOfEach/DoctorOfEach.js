@@ -50,8 +50,6 @@ function DoctorOfEach(props) {
   let FirstName = props.Doctor.FirstName;
   let SecondName = props.Doctor.SecondName;
 
-  console.log(DoctorId);
-
   return (
     <React.Fragment>
       <DoctorContainer>

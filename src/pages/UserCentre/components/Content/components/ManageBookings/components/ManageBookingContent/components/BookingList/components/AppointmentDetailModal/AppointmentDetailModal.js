@@ -80,7 +80,6 @@ class AppointmentDetailModal extends React.Component {
     // const url = `/patients/patientId/${booking.patient}`;
 
     // fetchData(url).then((data) => {
-    //   console.log(data);
     //   this.setState({
     //     patientData: data,
     //     loading: false,
@@ -89,7 +88,6 @@ class AppointmentDetailModal extends React.Component {
     const { booking } = this.props;
 
     getPatientById(booking.patient).then((data) => {
-      console.log("patient: ", data);
       this.setState({
         patientData: data,
         loading: false,

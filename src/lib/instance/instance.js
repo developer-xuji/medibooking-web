@@ -11,7 +11,6 @@ instance.interceptors.response.use((response) => {
   if (authToken) {
     const jwtToken = authToken.substring(7);
     localStorage.setItem("JWT_TOKEN", jwtToken);
-    console.log(jwtToken);
     getAuth({ token: jwtToken });
   }
   return response;

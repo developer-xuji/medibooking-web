@@ -33,7 +33,6 @@ let allDoctors = {};
 let allDoctorsList = Object.keys(allDoctors);
 
 const B2F = (doctorObject) => {
-  console.log(doctorObject);
   let returnedDoctorObject = {};
   for (let i = 0; i < doctorObject.length; i++) {
     let SpecializationList = [];
@@ -172,7 +171,6 @@ class DoctorsPage extends React.Component {
         ReturnedDoctorsList.push(allDoctorsList[i]);
       }
     }
-    console.log(ReturnedDoctorsList);
     if (ReturnedDoctorsList.length > MaximumNumOfDoctorsToShow) {
       this.setState({
         CurrentDoctorsList: ReturnedDoctorsList,
@@ -249,7 +247,6 @@ class DoctorsPage extends React.Component {
   componentDidMount() {
     Loading = false;
     getDoctors().then((data) => {
-      console.log(data);
       allDoctors = B2F(data);
       allDoctorsList = Object.keys(allDoctors);
       this.setState({
@@ -260,7 +257,6 @@ class DoctorsPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.CurrentDoctorsList);
     if (Loading === true) {
       return (
         <DivLoader>

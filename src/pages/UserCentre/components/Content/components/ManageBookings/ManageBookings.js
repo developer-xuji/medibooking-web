@@ -32,8 +32,6 @@ class ManageBookings extends React.Component {
 
   componentDidMount() {
     getAppointments().then((data) => {
-      console.log("DATA: ", data);
-
       const bookingItemList = data.map((v) => ({
         ...v,
         doctorName: `${v.doctorFirstName} ${v.doctorLastName}`,
@@ -51,7 +49,7 @@ class ManageBookings extends React.Component {
 
   render() {
     const { bookingItemList, loading } = this.state;
-    console.log(bookingItemList);
+
     return (
       <>
         {loading ? (

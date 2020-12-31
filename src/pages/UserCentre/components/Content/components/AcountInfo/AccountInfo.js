@@ -30,13 +30,11 @@ class AccountInfo extends React.Component {
       password: event.password,
     })
       .then((response) => {
-        console.log(response);
         this.setState({
           PasswordResetStatus: "new",
         });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({
           PasswordResetStatus: "wrong",
         });
@@ -44,7 +42,6 @@ class AccountInfo extends React.Component {
   }
 
   onNewFinish(event) {
-    console.log(event);
     let account = { encodedPassword: bcrypt.hashSync(event.newpassword, salt) };
     putPassword(localStorage.getItem("ACCOUNT_ID"), account).then((res) => {
       this.setState({
@@ -54,7 +51,6 @@ class AccountInfo extends React.Component {
         setTimeout(() => {}, 300);
       } else {
         window.location.reload();
-        console.log(`Your changes have been saved.`);
       }
     });
   }
@@ -85,7 +81,6 @@ class AccountInfo extends React.Component {
   // };
 
   render() {
-    console.log(this.state.username);
     return (
       <PasswordForm
         username={this.state.username}

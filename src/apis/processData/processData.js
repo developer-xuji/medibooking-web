@@ -22,7 +22,6 @@ const processData = (url, method, parameterList, body) => {
         return null;
     }
   };
-  console.log(url + param);
   if (processing !== null)
     return processing(url + param)
       .then((response) => response.data)

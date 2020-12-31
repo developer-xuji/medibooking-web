@@ -126,8 +126,6 @@ class BookingPage extends React.Component {
                 "user_center/manageBookings"
               ))
           );
-
-      // console.log("APPOINTMENT: ", appointment);
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"
