@@ -54,7 +54,7 @@ const TextArea = styled.textarea`
   &:focus {
     outline: none;
   }
-  &[placeholder] { 
+  &[placeholder] {
     font-style: italic;
     font-size: 0.875rem;
   }
@@ -65,7 +65,8 @@ const Count = styled.div`
   text-align: right;
   padding: 0.3rem 0 0 0;
   font-size: 0.875rem;
-  color: #5b7189;`
+  color: #5b7189;
+`;
 
 const ErrorMessage = styled.div`
   color: #cc0000;
@@ -88,7 +89,7 @@ class BookingPage extends React.Component {
       notes: "",
       errorMessage: "",
       invalidAppointments: [],
-      textCount: 0
+      textCount: 0,
     };
     this.handleSelector = this.handleSelector.bind(this);
     this.handleBookingClick = this.handleBookingClick.bind(this);
@@ -120,13 +121,11 @@ class BookingPage extends React.Component {
       doctor === null || date === "" || startTime === "" || endTime === ""
         ? this.setErrorMessage("Invalid Appointment Details")
         : addAppointment(appointment).then(
-          () =>
-            (window.location.href = getRoutePath(
-              "user_center/manageBookings"
-            ))
-        );
-
-      // console.log("APPOINTMENT: ", appointment);
+            () =>
+              (window.location.href = getRoutePath(
+                "user_center/manageBookings"
+              ))
+          );
     } else
       this.setErrorMessage(
         "Only patients can make appointments after logged in"
@@ -168,12 +167,16 @@ class BookingPage extends React.Component {
         invalidAppointments: appointmentList,
       });
 
-      if (appointmentList.filter((apmt) => apmt.startingTime.slice(0,5) == this.state.startTime).length > 0) {
+      if (
+        appointmentList.filter(
+          (apmt) => apmt.startingTime.slice(0, 5) === this.state.startTime
+        ).length > 0
+      ) {
         this.setState({
           startTime: "",
           endTime: "",
-        })
-      }     
+        });
+      }
     });
   }
 
@@ -185,11 +188,15 @@ class BookingPage extends React.Component {
           date: date.format("YYYY-MM-DD"),
           invalidAppointments: appointmentList,
         });
-        if (appointmentList.filter((apmt) => apmt.startingTime.slice(0,5) == this.state.startTime).length > 0) {
+        if (
+          appointmentList.filter(
+            (apmt) => apmt.startingTime.slice(0, 5) === this.state.startTime
+          ).length > 0
+        ) {
           this.setState({
             startTime: "",
             endTime: "",
-          })
+          });
         }
       })
       .catch(() => {
@@ -202,7 +209,7 @@ class BookingPage extends React.Component {
   handleNoteChange(event) {
     this.setState({
       notes: event.target.value,
-      textCount: event.target.value.length
+      textCount: event.target.value.length,
     });
   }
 
@@ -220,7 +227,7 @@ class BookingPage extends React.Component {
       startTime,
       errorMessage,
       invalidAppointments,
-      textCount
+      textCount,
     } = this.state;
 
     return (
@@ -231,7 +238,11 @@ class BookingPage extends React.Component {
           time={startTime}
           onBooingClick={this.handleBookingClick}
         />
-        {errorMessage.length === 0? <></> : <ErrorMessage>{errorMessage}</ErrorMessage>}
+        {errorMessage.length === 0 ? (
+          <></>
+        ) : (
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        )}
         <SelectArea>
           <DoctorSelector
             title="Select Doctor"
@@ -254,8 +265,14 @@ class BookingPage extends React.Component {
           />
           <Note>
             <h3>Notes</h3>
-            <TextArea onChange={(e) => this.handleNoteChange(e)} placeholder="Leave your notes..." maxLength={3000}/>
-          <Count><span>{textCount} / 3000</span></Count>
+            <TextArea
+              onChange={(e) => this.handleNoteChange(e)}
+              placeholder="Leave your notes..."
+              maxLength={3000}
+            />
+            <Count>
+              <span>{textCount} / 3000</span>
+            </Count>
           </Note>
         </SelectArea>
       </Layout>

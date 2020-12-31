@@ -38,7 +38,6 @@ class PatientInfoForm extends React.Component {
           setTimeout(() => {}, 300);
         } else {
           window.location.reload();
-          console.log(`Your changes have been saved.`);
         }
       });
   };

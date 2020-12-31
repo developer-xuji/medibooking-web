@@ -43,7 +43,6 @@ class MultiSelector extends React.Component {
   render() {
     const { category, data, handleSelectorChange } = this.props;
     const { allOptions, loading } = this.state;
-    console.log("DATA: ", data);
     if (!loading) {
       const currentSelectedValue =
         category === "languages"

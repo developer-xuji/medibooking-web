@@ -18,7 +18,6 @@ class BookingList extends React.Component {
       );
     }
 
-    // console.log(bookings);
     // const listAfterSearch = bookings.filter(({ doctorName, patientName }) => {
     //   role === "patient"
     //     ? doctorName.toLowerCase().includes(filterText.toLowerCase())
@@ -52,7 +51,6 @@ class BookingList extends React.Component {
       );
     }
 
-    console.log(listAfterSearch);
     return listAfterSearch.map((booking) => (
       <BookingItem
         // name={booking.doctorName}

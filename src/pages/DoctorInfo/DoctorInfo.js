@@ -48,7 +48,7 @@ const BodyContainer = styled.div`
 `;
 
 // function B2F(doctorObject) {
-//   // console.log(doctorObject);
+//
 //   let returnedDoctorObject = {};
 //   let SpecializationList = [];
 //   let LanguageList = [];

@@ -33,13 +33,11 @@ class DoctorInfoForm extends React.Component {
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
 
-    console.log(updatedData);
     setDoctorInfo(updatedData).then((res) => {
       if (res.success === false) {
         setTimeout(() => {}, 300);
       } else {
         window.location.reload();
-        console.log(`Your changes have been saved.`);
       }
     });
   };
@@ -67,12 +65,10 @@ class DoctorInfoForm extends React.Component {
   //   )
   //     .then((res) => res.json())
   //     .then((res) => {
-  //       console.log(res);
   //       if (res.success === false) {
   //         setTimeout(() => {}, 300);
   //       } else {
   //         message.success(`Your changes have been saved.`);
-  //         console.log(res.message);
   //       }
   //     });}
 
@@ -81,7 +77,6 @@ class DoctorInfoForm extends React.Component {
     //   value.map((currentOption) => {
     //     allOptions.find((language) => language.languageName === currentOption);
     //   });
-    //   console.log(value);
     // }
 
     // if (allOptions && selector === "specializations") {
@@ -91,7 +86,6 @@ class DoctorInfoForm extends React.Component {
     //         specialization.specializationName === currentOption
     //     );
     //   });
-    //   console.log(value);
     // }
     selector === "languages"
       ? this.setState({

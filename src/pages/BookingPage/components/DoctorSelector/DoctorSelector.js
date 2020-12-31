@@ -1,18 +1,18 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { List, Avatar } from "antd";
-import DoctorCard from "./DoctorCard"
+import { List } from "antd";
+import DoctorCard from "./DoctorCard";
 import styled, { css } from "styled-components";
 import { THEME_COLOR } from "../../../../constants";
 import getDoctors from "../../../../utils/getDoctors";
 import getDoctorById from "../../../../utils/getDoctorById";
 
 const DOCTOR_LIST_LENGTH = 5;
-const Layout = styled.div`  `;
+const Layout = styled.div``;
 const ItemBox = styled.div`
   display: flex;
   & ~ & {
-     border-top: 1px solid rgba(0, 143, 180, 0.2);
+    border-top: 1px solid rgba(0, 143, 180, 0.2);
   }
   ${(props) =>
     ({
@@ -29,11 +29,10 @@ const DocLink = styled.div`
   width: 100%;
   text-align: right;
 
-  a{
-    color: ${THEME_COLOR}
+  a {
+    color: ${THEME_COLOR};
   }
-  
-  `
+`;
 
 class DoctorSelector extends React.Component {
   constructor(props) {
@@ -84,7 +83,14 @@ class DoctorSelector extends React.Component {
                 isSelected={selected === doctorName}
                 onClick={() => onSelect(doctor)}
               >
-                <DoctorCard key={doctor.id} id={doctor.id} firstName={doctor.firstName} lastName={doctor.lastName} gender={doctor.gender} specializations={doctor.specializations}/>
+                <DoctorCard
+                  key={doctor.id}
+                  id={doctor.id}
+                  firstName={doctor.firstName}
+                  lastName={doctor.lastName}
+                  gender={doctor.gender}
+                  specializations={doctor.specializations}
+                />
                 {/* <List.Item>
                   <List.Item.Meta
                     avatar={
@@ -98,7 +104,9 @@ class DoctorSelector extends React.Component {
             );
           }}
         />
-        <DocLink><a href="/doctors">More Doctors →</a></DocLink>
+        <DocLink>
+          <a href="/doctors">More Doctors →</a>
+        </DocLink>
       </Layout>
     );
   }

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 const DoctorContainer = styled.div`
   width: 250px;
@@ -50,8 +49,6 @@ function DoctorOfEach(props) {
   let DoctorId = props.DoctorId;
   let FirstName = props.Doctor.FirstName;
   let SecondName = props.Doctor.SecondName;
-
-  console.log(DoctorId);
 
   return (
     <React.Fragment>

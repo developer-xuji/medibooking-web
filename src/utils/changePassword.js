@@ -6,7 +6,7 @@ const changePassword = (password) => {
   const accountId = localStorage.getItem("ACCOUNT_ID");
   processData("/register/" + accountId, "put", null, {
     encodedPassword: encodedPassword,
-  }).then((response) => console.log(response));
+  }).then((response) => response);
 };
 
 export default changePassword;

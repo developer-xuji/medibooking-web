@@ -6,7 +6,6 @@ const AVATAR_ICON_URL =
   role && role === "ROLE_DOCTOR"
     ? `https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctorId}.jpg`
     : AVATAR_ICON;
-console.log("doctorId", doctorId);
 
 // const { userId } = this.props;
 

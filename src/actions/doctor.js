@@ -11,7 +11,6 @@ export const loadDoctor = (params) => (dispatch) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       dispatch(loadDoctorSucceeded(data));
     })
     .catch((err) => dispatch(loadDoctorFailed(err)));
