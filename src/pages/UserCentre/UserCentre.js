@@ -17,6 +17,7 @@ const Banner = styled.div`
   height: 100px;
   font-size: 50px;
   font-weight: 500;
+  padding: 0 2.5vw;
 `;
 
 const Logo = styled.img`
