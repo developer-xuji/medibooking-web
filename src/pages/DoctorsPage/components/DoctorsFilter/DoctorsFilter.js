@@ -13,7 +13,7 @@ const FilterContainer = styled.div`
   margin-top: 25px;
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     padding: 25px;
-    margin-top 0;
+    margin-top: 0;
     flex-direction: column;
   }
 `;
