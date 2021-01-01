@@ -122,6 +122,16 @@ const Cancelled = styled.img`
     left: 30%;
   }
 `;
+
+const Expired = styled.div`
+  position: absolute;
+  width: 750px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 150;
+  background-color: rgba(255, 255, 255, 0.5);
+`;
+
 class BookingItem extends React.Component {
   constructor(props) {
     super(props);
@@ -142,6 +152,25 @@ class BookingItem extends React.Component {
   handleOnCancelClick() {
     const bookinig = this.props.booking;
     cancelAppointment(bookinig.id).then(() => window.location.reload());
+  }
+
+  isExpired(booking) {
+    var today = new window.Date();
+    // var today = "2021-01-2010:30";
+
+    const bookingDateTime = booking.date + booking.startingTime;
+    // console.log("bookingDateTime", bookingDateTime);
+    // console.log("today", today);
+    // console.log(
+    //   "today",
+    //   today.toISOString().substring(0, 10) + today.toString().substring(16, 21)
+    // );
+    return (
+      today.toISOString().substring(0, 10) +
+        today.toString().substring(16, 21) >
+      bookingDateTime
+    );
+    // return today > bookingDateTime;
   }
 
   render() {
@@ -183,7 +212,7 @@ class BookingItem extends React.Component {
 
           <Options>
             <Button onClick={() => this.setShowDetailModal()}> Detail</Button>
-            {!booking.isCancelled && (
+            {!booking.isCancelled && !this.isExpired(booking) && (
               <Button cancel onClick={() => this.handleOnCancelClick()}>
                 {" "}
                 Cancel
@@ -197,6 +226,7 @@ class BookingItem extends React.Component {
               booking={booking}
             />
           )}
+          {this.isExpired(booking) && <Expired />}
         </Booking>
       </Container>
     );
