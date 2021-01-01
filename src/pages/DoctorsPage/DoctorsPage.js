@@ -76,10 +76,8 @@ const SelectDoctors = (
   } else {
     SearchTextDoctorsList = DoctorsList;
   }
-  console.log(SearchTextDoctorsList);
   let SpecializationDoctorsList = [];
   if (specialization) {
-    console.log(DoctorsList);
     for (let i = 0; i < DoctorsList.length; i++) {
       if (
         Doctors[DoctorsList[i]].Specialization.indexOf(specialization) !== -1
@@ -90,7 +88,6 @@ const SelectDoctors = (
   } else {
     SpecializationDoctorsList = DoctorsList;
   }
-  console.log(SpecializationDoctorsList);
   let LanguageDoctorsList = [];
   if (language) {
     for (let i = 0; i < DoctorsList.length; i++) {
@@ -101,15 +98,12 @@ const SelectDoctors = (
   } else {
     LanguageDoctorsList = DoctorsList;
   }
-  console.log(LanguageDoctorsList);
   let ReturnedDoctorsList = SearchTextDoctorsList.filter((v) =>
     SpecializationDoctorsList.includes(v)
   );
-  console.log(ReturnedDoctorsList);
   ReturnedDoctorsList = ReturnedDoctorsList.filter((v) =>
     LanguageDoctorsList.includes(v)
   );
-  console.log(ReturnedDoctorsList);
   return ReturnedDoctorsList;
 };
 
@@ -190,11 +184,10 @@ class DoctorsPage extends React.Component {
   }
 
   handleSpecializationChange(event) {
-    console.log(event);
     if (event !== "AllSpecialization") {
       this.setState({
         SpecializationSelected: event,
-      })
+      });
       let SelectDoctorsList = SelectDoctors(
         this.state.SearchText,
         event,
@@ -206,7 +199,7 @@ class DoctorsPage extends React.Component {
     } else {
       this.setState({
         SpecializationSelected: undefined,
-      })
+      });
       let SelectDoctorsList = SelectDoctors(
         this.state.SearchText,
         undefined,
@@ -219,11 +212,10 @@ class DoctorsPage extends React.Component {
   }
 
   handleLanguageChange(event) {
-    console.log(event);
     if (event !== "AllLanguage") {
       this.setState({
         LanguageSelected: event,
-      })
+      });
       let SelectDoctorsList = SelectDoctors(
         this.state.SearchText,
         this.state.SpecializationSelected,
@@ -235,7 +227,7 @@ class DoctorsPage extends React.Component {
     } else {
       this.setState({
         LanguageSelected: undefined,
-      })
+      });
       let SelectDoctorsList = SelectDoctors(
         this.state.SearchText,
         this.state.SpecializationSelected,
