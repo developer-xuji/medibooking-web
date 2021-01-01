@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { SMILE_ICON } from "../../../../../constants"
-import { BED_ICON } from "../../../../../constants"
-import { EXPERIENCE_ICON } from "../../../../../constants"
-import { SUPPORT_ICON } from "../../../../../constants"
-import { MOBILE_WIDTH } from "../../../../../constants"
-import { SMALL_BREAKPOINT } from "../../../../../constants"
+import { SMILE_ICON } from "../../../../../constants";
+import { BED_ICON } from "../../../../../constants";
+import { EXPERIENCE_ICON } from "../../../../../constants";
+import { SUPPORT_ICON } from "../../../../../constants";
+import { MOBILE_WIDTH } from "../../../../../constants";
+import { SMALL_BREAKPOINT } from "../../../../../constants";
 
 const LARGE_BREAKPOINT = "1230px";
-
 
 const Card = styled.div`
   width: 25vw;
   height: 230px;
-  box-shadow: 20px 0px 28px rgba(0,0,0,0.04), 0 20px 20px rgba(0,0,0,0.04);
+  box-shadow: 20px 0px 28px rgba(0, 0, 0, 0.04), 0 20px 20px rgba(0, 0, 0, 0.04);
   margin: 16px 8px;
   background-color: #fff;
 
@@ -28,13 +27,12 @@ const Card = styled.div`
   @media screen and (max-width: ${SMALL_BREAKPOINT}) {
     display: none;
   }
-
-`
+`;
 
 const IconTitle = styled.div`
   display: flex;
   padding: 24px 0 0 24px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 
   @media screen and (max-width: ${LARGE_BREAKPOINT}) {
     display: flex;
@@ -43,8 +41,7 @@ const IconTitle = styled.div`
     justify-content: center;
     padding-left: 0;
   }
-
-`
+`;
 const IconContainer = styled.div`
   display: flex;
   align-items: center;
@@ -54,20 +51,20 @@ const IconContainer = styled.div`
   height: 80px;
 
   img {
-      width: 60px;
-      height: 60px;
+    width: 60px;
+    height: 60px;
   }
 
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     width: 60px;
     height: 60px;
-  
+
     img {
-        width: 40px;
-        height: 40px;
+      width: 40px;
+      height: 40px;
     }
   }
-`
+`;
 
 const Title = styled.div`
   padding: 0 24px;
@@ -78,7 +75,7 @@ const Title = styled.div`
     justify-content: center;
     text-align: center;
   }
-`
+`;
 const DataTitle = styled.p`
   color: #aecc54;
   font-size: 36px;
@@ -87,7 +84,7 @@ const DataTitle = styled.p`
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     font-size: 24px;
   }
-`
+`;
 const UnitTitle = styled.p`
   color: #5b7189;
   font-size: 20px;
@@ -95,7 +92,7 @@ const UnitTitle = styled.p`
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     font-size: 18px;
   }
-`
+`;
 const Description = styled.p`
   padding: 12px 24px;
   color: grey;
@@ -104,28 +101,30 @@ const Description = styled.p`
   @media screen and (max-width: ${LARGE_BREAKPOINT}) {
     display: none;
   }
-`
+`;
 
 const iconDict = {
-    "smile": SMILE_ICON,
-    "bed": BED_ICON,
-    "experience": EXPERIENCE_ICON,
-    "support": SUPPORT_ICON
-}
+  smile: SMILE_ICON,
+  bed: BED_ICON,
+  experience: EXPERIENCE_ICON,
+  support: SUPPORT_ICON,
+};
 
 const DataCard = ({ icon, data, unit, description }) => {
+  return (
+    <Card>
+      <IconTitle>
+        <IconContainer>
+          <img src={iconDict[`${icon}`]} alt="icon"></img>
+        </IconContainer>
+        <Title>
+          <DataTitle>{data}</DataTitle>
+          <UnitTitle>{unit}</UnitTitle>
+        </Title>
+      </IconTitle>
+      <Description>{description}</Description>
+    </Card>
+  );
+};
 
-    return (<Card>
-        <IconTitle>
-            <IconContainer><img src={iconDict[`${icon}`]} alt="icon"></img></IconContainer>
-            <Title>
-                <DataTitle>{data}</DataTitle>
-                <UnitTitle>{unit}</UnitTitle>
-            </Title>
-        </IconTitle>
-        <Description>{description}</Description>
-
-    </Card>)
-}
-
-export default DataCard
+export default DataCard;

@@ -1,1 +1,1 @@
-export {default} from './DoctorSelector';
+export { default } from "./DoctorSelector";

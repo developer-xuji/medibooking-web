@@ -1,1 +1,1 @@
-export {default} from "./withAuthenticationModals";
+export { default } from "./withAuthenticationModals";
