@@ -1,24 +1,26 @@
 #  Medibooking System Frontend
 
  Medibooking System is an online appointment booking app, this is the front end client of the app  
-For backend of this app, please view [https://github.com/xiaohanl4/COMP30022-Backend](https://github.com/xiaohanl4/COMP30022-Backend)
+For backend of this app, please view 
+[https://github.com/chrislx96/medibooking-auth-service-server.git](Authentication Service)
+[https://github.com/chrislx96/medibooking-booking-service-server.git](Booking Service)
 
 ## Deployment
-Deployment has already been set up on a Heroku server. This app is running on:
+Deployment has already been set up on AWS. This app is running on:
 
-[https://mojito-portfolio.herokuapp.com](https://mojito-portfolio.herokuapp.com)
+[http://medibooking-web-loadbalancer-1366501173.ap-southeast-2.elb.amazonaws.com]
 
 ## Features
 
-**1. User System:** Allow sign in and sign up of different users to create their own portfolio
+**1. User System:** Allow users sign up their patient accounts, and sign in as both doctor and patient roles
 
-**2. Personal Information:**  Users can add, delete and modify their personal information including the basic information, educational background and work experience
+**2. Personal/Account Information:**  Users can modify their personal/account information including their names, age, gender, emails and passwords.
 
-**3. Upload Content:** Users can upload files, media files with descriptions and essay with a thumbnail
+**3. Doctor Introduction:** Users can view all doctors' information and select any one of them for booking an appointment
 
-**4. Manage Content:** Users can search and sort their uploaded content, and can delete any of those. They can also edit media descrition and their own essay.
+**4. Manage Booking:** Users can view, search, sort or cancel their appointments.
 
-**5. User Portfolio System:** All uploaded information, files, media and essays will be presented in their personal portfolio page, which can be visited by search on other users
+**5. Booking System:** Patients can make an appointment with a doctor, a datetime and notes.
 
 ## Local Installation
 
@@ -33,8 +35,8 @@ npm install
 
 #### Backend setup
 
-The backend of this app is deployed on Heroku, which has link [https://mojito-portfolio-backend.herokuapp.com](https://mojito-portfolio-backend.herokuapp.com)
-The app is interacting with its backend deployed on Heroku by default, if you want to deploy the backend locally, view [https://github.com/xiaohanl4/COMP30022-Backend](https://github.com/xiaohanl4/COMP30022-Backend) for the set up, go to the [constant.js](https://github.com/xiaohanl4/COMP30022-Frontend/blob/master/src/assets/constant/constant.js) file in src/assets/contant folder, change the backend URL to the link to the locally deployed backend.
+The backend of this app is deployed on AWS, which has link [http://medibooking-web-loadbalancer-1366501173.ap-southeast-2.elb.amazonaws.com]
+The app is interacting with its backend deployed on AWS by default, if you want to deploy the backend locally, you can update src/env.js with your local urls.
 
 #### Development mode
 
