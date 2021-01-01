@@ -162,12 +162,8 @@ class DoctorsPage extends React.Component {
     event.preventDefault();
     let ReturnedDoctorsList = [];
     for (let i = 0; i < allDoctorsList.length; i++) {
-      if (
-        allDoctors[allDoctorsList[i]].FirstName.includes(
-          this.state.SearchText
-        ) ||
-        allDoctors[allDoctorsList[i]].SecondName.includes(this.state.SearchText)
-      ) {
+      let Name = `${allDoctors[allDoctorsList[i]].FirstName} ${allDoctors[allDoctorsList[i]].SecondName}`
+      if (Name.toLocaleLowerCase.includes(this.state.SearchText.toLocaleLowerCase)) {
         ReturnedDoctorsList.push(allDoctorsList[i]);
       }
     }

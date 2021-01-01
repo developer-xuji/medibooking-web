@@ -24,6 +24,7 @@ const Button = styled.button`
   }
   margin-bottom: 100px;
   min-width: 100px;
+  outline: none;
 `;
 
 const MoreButtonContainer = styled.div`
