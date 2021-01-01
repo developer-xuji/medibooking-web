@@ -162,8 +162,13 @@ class DoctorsPage extends React.Component {
     event.preventDefault();
     let ReturnedDoctorsList = [];
     for (let i = 0; i < allDoctorsList.length; i++) {
-      let Name = `${allDoctors[allDoctorsList[i]].FirstName} ${allDoctors[allDoctorsList[i]].SecondName}`
-      if (Name.toLocaleLowerCase.includes(this.state.SearchText.toLocaleLowerCase)) {
+      let Name = `${allDoctors[allDoctorsList[i]].FirstName} ${
+        allDoctors[allDoctorsList[i]].SecondName
+      }`;
+      if (
+        this.state.SearchText &&
+        Name.toLowerCase().includes(this.state.SearchText.toLowerCase())
+      ) {
         ReturnedDoctorsList.push(allDoctorsList[i]);
       }
     }
@@ -176,7 +181,7 @@ class DoctorsPage extends React.Component {
     } else {
       this.setState({
         CurrentDoctorsList: ReturnedDoctorsList,
-        CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
+        CurrentNumOfDoctorsShowed: ReturnedDoctorsList.length,
         IfMore: false,
       });
     }
