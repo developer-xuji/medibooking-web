@@ -50,6 +50,7 @@ const Button = styled.button`
   border: 0.5px solid #c2c0c0;
   margin: 7px;
   border-radius: 15px;
+  outline: none;
   &:hover {
     background-color: ${(props) => (props.cancel ? "#ff5c33" : "#008fb4")};
 

@@ -31,6 +31,7 @@ const Layout = styled.div`
     font-weight: bold;
     border-radius: 8px;
     position: absolute;
+    outline: none;
     right: 5%;
     top: 60%;
     color: #fff;
