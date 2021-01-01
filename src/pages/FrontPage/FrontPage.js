@@ -66,6 +66,7 @@ const SloganContainer = styled.div`
     font-weight: bold;
     border-radius: 8px;
     color: #738892;
+    outline: none;
   }
 
   button:hover {

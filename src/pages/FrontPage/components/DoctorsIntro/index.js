@@ -25,6 +25,7 @@ const TextIntro = styled.div`
     background-color: #aecc54;
     font-weight: bold;
     margin: 12px 0;
+    outline: none;
 
     &:hover {
       background-color: transparent;

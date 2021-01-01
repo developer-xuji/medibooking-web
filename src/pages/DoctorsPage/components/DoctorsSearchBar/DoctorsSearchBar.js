@@ -85,6 +85,7 @@ const SearchBar = styled.input`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  outline: none;
 `;
 
 const SubmitButton = styled.input`
@@ -106,6 +107,7 @@ const SubmitButton = styled.input`
   background-color: ${THEME_COLOR};
   transition: 0.25s;
   color: #ffffff;
+  outline: none;
   :hover {
     background-color: #00627a;
   }
