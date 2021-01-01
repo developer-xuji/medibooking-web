@@ -5,6 +5,7 @@ import avatar from "../../../../../../../../../../../../assets/images/avatar.png
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
 import AppointmentDetailModal from "../AppointmentDetailModal";
 import cancelAppointment from "../../../../../../../../../../../../utils/cancelAppointment";
+import { MOBILE_WIDTH } from "../../../../../../../../../../../../constants";
 
 const role = localStorage.getItem("ROLE");
 const Avatar = styled.img`
@@ -21,12 +22,20 @@ const Booking = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const IconAndInfo = styled.div`
   display: flex;
   align-items: center;
   margin-left: 15px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Options = styled.div`
@@ -108,6 +117,9 @@ const Cancelled = styled.img`
   height: 100px;
   left: 60%;
   z-index: 100;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    left: 30%;
+  }
 `;
 class BookingItem extends React.Component {
   constructor(props) {

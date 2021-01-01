@@ -1,10 +1,16 @@
 import React from "react";
 import styled from "styled-components";
+import { MOBILE_WIDTH } from "../../../../../../../../../../constants";
+
 const role = localStorage.getItem("ROLE");
 const Layout = styled.form`
   max-width: 100%;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const SearchBar = styled.input`
@@ -14,6 +20,11 @@ const SearchBar = styled.input`
   margin-left: 30px;
   width: 40%;
   border-radius: 10px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 const SortBar = styled.select`
@@ -23,6 +34,10 @@ const SortBar = styled.select`
   padding: 5px 10px;
   border: 1px solid #c2c0c0;
   border-radius: 5px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 class SearchAndSortBar extends React.Component {

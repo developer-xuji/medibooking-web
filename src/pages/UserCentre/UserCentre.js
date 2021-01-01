@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Content from "./components/Content";
 import logo from "../../assets/images/logo.png";
-
+import { MOBILE_WIDTH } from "../../constants";
 const Layout = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,6 +18,12 @@ const Banner = styled.div`
   font-size: 50px;
   font-weight: 500;
   padding: 0 2.5vw;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    /* flex-direction: column; */
+    height: 200px;
+    width: 100%;
+    /* padding-top: 10vw; */
+  }
 `;
 
 const Logo = styled.img`
