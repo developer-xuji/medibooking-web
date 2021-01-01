@@ -9,11 +9,12 @@ const ColorfulTag = styled.span`
   font-family: "Open Sans", sans-serif;
   color: #fff;
   font-weight: bold;
-`
+`;
 
 const Tag = ({ text, tagColor }) => {
+  return (
+    <ColorfulTag style={{ backgroundColor: `${tagColor}` }}>{text}</ColorfulTag>
+  );
+};
 
-    return <ColorfulTag style={{ backgroundColor: `${tagColor}`}}>{text}</ColorfulTag>
-}
-
-export default Tag
+export default Tag;

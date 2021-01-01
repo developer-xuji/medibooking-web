@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import { QUOTE_ICON } from "../../../../../constants"
-import { USER_AVATAR1 } from "../../../../../constants"
-import { USER_AVATAR2 } from "../../../../../constants"
+import { QUOTE_ICON } from "../../../../../constants";
+import { USER_AVATAR1 } from "../../../../../constants";
+import { USER_AVATAR2 } from "../../../../../constants";
 
 const Layout = styled.div`
   background-color: #fff;
@@ -11,9 +11,9 @@ const Layout = styled.div`
   height: 250px;
   margin: 12px 24px;
   padding: 18px 36px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   border: 5px solid #5b7189;
-`
+`;
 
 const Header = styled.div`
   font-weight: bold;
@@ -22,8 +22,8 @@ const Header = styled.div`
   width: 100%;
 
   img {
-      width: 70px;
-      height: 70px;
+    width: 70px;
+    height: 70px;
   }
 
   h3 {
@@ -34,13 +34,13 @@ const Header = styled.div`
   }
 
   .quote {
-      opacity: 0.5;
-      width: 50px;
-      height: 50px;
-      margin-left: auto;
-      margin-right: 0;
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: 0;
   }
-`
+`;
 
 const Description = styled.div`
   color: #5b7189;
@@ -50,24 +50,24 @@ const Description = styled.div`
   @media screen and (max-width: 520px) {
     font-size: 12px;
   }
-`
+`;
 
 const iconDict = {
-    "avatar1" : USER_AVATAR1,
-    "avatar2" : USER_AVATAR2
-}
+  avatar1: USER_AVATAR1,
+  avatar2: USER_AVATAR2,
+};
 
 const ResponseCard = ({ icon, name, response }) => {
-
-    return <Layout>
-        <Header>
-            <img src={iconDict[`${icon}`]} alt="avatar"></img>
-            <h3>{name}</h3>
-            <img src={QUOTE_ICON} alt="quote" className="quote"></img>
-        </Header>
-        <Description>{response}</Description>
+  return (
+    <Layout>
+      <Header>
+        <img src={iconDict[`${icon}`]} alt="avatar"></img>
+        <h3>{name}</h3>
+        <img src={QUOTE_ICON} alt="quote" className="quote"></img>
+      </Header>
+      <Description>{response}</Description>
     </Layout>
+  );
+};
 
-}
-
-export default ResponseCard
+export default ResponseCard;

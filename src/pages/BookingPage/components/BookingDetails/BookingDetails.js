@@ -41,7 +41,7 @@ const InfoArea = styled.div`
     color: white;
     margin-right: 42px;
   }
-`
+`;
 
 const BookingButton = styled(Button)`
   height: 60%;
@@ -55,15 +55,16 @@ const BookingDetails = ({ doctor, date, time, onBooingClick }) => {
       <InfoArea>
         <p>
           Meet with
-        <Label>
+          <Label>
             {doctor === null ? "" : doctor.firstName + " " + doctor.lastName}
           </Label>
         </p>
         <p>
-          Scheduled on 
-          <Label>{date}     {time}</Label>
+          Scheduled on
+          <Label>
+            {date} {time}
+          </Label>
         </p>
-        
       </InfoArea>
       <BookingButton onClick={onBooingClick}>Booking</BookingButton>
     </Layout>

@@ -1,1 +1,1 @@
-export {default} from './Specialists';
+export { default } from "./Specialists";
