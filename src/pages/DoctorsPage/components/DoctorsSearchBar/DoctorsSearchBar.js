@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import image from "./assets/img/background_doctor.jpg";
-import { THEME_COLOR } from "../../../../constants";
+import { THEME_COLOR, MOBILE_WIDTH } from "../../../../constants";
 
 const Banner = styled.div`
   background-image: url(${image});
@@ -35,6 +35,9 @@ const SearchBarTextWraper = styled.div`
 const SearchBarTextContainer = styled.div`
   align-items: center;
   width: 50%;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+  }
 `;
 
 const SearchTextContainer = styled.div`
