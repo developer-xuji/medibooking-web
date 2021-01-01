@@ -47,6 +47,7 @@ const BookingButton = styled(Button)`
   height: 60%;
   font-size: 18px;
   width: 180px;
+  outline: none;
 `;
 
 const BookingDetails = ({ doctor, date, time, onBooingClick }) => {

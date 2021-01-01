@@ -20,6 +20,7 @@ const SearchBar = styled.input`
   margin-left: 30px;
   width: 40%;
   border-radius: 10px;
+  outline: none;
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     width: 100%;
     margin-left: 0;
@@ -34,6 +35,7 @@ const SortBar = styled.select`
   padding: 5px 10px;
   border: 1px solid #c2c0c0;
   border-radius: 5px;
+  outline: none;
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     width: 100%;
     margin: 0;
