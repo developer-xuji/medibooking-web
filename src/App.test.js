@@ -10,7 +10,7 @@ describe("<App />", () => {
     const wrapper = shallow(<App />);
 
     expect(wrapper.find(Router)).toHaveLength(1);
-    expect(wrapper.find(Route)).toHaveLength(9);
+    expect(wrapper.find(Route)).toHaveLength(8);
     expect(wrapper.find(Navigation)).toHaveLength(1);
     expect(wrapper.find(Footer)).toHaveLength(1);
   });
