@@ -110,7 +110,6 @@ class FrontPage extends React.Component {
           >
             Booking Now
           </button>
-          {/* {token === undefined || token === null ? <p>Please log in</p> : ""} */}
         </SloganContainer>
         {this.state.showLoginModal && (
           <LoginModal

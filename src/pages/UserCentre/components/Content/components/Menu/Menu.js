@@ -10,7 +10,6 @@ const Layout = styled.ul`
   }
   padding: 0;
   margin: 0;
-  /* background-color: lightcyan; */
 `;
 const MenuItem = styled.li`
   display: flex;

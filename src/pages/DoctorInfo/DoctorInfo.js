@@ -98,8 +98,6 @@ export class DoctorInfo extends React.Component {
               specializationID={doctor.specializations[0].id}
             />
           </BodyContainer>
-
-          {/* <Profile Doctor={this.state.Doctor}/> */}
         </Container>
       );
     }

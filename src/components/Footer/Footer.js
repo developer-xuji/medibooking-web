@@ -35,7 +35,6 @@ const Layout = styled.div`
   background-size: cover;
   width: 100%;
   height: 400px;
-  /* margin-top: 50px; */
 
   display: flex;
   justify-content: space-between;

@@ -64,7 +64,6 @@ class SearchAndSortBar extends React.Component {
         />
 
         <SortBar className="sortBar" onChange={this.handleSortChange}>
-          {/* <option value="byDefault">Sort By Default</option> */}
           <option value="byDateNew">Sort By Time (New)</option>
           <option value="byDateOld">Sort By Time (Old)</option>
           <option value="byName">Sort By Name</option>

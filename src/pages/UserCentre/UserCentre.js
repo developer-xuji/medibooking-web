@@ -19,17 +19,12 @@ const Banner = styled.div`
   font-weight: 500;
   padding: 0 2.5vw;
   @media screen and (max-width: ${MOBILE_WIDTH}) {
-    /* flex-direction: column; */
     height: 200px;
     width: 100%;
-    /* padding-top: 10vw; */
   }
 `;
 
 const Logo = styled.img`
-  /* position: relative; */
-  /* top: 50px; */
-  /* width: 200px; */
   height: 80px;
   padding-right: 10vw;
 `;

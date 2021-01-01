@@ -93,15 +93,6 @@ class DoctorSelector extends React.Component {
                   gender={doctor.gender}
                   specializations={doctor.specializations}
                 />
-                {/* <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar  src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctor.id}.jpg`} />
-                    }
-                    title={doctorName}
-                    description="Specialization:"
-                  />
-                </List.Item> */}
               </ItemBox>
             );
           }}

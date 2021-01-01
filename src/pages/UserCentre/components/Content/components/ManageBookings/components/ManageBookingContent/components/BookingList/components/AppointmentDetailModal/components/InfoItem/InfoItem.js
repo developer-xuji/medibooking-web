@@ -15,8 +15,6 @@ const Label = styled.div`
 
 const Content = styled.div`
   font-size: 15px;
-  /* font-weight:500; */
-  /* color: red; */
 `;
 
 const InfoItem = ({ label, children }) => (

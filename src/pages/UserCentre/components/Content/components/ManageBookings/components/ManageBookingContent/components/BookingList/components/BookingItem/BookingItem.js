@@ -62,7 +62,6 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  /* justify-content: space-between; */
 `;
 
 const Name = styled.div`
@@ -156,21 +155,12 @@ class BookingItem extends React.Component {
 
   isExpired(booking) {
     var today = new window.Date();
-    // var today = "2021-01-2010:30";
-
     const bookingDateTime = booking.date + booking.startingTime;
-    // console.log("bookingDateTime", bookingDateTime);
-    // console.log("today", today);
-    // console.log(
-    //   "today",
-    //   today.toISOString().substring(0, 10) + today.toString().substring(16, 21)
-    // );
     return (
       today.toISOString().substring(0, 10) +
         today.toString().substring(16, 21) >
       bookingDateTime
     );
-    // return today > bookingDateTime;
   }
 
   render() {
@@ -196,11 +186,7 @@ class BookingItem extends React.Component {
 
               <DateAndTime>
                 <Date>{`${booking.date}`}</Date>
-                <Time>
-                  {booking.startingTime}
-                  {/* <span>{` -- `}</span>
-                  {booking.endingTime} */}
-                </Time>
+                <Time>{booking.startingTime}</Time>
               </DateAndTime>
 
               <Note>

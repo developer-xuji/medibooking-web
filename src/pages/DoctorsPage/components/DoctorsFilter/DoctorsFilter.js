@@ -79,11 +79,6 @@ function DoctorsFilter(props) {
         <Option value="Vietnamese">Vietnamese</Option>
         <Option value="Italian">Italian</Option>
       </Select>
-      {/* <Select defaultValue="All" style={{ width: 200, marginTop: 20 }} onChange={props.handleChange}>
-                <Option value="All">All</Option>
-                <Option value="lucy">Lucy</Option>
-                <Option value="Yiminghe">yiminghe</Option>
-            </Select> */}
     </FilterContainer>
   );
 }

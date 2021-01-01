@@ -11,9 +11,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const Layout = styled.div`
   display: flex;
-  /* height: 100%; */
-  /* margin: 0;
-  padding: 0; */
   width: 100%;
   min-height: 80vh;
 
@@ -24,7 +21,6 @@ const Layout = styled.div`
 
 const SideBar = styled.div`
   width: 20%;
-  /* background: lightblue; */
   @media screen and (max-width: ${MOBILE_WIDTH}) {
     width: 100%;
   }
@@ -33,14 +29,11 @@ const SideBar = styled.div`
 `;
 
 const MainContent = styled.div`
-  /* background: lightcyan; */
   flex: 1;
   padding: 40px;
   .ant-layout {
     background: white;
   }
-  /* height: 800px;
-  overflow: overlay; */
 `;
 
 const Content = () => {

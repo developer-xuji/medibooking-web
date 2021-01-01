@@ -7,7 +7,6 @@ import getPatientById from "../../../../../../../../../../../../utils/getPatient
 
 const Block = styled.div`
   padding-bottom: 15px;
-  /* border-bottom: 1px solid lightblue; */
 `;
 const AppointmentInfo = styled.div`
   display: flex;
@@ -50,7 +49,6 @@ const DoctorName = styled.span`
 `;
 
 const Message = styled.div`
-  /* width: 100%; */
   padding: 0 60px;
   font-weight: 600;
   word-wrap: break-word;
