@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { MOBILE_WIDTH } from "../../../../../constants";
 
 export const Layout = styled.form`
   display: flex;
@@ -17,6 +18,10 @@ export const FormItem = styled.div`
   /* margin-top: 10px; */
   margin-bottom: 10px;
   margin-right: 30%;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const Label = styled.label`
