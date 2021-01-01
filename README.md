@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+#  Medibooking System Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ Medibooking System is an online appointment booking app, this is the front end client of the app  
+For backend of this app, please view [https://github.com/xiaohanl4/COMP30022-Backend](https://github.com/xiaohanl4/COMP30022-Backend)
 
-## Available Scripts
+## Deployment
+Deployment has already been set up on a Heroku server. This app is running on:
 
-In the project directory, you can run:
+[https://mojito-portfolio.herokuapp.com](https://mojito-portfolio.herokuapp.com)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+**1. User System:** Allow sign in and sign up of different users to create their own portfolio
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**2. Personal Information:**  Users can add, delete and modify their personal information including the basic information, educational background and work experience
 
-### `npm test`
+**3. Upload Content:** Users can upload files, media files with descriptions and essay with a thumbnail
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**4. Manage Content:** Users can search and sort their uploaded content, and can delete any of those. They can also edit media descrition and their own essay.
 
-### `npm run build`
+**5. User Portfolio System:** All uploaded information, files, media and essays will be presented in their personal portfolio page, which can be visited by search on other users
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Local Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+These intructions will help you get a copy of the project up and running for development and testing. The frontend of this project is built on React. You will need `npm` installed to start.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Client: React
 
-### `npm run eject`
+First start by installing the dependencies in the root directory
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### Backend setup
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The backend of this app is deployed on Heroku, which has link [https://mojito-portfolio-backend.herokuapp.com](https://mojito-portfolio-backend.herokuapp.com)
+The app is interacting with its backend deployed on Heroku by default, if you want to deploy the backend locally, view [https://github.com/xiaohanl4/COMP30022-Backend](https://github.com/xiaohanl4/COMP30022-Backend) for the set up, go to the [constant.js](https://github.com/xiaohanl4/COMP30022-Frontend/blob/master/src/assets/constant/constant.js) file in src/assets/contant folder, change the backend URL to the link to the locally deployed backend.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Development mode
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To run the app in the in development mode, use
+```
+npm run-script dev
+```
+Then open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Learn More
+#### Run the client 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Produces a static React build by running:
+```
+npm run-script build
+```
+Then start the server by
+```
+npm start
+```
+Open [http://localhost:5000](http://localhost:5000) to view it in the browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## Testing
+Unit Testing on some of the components are ready, use
+```
+npm test
+```
+to run the tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
