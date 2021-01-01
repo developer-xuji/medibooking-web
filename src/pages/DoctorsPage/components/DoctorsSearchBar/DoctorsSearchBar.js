@@ -88,8 +88,6 @@ const SubmitButton = styled.input`
   position: relative;
   left: 25px;
   top: 6px;
-  // height: auto;
-  // display: inline-block;
   vertical-align: middle;
   margin: 0 0 1rem 0;
   font-family: inherit;
@@ -111,16 +109,6 @@ const SubmitButton = styled.input`
 `;
 
 class DoctorsSearchBar extends React.Component {
-  // constructor(props){
-
-  //     super(props);
-  //     this.state = {
-  //         AllDoctors : allDoctors,
-  //         CurrentDoctorsList : Object.keys(allDoctors),
-  //     };
-  //     // this.OnCityListClick = this.OnCityListClick.bind(this);
-  // }
-
   render() {
     return (
       <Banner>

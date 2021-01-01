@@ -20,7 +20,6 @@ const Layout = styled.div`
   min-height: 600px;
   background-size: repeat;
   align-items: center;
-  // padding-top: 80px;
 `;
 
 const SloganContainer = styled.div`

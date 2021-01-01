@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Modal from "../../../../../../../../../../../../components/Modal";
 import InfoItem from "./components/InfoItem";
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
-// import fetchData from "../../../../../../../../../../../../apis/fetchData";
 import getPatientById from "../../../../../../../../../../../../utils/getPatientById";
 
 const Block = styled.div`
@@ -76,15 +75,6 @@ class AppointmentDetailModal extends React.Component {
   }
 
   componentDidMount() {
-    // const { booking } = this.props;
-    // const url = `/patients/patientId/${booking.patient}`;
-
-    // fetchData(url).then((data) => {
-    //   this.setState({
-    //     patientData: data,
-    //     loading: false,
-    //   });
-    // });
     const { booking } = this.props;
 
     getPatientById(booking.patient).then((data) => {
@@ -143,9 +133,5 @@ class AppointmentDetailModal extends React.Component {
     );
   }
 }
-
-// const AppointmentDetailModal = ({ onClose, booking }) => (
-
-// );
 
 export default AppointmentDetailModal;
