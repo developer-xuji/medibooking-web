@@ -44,11 +44,13 @@ class DoctorSelector extends React.Component {
   }
 
   componentDidMount() {
-    getDoctors().then((response) =>
-      this.setState({
-        doctorList: response.slice(0, DOCTOR_LIST_LENGTH),
-      })
-    );
+    getDoctors()
+      .then((response) =>
+        this.setState({
+          doctorList: response.slice(0, DOCTOR_LIST_LENGTH),
+        })
+      )
+      .catch((error) => error);
     const { addedDoctorId } = this.props;
     if (addedDoctorId)
       getDoctorById(addedDoctorId).then((response) =>
@@ -91,15 +93,6 @@ class DoctorSelector extends React.Component {
                   gender={doctor.gender}
                   specializations={doctor.specializations}
                 />
-                {/* <List.Item>
-                  <List.Item.Meta
-                    avatar={
-                      <Avatar  src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctor.id}.jpg`} />
-                    }
-                    title={doctorName}
-                    description="Specialization:"
-                  />
-                </List.Item> */}
               </ItemBox>
             );
           }}

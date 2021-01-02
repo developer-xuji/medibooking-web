@@ -3,8 +3,6 @@ import BookingItem from "./components/BookingItem";
 const role = localStorage.getItem("ROLE");
 class BookingList extends React.Component {
   render() {
-    // const filterText = this.props.filterText;
-    // const sortMethod = this.props.sortMethod;
     const { filterText, sortMethod, bookings } = this.props;
     let listAfterSearch = [];
 
@@ -17,15 +15,6 @@ class BookingList extends React.Component {
         patientName.toLowerCase().includes(filterText.toLowerCase())
       );
     }
-
-    // const listAfterSearch = bookings.filter(({ doctorName, patientName }) => {
-    //   role === "patient"
-    //     ? doctorName.toLowerCase().includes(filterText.toLowerCase())
-    //     : patientName.toLowerCase().includes(filterText.toLowerCase());
-    // });
-    // const listAfterSearch = bookings.filter(({ doctorName }) =>
-    //   doctorName.toLowerCase().includes(filterText.toLowerCase())
-    // );
 
     if (sortMethod === "byName") {
       role === "ROLE_PATIENT"
@@ -52,17 +41,7 @@ class BookingList extends React.Component {
     }
 
     return listAfterSearch.map((booking) => (
-      <BookingItem
-        // name={booking.doctorName}
-        // icon={booking.icon}
-        // date={booking.date}
-        // specialisation={booking.specialisation}
-        // startingTime={booking.startingTime}
-        // endingTime={booking.endingTime}
-        // notes={booking.notes}
-        key={booking.id}
-        booking={booking}
-      />
+      <BookingItem key={booking.id} booking={booking} />
     ));
   }
 }

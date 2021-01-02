@@ -54,7 +54,10 @@ const TextArea = styled.div`
 const DoctorCard = ({ id, firstName, lastName, gender }) => {
   return (
     <Layout href={"/doctors/" + id}>
-      <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor"></img>
+      <img
+        src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`}
+        alt="doctor"
+      ></img>
       <TextArea>
         <h3>
           {firstName} {lastName}

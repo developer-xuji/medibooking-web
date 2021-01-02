@@ -21,7 +21,7 @@ const DateSelector = ({ title, onSelect }) => {
         }
         format={FORMAT}
         onChange={onSelect}
-        style={{ height: "42px"}}
+        style={{ height: "42px" }}
       />
     </Layout>
   );

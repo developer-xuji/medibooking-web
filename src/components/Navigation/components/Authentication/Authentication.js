@@ -3,7 +3,7 @@ import styled from "styled-components";
 import NavItem from "../NavItem";
 import FontAwesome from "react-fontawesome";
 import Avatar from "./components/Avatar";
-import { THEME_COLOR } from "../../../../constants";
+import { THEME_COLOR, MOBILE_WIDTH } from "../../../../constants";
 import withAuthenticationModals from "../../../withAuthenticationModals/withAuthenticationModals";
 import { getRoutePath } from "../../../../utils/getRoute";
 
@@ -30,6 +30,12 @@ const Logout = styled(NavItem)`
   color: black;
   &:hover {
     color: ${THEME_COLOR};
+  }
+`;
+
+const UserName = styled(NavItem)`
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: none;
   }
 `;
 
@@ -63,9 +69,9 @@ export class Authentication extends React.Component {
         {user ? (
           <React.Fragment>
             <Avatar as="a" href={getRoutePath("user_center")} />
-            <NavItem as="a" href={getRoutePath("user_center")}>
+            <UserName as="a" href={getRoutePath("user_center")}>
               {user}
-            </NavItem>
+            </UserName>
             <Logout
               as="a"
               href="/"

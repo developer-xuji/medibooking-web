@@ -11,8 +11,6 @@ const Fields = [
         message: "Please enter you username",
         validator: (value) => !validator.isEmpty(value),
       },
-      // message: 'Please enter a valid username',
-      // validator: (value) => validator.isEmail(value),
     ],
   },
   {

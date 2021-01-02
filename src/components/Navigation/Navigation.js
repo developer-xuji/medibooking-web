@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Container from "../Container";
 import WithAuthenticationModalsAuthentication from "./components/Authentication";
 import NavItem from "./components/NavItem";
-import { LOGO, THEME_COLOR } from "../../constants";
+import { LOGO, THEME_COLOR, MOBILE_WIDTH } from "../../constants";
 import { getRoutePath } from "../../utils/getRoute";
 
 const Layout = styled.div`
@@ -48,13 +48,16 @@ const Right = styled.div`
   display: flex;
   align-items: center;
 `;
-
+const LOGOSIZE = 40;
 const LogoDiv = styled.div`
   background: url(${LOGO});
   background-size: cover;
-  width: 40px;
-  height: 40px;
+  width: ${LOGOSIZE}px;
+  height: ${LOGOSIZE}px;
   margin-right: 10px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: none;
+  }
 `;
 
 const Navigation = () => {

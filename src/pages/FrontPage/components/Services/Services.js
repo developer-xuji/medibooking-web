@@ -9,7 +9,6 @@ const Layout = styled.div`
   flex-direction: column;
   text-align: center;
   margin-bottom: 20vh;
-  // background-color: rgba(244, 246, 250, 0.5);
   width: 80%;
   align-items: center;
   margin: 24px 12px;

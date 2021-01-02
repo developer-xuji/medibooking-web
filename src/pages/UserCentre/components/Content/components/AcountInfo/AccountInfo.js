@@ -74,12 +74,6 @@ class AccountInfo extends React.Component {
       .catch(() => {});
   }
 
-  // componentDidUpdate(){
-  //   this.setState({
-  //     PasswordResetStatus: "show",
-  //   });
-  // };
-
   render() {
     return (
       <PasswordForm

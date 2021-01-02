@@ -31,6 +31,7 @@ const Layout = styled.div`
     font-weight: bold;
     border-radius: 8px;
     position: absolute;
+    outline: none;
     right: 5%;
     top: 60%;
     color: #fff;
@@ -118,7 +119,10 @@ const InfoHeader = ({ id, name, gender }) => {
   return (
     <Layout>
       <DoctorPic>
-        <img src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`} alt="doctor" />
+        <img
+          src={`https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${id}.jpg`}
+          alt="doctor"
+        />
       </DoctorPic>
       <TextArea>
         <h1>

@@ -34,8 +34,6 @@ const Container = styled.div`
   background: #fff;
   box-shadow: 0 1px 10px rgba(92, 119, 131, 0.15);
   border-radius: 4px;
-  // margin: 24px auto;
-  //padding: 24px;
   text-align: center;
 `;
 
@@ -47,62 +45,11 @@ const BodyContainer = styled.div`
   }
 `;
 
-// function B2F(doctorObject) {
-//
-//   let returnedDoctorObject = {};
-//   let SpecializationList = [];
-//   let LanguageList = [];
-//   doctorObject.specializations.map((specialization) => {
-//     SpecializationList.push(specialization.specializationName);
-//   });
-//   doctorObject.languages.map((language) => {
-//     LanguageList.push(language.languageName);
-//   });
-//   returnedDoctorObject = {
-//     DoctorsID: doctorObject.id,
-//     FirstName: doctorObject.firstName,
-//     SecondName: doctorObject.lastName,
-//     Age: doctorObject.age,
-//     Gender: doctorObject.gender,
-//     Description: doctorObject.description,
-//     Specialization: SpecializationList,
-//     Language: LanguageList,
-//   }
-//   return returnedDoctorObject;
-// }
-
 export class DoctorInfo extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     Doctor: {}
-  //   };
-
-  // }
-
   componentDidMount() {
     const { loadDoctor } = this.props;
     loadDoctor(this.props.match.params.DoctorsID);
-    // fetch(`http://localhost:8080/doctors/${this.props.match.params.DoctorsID}`, {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'application/json;charset=UTF-8'
-    //   },
-    //   mode: 'cors',
-    //   cache: 'default'
-    // })
-    //   .then(res => res.json())
-    //   .then((data) => {
-    //     this.setState({
-    //       Doctor: B2F(data),
-    //     });
-    //   });
-    // Loading = false;
   }
-
-  // componentDidUpdate() {
-  //   Loading = true;
-  // }
 
   render() {
     const { loading, doctor } = this.props;
@@ -151,8 +98,6 @@ export class DoctorInfo extends React.Component {
               specializationID={doctor.specializations[0].id}
             />
           </BodyContainer>
-
-          {/* <Profile Doctor={this.state.Doctor}/> */}
         </Container>
       );
     }

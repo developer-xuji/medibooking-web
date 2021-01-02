@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-// import "./searchAndSortBar.css";
+import { MOBILE_WIDTH } from "../../../../../../../../../../constants";
+
 const role = localStorage.getItem("ROLE");
 const Layout = styled.form`
   max-width: 100%;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const SearchBar = styled.input`
@@ -15,6 +20,12 @@ const SearchBar = styled.input`
   margin-left: 30px;
   width: 40%;
   border-radius: 10px;
+  outline: none;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
 `;
 
 const SortBar = styled.select`
@@ -24,6 +35,11 @@ const SortBar = styled.select`
   padding: 5px 10px;
   border: 1px solid #c2c0c0;
   border-radius: 5px;
+  outline: none;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+    margin: 0;
+  }
 `;
 
 class SearchAndSortBar extends React.Component {
@@ -36,7 +52,6 @@ class SearchAndSortBar extends React.Component {
   };
 
   render() {
-    // const { role } = this.props;
     const oppositeRole = role === "ROLE_DOCTOR" ? "patient" : "doctor";
     return (
       <Layout>
@@ -49,7 +64,6 @@ class SearchAndSortBar extends React.Component {
         />
 
         <SortBar className="sortBar" onChange={this.handleSortChange}>
-          {/* <option value="byDefault">Sort By Default</option> */}
           <option value="byDateNew">Sort By Time (New)</option>
           <option value="byDateOld">Sort By Time (Old)</option>
           <option value="byName">Sort By Name</option>

@@ -57,46 +57,53 @@ const B2F = (doctorObject) => {
 };
 
 const SelectDoctors = (
+  searchText,
   specialization,
   language,
-  allDoctors,
-  allDoctorsList
+  Doctors,
+  DoctorsList
 ) => {
-  let ReturnedDoctorsList = [];
-  if (specialization === undefined) {
-    if (language !== undefined) {
-      for (let i = 0; i < allDoctorsList.length; i++) {
-        if (allDoctors[allDoctorsList[i]].Language.indexOf(language) !== -1) {
-          ReturnedDoctorsList.push(allDoctorsList[i]);
-        }
+  let SearchTextDoctorsList = [];
+  if (searchText) {
+    for (let i = 0; i < DoctorsList.length; i++) {
+      let Name = `${Doctors[DoctorsList[i]].FirstName} ${
+        Doctors[DoctorsList[i]].SecondName
+      }`;
+      if (Name.toLowerCase().includes(searchText.toLowerCase())) {
+        SearchTextDoctorsList.push(DoctorsList[i]);
       }
-    } else {
-      ReturnedDoctorsList = Object.keys(allDoctors);
     }
   } else {
-    if (language !== undefined) {
-      for (let i = 0; i < allDoctorsList.length; i++) {
-        if (
-          allDoctors[allDoctorsList[i]].Specialization.indexOf(
-            specialization
-          ) !== -1 &&
-          allDoctors[allDoctorsList[i]].Language.indexOf(language) !== -1
-        ) {
-          ReturnedDoctorsList.push(allDoctorsList[i]);
-        }
-      }
-    } else {
-      for (let i = 0; i < allDoctorsList.length; i++) {
-        if (
-          allDoctors[allDoctorsList[i]].Specialization.indexOf(
-            specialization
-          ) !== -1
-        ) {
-          ReturnedDoctorsList.push(allDoctorsList[i]);
-        }
+    SearchTextDoctorsList = DoctorsList;
+  }
+  let SpecializationDoctorsList = [];
+  if (specialization) {
+    for (let i = 0; i < DoctorsList.length; i++) {
+      if (
+        Doctors[DoctorsList[i]].Specialization.indexOf(specialization) !== -1
+      ) {
+        SpecializationDoctorsList.push(DoctorsList[i]);
       }
     }
+  } else {
+    SpecializationDoctorsList = DoctorsList;
   }
+  let LanguageDoctorsList = [];
+  if (language) {
+    for (let i = 0; i < DoctorsList.length; i++) {
+      if (Doctors[DoctorsList[i]].Language.indexOf(language) !== -1) {
+        LanguageDoctorsList.push(DoctorsList[i]);
+      }
+    }
+  } else {
+    LanguageDoctorsList = DoctorsList;
+  }
+  let ReturnedDoctorsList = SearchTextDoctorsList.filter((v) =>
+    SpecializationDoctorsList.includes(v)
+  );
+  ReturnedDoctorsList = ReturnedDoctorsList.filter((v) =>
+    LanguageDoctorsList.includes(v)
+  );
   return ReturnedDoctorsList;
 };
 
@@ -160,30 +167,14 @@ class DoctorsPage extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    let ReturnedDoctorsList = [];
-    for (let i = 0; i < allDoctorsList.length; i++) {
-      if (
-        allDoctors[allDoctorsList[i]].FirstName.includes(
-          this.state.SearchText
-        ) ||
-        allDoctors[allDoctorsList[i]].SecondName.includes(this.state.SearchText)
-      ) {
-        ReturnedDoctorsList.push(allDoctorsList[i]);
-      }
-    }
-    if (ReturnedDoctorsList.length > MaximumNumOfDoctorsToShow) {
-      this.setState({
-        CurrentDoctorsList: ReturnedDoctorsList,
-        CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-        IfMore: true,
-      });
-    } else {
-      this.setState({
-        CurrentDoctorsList: ReturnedDoctorsList,
-        CurrentNumOfDoctorsShowed: MaximumNumOfDoctorsToShow,
-        IfMore: false,
-      });
-    }
+    let SelectDoctorsList = SelectDoctors(
+      this.state.SearchText,
+      this.state.SpecializationSelected,
+      this.state.LanguageSelected,
+      this.state.AllDoctors,
+      Object.keys(this.state.AllDoctors)
+    );
+    this.SetCurrentNumOfDoctorsShowed(SelectDoctorsList);
   }
 
   handleChange(event) {
@@ -193,54 +184,58 @@ class DoctorsPage extends React.Component {
   }
 
   handleSpecializationChange(event) {
-    if (event === "AllSpecialization") {
-      this.setState({
-        SpecializationSelected: undefined,
-      });
-      let ReturnedDoctorsList = SelectDoctors(
-        undefined,
-        this.state.LanguageSelected,
-        allDoctors,
-        allDoctorsList
-      );
-      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
-    } else {
+    if (event !== "AllSpecialization") {
       this.setState({
         SpecializationSelected: event,
       });
-      let ReturnedDoctorsList = SelectDoctors(
+      let SelectDoctorsList = SelectDoctors(
+        this.state.SearchText,
         event,
         this.state.LanguageSelected,
-        allDoctors,
-        allDoctorsList
+        this.state.AllDoctors,
+        Object.keys(this.state.AllDoctors)
       );
-      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(SelectDoctorsList);
+    } else {
+      this.setState({
+        SpecializationSelected: undefined,
+      });
+      let SelectDoctorsList = SelectDoctors(
+        this.state.SearchText,
+        undefined,
+        this.state.LanguageSelected,
+        this.state.AllDoctors,
+        Object.keys(this.state.AllDoctors)
+      );
+      this.SetCurrentNumOfDoctorsShowed(SelectDoctorsList);
     }
   }
 
   handleLanguageChange(event) {
-    if (event === "AllLanguage") {
-      this.setState({
-        LanguageSelected: undefined,
-      });
-      let ReturnedDoctorsList = SelectDoctors(
-        this.state.SpecializationSelected,
-        undefined,
-        allDoctors,
-        allDoctorsList
-      );
-      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
-    } else {
+    if (event !== "AllLanguage") {
       this.setState({
         LanguageSelected: event,
       });
-      let ReturnedDoctorsList = SelectDoctors(
+      let SelectDoctorsList = SelectDoctors(
+        this.state.SearchText,
         this.state.SpecializationSelected,
         event,
-        allDoctors,
-        allDoctorsList
+        this.state.AllDoctors,
+        Object.keys(this.state.AllDoctors)
       );
-      this.SetCurrentNumOfDoctorsShowed(ReturnedDoctorsList);
+      this.SetCurrentNumOfDoctorsShowed(SelectDoctorsList);
+    } else {
+      this.setState({
+        LanguageSelected: undefined,
+      });
+      let SelectDoctorsList = SelectDoctors(
+        this.state.SearchText,
+        this.state.SpecializationSelected,
+        undefined,
+        this.state.AllDoctors,
+        Object.keys(this.state.AllDoctors)
+      );
+      this.SetCurrentNumOfDoctorsShowed(SelectDoctorsList);
     }
   }
 

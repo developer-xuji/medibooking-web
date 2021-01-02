@@ -1,1 +1,1 @@
-export {default} from './ControlCard';
+export { default } from "./ControlCard";

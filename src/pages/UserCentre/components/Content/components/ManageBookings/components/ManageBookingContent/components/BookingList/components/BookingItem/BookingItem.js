@@ -5,6 +5,7 @@ import avatar from "../../../../../../../../../../../../assets/images/avatar.png
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
 import AppointmentDetailModal from "../AppointmentDetailModal";
 import cancelAppointment from "../../../../../../../../../../../../utils/cancelAppointment";
+import { MOBILE_WIDTH } from "../../../../../../../../../../../../constants";
 
 const role = localStorage.getItem("ROLE");
 const Avatar = styled.img`
@@ -21,12 +22,20 @@ const Booking = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const IconAndInfo = styled.div`
   display: flex;
   align-items: center;
   margin-left: 15px;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 const Options = styled.div`
@@ -41,6 +50,7 @@ const Button = styled.button`
   border: 0.5px solid #c2c0c0;
   margin: 7px;
   border-radius: 15px;
+  outline: none;
   &:hover {
     background-color: ${(props) => (props.cancel ? "#ff5c33" : "#008fb4")};
 
@@ -52,7 +62,6 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-  /* justify-content: space-between; */
 `;
 
 const Name = styled.div`
@@ -108,7 +117,20 @@ const Cancelled = styled.img`
   height: 100px;
   left: 60%;
   z-index: 100;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    left: 30%;
+  }
 `;
+
+const Expired = styled.div`
+  position: absolute;
+  width: 750px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 150;
+  background-color: rgba(255, 255, 255, 0.5);
+`;
+
 class BookingItem extends React.Component {
   constructor(props) {
     super(props);
@@ -129,6 +151,16 @@ class BookingItem extends React.Component {
   handleOnCancelClick() {
     const bookinig = this.props.booking;
     cancelAppointment(bookinig.id).then(() => window.location.reload());
+  }
+
+  isExpired(booking) {
+    var today = new window.Date();
+    const bookingDateTime = booking.date + booking.startingTime;
+    return (
+      today.toISOString().substring(0, 10) +
+        today.toString().substring(16, 21) >
+      bookingDateTime
+    );
   }
 
   render() {
@@ -154,11 +186,7 @@ class BookingItem extends React.Component {
 
               <DateAndTime>
                 <Date>{`${booking.date}`}</Date>
-                <Time>
-                  {booking.startingTime}
-                  {/* <span>{` -- `}</span>
-                  {booking.endingTime} */}
-                </Time>
+                <Time>{booking.startingTime}</Time>
               </DateAndTime>
 
               <Note>
@@ -170,7 +198,7 @@ class BookingItem extends React.Component {
 
           <Options>
             <Button onClick={() => this.setShowDetailModal()}> Detail</Button>
-            {!booking.isCancelled && (
+            {!booking.isCancelled && !this.isExpired(booking) && (
               <Button cancel onClick={() => this.handleOnCancelClick()}>
                 {" "}
                 Cancel
@@ -184,6 +212,7 @@ class BookingItem extends React.Component {
               booking={booking}
             />
           )}
+          {this.isExpired(booking) && <Expired />}
         </Booking>
       </Container>
     );

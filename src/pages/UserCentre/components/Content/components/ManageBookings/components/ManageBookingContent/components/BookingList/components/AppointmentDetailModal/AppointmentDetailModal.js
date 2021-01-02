@@ -3,12 +3,10 @@ import styled from "styled-components";
 import Modal from "../../../../../../../../../../../../components/Modal";
 import InfoItem from "./components/InfoItem";
 import cancelledImage from "../../../../../../../../../../../../assets/images/cancelled.png";
-// import fetchData from "../../../../../../../../../../../../apis/fetchData";
 import getPatientById from "../../../../../../../../../../../../utils/getPatientById";
 
 const Block = styled.div`
   padding-bottom: 15px;
-  /* border-bottom: 1px solid lightblue; */
 `;
 const AppointmentInfo = styled.div`
   display: flex;
@@ -51,7 +49,6 @@ const DoctorName = styled.span`
 `;
 
 const Message = styled.div`
-  /* width: 100%; */
   padding: 0 60px;
   font-weight: 600;
   word-wrap: break-word;
@@ -76,15 +73,6 @@ class AppointmentDetailModal extends React.Component {
   }
 
   componentDidMount() {
-    // const { booking } = this.props;
-    // const url = `/patients/patientId/${booking.patient}`;
-
-    // fetchData(url).then((data) => {
-    //   this.setState({
-    //     patientData: data,
-    //     loading: false,
-    //   });
-    // });
     const { booking } = this.props;
 
     getPatientById(booking.patient).then((data) => {
@@ -143,9 +131,5 @@ class AppointmentDetailModal extends React.Component {
     );
   }
 }
-
-// const AppointmentDetailModal = ({ onClose, booking }) => (
-
-// );
 
 export default AppointmentDetailModal;

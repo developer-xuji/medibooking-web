@@ -1,38 +1,34 @@
 import styled, { css } from "styled-components";
+import { MOBILE_WIDTH } from "../../../../../constants";
 
 export const Layout = styled.form`
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end; */
 `;
 
 export const FormItem = styled.div`
-  /* width: auto; */
   display: flex;
-  /* flex-direction: column; */
   justify-content: flex-end;
-  /* align-items: ${(props) => (props.doctorDescription ? {} : "center")}; */
   align-items: center;
   font-size: 15px;
-  /* margin-top: 10px; */
   margin-bottom: 10px;
   margin-right: 30%;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const Label = styled.label`
-  /* padding-top: 5px; */
   margin-right: 10px;
   font-weight: 700;
 `;
 
 const FormItemStyle = css`
   width: 50%;
-  /* height: 40px; */
   border: 1px solid gray;
   border-radius: 5px;
-  /* margin-top: 10px; */
   padding: 10px;
-  /* margin-left: 5px; */
   :hover {
     border: 1px solid #01a4b7;
   }

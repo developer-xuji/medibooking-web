@@ -7,8 +7,6 @@ const AVATAR_ICON_URL =
     ? `https://medibookingbucket.s3-ap-southeast-2.amazonaws.com/DoctorsImage/IMG_${doctorId}.jpg`
     : AVATAR_ICON;
 
-// const { userId } = this.props;
-
 const Avatar = styled.div`
   background: url(${AVATAR_ICON_URL});
   background-size: cover;

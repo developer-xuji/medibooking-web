@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 import { Form, Input, Row, Col } from "antd";
+import { MOBILE_WIDTH } from "../../../../../../../../constants";
 
 export const Title = styled.h1`
   font-size: 40px;
@@ -36,10 +37,12 @@ const StyledButton = styled.button`
   outline: none;
   font-weight: 600;
   user-select: none;
-  /* width: 135%; */
   padding: 25px;
   align-items: center;
   justify-content: center;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    font-size: 15px;
+  }
 `;
 
 const StyledDiscription = styled.div`

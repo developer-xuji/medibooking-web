@@ -18,7 +18,6 @@ class DoctorInfoForm extends React.Component {
 
     this.state = {
       ...this.props.data,
-      // data: this.props.data,
     };
   }
 
@@ -42,51 +41,7 @@ class DoctorInfoForm extends React.Component {
     });
   };
 
-  // onFinish = (values) => {
-
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       username: sessionStorage.getItem("username"),
-  //       name: values.name,
-  //       dob: dob,
-  //       phone: phone,
-  //       email: email,
-  //       introduction: introduction,
-  //     }),
-  //   };
-  //   fetch(
-  //     url.backendUrl + "/user/info/basic",
-  //     requestOptions
-  //   )
-  //     .then((res) => res.json())
-  //     .then((res) => {
-  //       if (res.success === false) {
-  //         setTimeout(() => {}, 300);
-  //       } else {
-  //         message.success(`Your changes have been saved.`);
-  //       }
-  //     });}
-
   handleSelectorChange = (value, selector) => {
-    // if (allOptions && selector === "languages") {
-    //   value.map((currentOption) => {
-    //     allOptions.find((language) => language.languageName === currentOption);
-    //   });
-    // }
-
-    // if (allOptions && selector === "specializations") {
-    //   value.map((currentOption) => {
-    //     allOptions.find(
-    //       (specialization) =>
-    //         specialization.specializationName === currentOption
-    //     );
-    //   });
-    // }
     selector === "languages"
       ? this.setState({
           languages: value,
@@ -148,24 +103,7 @@ class DoctorInfoForm extends React.Component {
             <option value="female">Female</option>
           </GenderSelector>
         </FormItem>
-        {/* <FormItem>
-          <Label>Phone:</Label>
-          <FormInput
-            name="phone"
-            type="text"
-            defaultValue={phone}
-            onChange={this.handleChange}
-          />
-        </FormItem>
-        <FormItem>
-          <Label>Email:</Label>
-          <FormInput
-            name="email"
-            type="text"
-            defaultValue={email}
-            onChange={this.handleChange}
-          />
-        </FormItem> */}
+
         <FormItem>
           <Label>Languages:</Label>
           <MultiSelector

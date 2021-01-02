@@ -1,6 +1,42 @@
-# Getting Started with Create React App
+#  Medibooking System Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ Medibooking System is an online appointment booking app, this is the front end client of the app  
+For backend of this app, please view 
+[https://github.com/chrislx96/medibooking-auth-service-server.git](Authentication Service)
+[https://github.com/chrislx96/medibooking-booking-service-server.git](Booking Service)
+
+## Deployment
+Deployment has already been set up on AWS. This app is running on:
+
+[http://medibooking-web-loadbalancer-1366501173.ap-southeast-2.elb.amazonaws.com]
+
+## Features
+
+**1. User System:** Allow users sign up their patient accounts, and sign in as both doctor and patient roles
+
+**2. Personal/Account Information:**  Users can modify their personal/account information including their names, age, gender, emails and passwords.
+
+**3. Doctor Introduction:** Users can view all doctors' information and select any one of them for booking an appointment
+
+**4. Manage Booking:** Users can view, search, sort or cancel their appointments.
+
+**5. Booking System:** Patients can make an appointment with a doctor, on a selected datetime and notes.
+
+## Local Installation
+
+These intructions will help you get a copy of the project up and running for development and testing. The frontend of this project is built on React. You will need `npm` installed to start.
+
+### Client: React
+
+First start by installing the dependencies in the root directory
+```
+npm install
+```
+
+#### Backend setup
+
+The backend of this app is deployed on AWS, which has link [http://medibooking-web-loadbalancer-1366501173.ap-southeast-2.elb.amazonaws.com]
+The app is interacting with its backend deployed on AWS by default, if you want to deploy the backend locally, you can update src/env.js with your local urls.
 
 ## Available Scripts
 
@@ -39,32 +75,5 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

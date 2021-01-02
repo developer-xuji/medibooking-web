@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import image from "./assets/img/background_doctor.jpg";
-import { THEME_COLOR } from "../../../../constants";
+import { THEME_COLOR, MOBILE_WIDTH } from "../../../../constants";
 
 const Banner = styled.div`
   background-image: url(${image});
@@ -35,6 +35,9 @@ const SearchBarTextWraper = styled.div`
 const SearchBarTextContainer = styled.div`
   align-items: center;
   width: 50%;
+  @media screen and (max-width: ${MOBILE_WIDTH}) {
+    width: 100%;
+  }
 `;
 
 const SearchTextContainer = styled.div`
@@ -82,14 +85,13 @@ const SearchBar = styled.input`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  outline: none;
 `;
 
 const SubmitButton = styled.input`
   position: relative;
   left: 25px;
   top: 6px;
-  // height: auto;
-  // display: inline-block;
   vertical-align: middle;
   margin: 0 0 1rem 0;
   font-family: inherit;
@@ -105,22 +107,13 @@ const SubmitButton = styled.input`
   background-color: ${THEME_COLOR};
   transition: 0.25s;
   color: #ffffff;
+  outline: none;
   :hover {
     background-color: #00627a;
   }
 `;
 
 class DoctorsSearchBar extends React.Component {
-  // constructor(props){
-
-  //     super(props);
-  //     this.state = {
-  //         AllDoctors : allDoctors,
-  //         CurrentDoctorsList : Object.keys(allDoctors),
-  //     };
-  //     // this.OnCityListClick = this.OnCityListClick.bind(this);
-  // }
-
   render() {
     return (
       <Banner>

@@ -16,7 +16,6 @@ class PatientInfoForm extends React.Component {
 
     this.state = {
       ...this.props.data,
-      // data: this.props.data,
     };
   }
   handleChange = (e) => {
@@ -30,16 +29,13 @@ class PatientInfoForm extends React.Component {
     const updatedData = this.state;
     updatedData.age = Number(updatedData.age);
 
-    // setPatientInfo(updatedData).then();
-    setPatientInfo(updatedData)
-      // .then((res) => res.json())
-      .then((res) => {
-        if (res.success === false) {
-          setTimeout(() => {}, 300);
-        } else {
-          window.location.reload();
-        }
-      });
+    setPatientInfo(updatedData).then((res) => {
+      if (res.success === false) {
+        setTimeout(() => {}, 300);
+      } else {
+        window.location.reload();
+      }
+    });
   };
 
   render() {

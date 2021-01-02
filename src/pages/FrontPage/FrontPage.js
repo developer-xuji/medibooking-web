@@ -20,7 +20,6 @@ const Layout = styled.div`
   min-height: 600px;
   background-size: repeat;
   align-items: center;
-  // padding-top: 80px;
 `;
 
 const SloganContainer = styled.div`
@@ -67,6 +66,7 @@ const SloganContainer = styled.div`
     font-weight: bold;
     border-radius: 8px;
     color: #738892;
+    outline: none;
   }
 
   button:hover {
@@ -110,7 +110,6 @@ class FrontPage extends React.Component {
           >
             Booking Now
           </button>
-          {/* {token === undefined || token === null ? <p>Please log in</p> : ""} */}
         </SloganContainer>
         {this.state.showLoginModal && (
           <LoginModal
