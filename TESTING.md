@@ -1,0 +1,1 @@
+The main test approach is to test if the tested component has all children nodes, proper props and correct utils.
